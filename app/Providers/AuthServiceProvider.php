@@ -4,6 +4,8 @@ namespace WoWStats\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use WoWStats\Models\Raid;
+use WoWStats\Policies\RaidPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'WoWStats\Model' => 'WoWStats\Policies\ModelPolicy',
+        Raid::class => RaidPolicy::class
     ];
 
     /**
