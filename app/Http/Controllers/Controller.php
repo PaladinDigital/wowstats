@@ -15,10 +15,12 @@ class Controller extends BaseController
     {
         $guildName = config('wow.guild.name', 'My Guild');
         $appName = config('wow.app.name', 'My Guild');
+        $theme = config('wow.app.theme', 'none');
 
         return [
             'guildName' => $guildName,
-            'appName' => $appName
+            'appName'   => $appName,
+            'theme'     => $theme
         ];
     }
 }
