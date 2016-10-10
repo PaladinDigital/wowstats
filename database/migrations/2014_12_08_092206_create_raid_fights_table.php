@@ -12,7 +12,7 @@ class CreateRaidFightsTable extends Migration
                 $table->increments('id');
                 $table->integer('raid_id');
                 $table->integer('boss_id');
-                $table->integer('kill');
+                $table->integer('killed');
                 $table->integer('locked')->default(0);
                 $table->timestamps();
             });
