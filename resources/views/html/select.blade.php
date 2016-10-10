@@ -5,7 +5,7 @@
     if(isset($label)) {
         echo '<label for="'. $id .'">'. $label .'</label>';
     }
-?><select id="{{ $id }}">
+?><select class="form-control" id="{{ $id }}">
     @foreach($options as $option)
         @if (is_array($option))
             <option value="{{ $option['id'] }}">{{ $option['name'] }}</option>
