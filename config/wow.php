@@ -2,7 +2,9 @@
 
 return [
     'app'   => [
-        'name' => 'Stats Tracker'
+        'name' => 'Stats Tracker',
+        // Valid Themes: 'alliance', 'horde'
+        'theme' => 'alliance',
     ],
     'guild' => [
         'name' => 'My Guild',
