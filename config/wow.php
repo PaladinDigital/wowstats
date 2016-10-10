@@ -3,8 +3,8 @@
 return [
     'app'   => [
         'name' => 'Stats Tracker',
-        // Valid Themes: 'alliance', 'horde'
-        'theme' => 'alliance',
+        // Valid Themes: 'alliance', 'horde', 'none'
+        'theme' => 'none',
     ],
     'guild' => [
         'name' => 'My Guild',
