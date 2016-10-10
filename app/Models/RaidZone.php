@@ -4,16 +4,16 @@ class RaidZone extends Model
 {
     protected $table = 'raid_zones';
 
-    protected $fillable = [];
+    protected $fillable = ['id', 'name'];
 
     protected $hidden = [];
 
     public static function exists($zone_id)
     {
-        try {
-            $zone = RaidZone::where('id', $zone_id)->firstOrFail();
+        $zone = RaidZone::where('id', $zone_id)->first();
+        if (count($zone) > 0) {
             return true;
-        } catch (Exception $e) {
+        } else {
             return false;
         }
     }
