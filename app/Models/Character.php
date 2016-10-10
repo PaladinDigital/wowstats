@@ -1,4 +1,4 @@
-<?php namespace WoWStats;
+<?php namespace WoWStats\Models;
 
 use Exception;
 
