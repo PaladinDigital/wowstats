@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace WoWStats\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

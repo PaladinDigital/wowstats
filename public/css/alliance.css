@@ -1,19 +1,19 @@
 /* Horde Colours */
 /* Theme Colours */
 .navbar-default {
-  background-color: #00043e; }
+  background-color: #1f2271; }
   .navbar-default a {
-    color: yellow; }
+    color: #f4d032; }
   .navbar-default .navbar-brand {
-    color: yellow; }
+    color: #f4d032; }
 
 .navbar-default .navbar-nav > li > a {
-  color: yellow; }
+  color: #f4d032; }
 
 .panel-default {
-  border-color: #00043e; }
+  border-color: #1f2271; }
 
 .panel-default > .panel-heading {
-  background-color: #00043e;
-  border-color: #00043e;
-  color: yellow; }
+  background-color: #1f2271;
+  border-color: #1f2271;
+  color: #f4d032; }

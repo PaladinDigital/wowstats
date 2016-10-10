@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace WoWStats\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

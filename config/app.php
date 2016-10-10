@@ -172,11 +172,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        WoWStats\Providers\AppServiceProvider::class,
+        WoWStats\Providers\AuthServiceProvider::class,
+        // WoWStats\Providers\BroadcastServiceProvider::class,
+        WoWStats\Providers\EventServiceProvider::class,
+        WoWStats\Providers\RouteServiceProvider::class,
 
     ],
 

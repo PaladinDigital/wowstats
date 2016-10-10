@@ -1,7 +1,7 @@
 /* Horde Colours */
 /* Theme Colours */
 .navbar-default {
-  background-color: #3e0000; }
+  background-color: #390000; }
   .navbar-default a {
     color: #ececec; }
   .navbar-default .navbar-brand {
@@ -11,9 +11,9 @@
   color: #ececec; }
 
 .panel-default {
-  border-color: #3e0000; }
+  border-color: #390000; }
 
 .panel-default > .panel-heading {
-  background-color: #3e0000;
-  border-color: #3e0000;
+  background-color: #390000;
+  border-color: #390000;
   color: #ececec; }
