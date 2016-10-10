@@ -8,6 +8,11 @@
                 'label' => 'Date'
             ],
             [
+                'name' => 'time',
+                'type' => 'time',
+                'label' => 'Time'
+            ],
+            [
                 'name' => 'raidzone_id',
                 'type' => 'select',
                 'label' => 'Raid Zone',
