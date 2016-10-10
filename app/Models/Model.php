@@ -1,4 +1,4 @@
-<?php namespace WoWStats;
+<?php namespace WoWStats\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
