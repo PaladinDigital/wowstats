@@ -1,5 +1,7 @@
 .panel-default {
   border-color: $colorPrimary;
+  background: #111;
+  color: $colorSecondary;
 }
 
 .panel-default > .panel-heading {
