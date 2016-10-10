@@ -1,0 +1,19 @@
+/* Horde Colours */
+/* Theme Colours */
+.navbar-default {
+  background-color: #00043e; }
+  .navbar-default a {
+    color: yellow; }
+  .navbar-default .navbar-brand {
+    color: yellow; }
+
+.navbar-default .navbar-nav > li > a {
+  color: yellow; }
+
+.panel-default {
+  border-color: #00043e; }
+
+.panel-default > .panel-heading {
+  background-color: #00043e;
+  border-color: #00043e;
+  color: yellow; }

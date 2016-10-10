@@ -1,0 +1,9 @@
+.panel-default {
+  border-color: $colorPrimary;
+}
+
+.panel-default > .panel-heading {
+  background-color: $colorPrimary;
+  border-color: $colorPrimary;
+  color: $colorSecondary;
+}
