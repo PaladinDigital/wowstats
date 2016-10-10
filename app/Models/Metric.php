@@ -26,10 +26,10 @@ class Metric extends Model
         }
     }
 
-    public static function createIfNotExist($attribute)
+    public static function createIfNotExist($metric)
     {
-        if (!self::exists($attribute)) {
-            Metric::create(['name' => $attribute]);
+        if (!self::exists($metric)) {
+            Metric::create(['name' => $metric]);
         } else {
             return false;
         }

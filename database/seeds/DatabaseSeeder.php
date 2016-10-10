@@ -10,5 +10,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CharacterRolesSeeder::class);
         $this->call(RaidBossSeeder::class);
         $this->call(RaidZoneSeeder::class);
+        $this->call(MetricsSeeder::class);
     }
 }
