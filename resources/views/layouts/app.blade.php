@@ -11,7 +11,14 @@
     <title>{{ config('wow.guild.name', 'My Guild') }} - {{ config('wow.app.name', 'Stats Tracker') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    @if (isset($theme))
+        @if ($theme == 'horde')
+            <link href="{{ asset('css/horde.css') }}" rel="stylesheet" />
+        @elseif ($theme == 'alliance')
+            <link href="{{ asset('css/alliance.css') }}" rel="stylesheet" />
+        @endif
+    @endif
 
     <!-- Scripts -->
     <script>
