@@ -1,27 +1,30 @@
-# Laravel PHP Framework
+# WoW Stats Tracker
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Planned Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+- Ability to create raids and track player statistics such as DPS, HPS, ilvl, etc.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Installation
 
-## Official Documentation
+This is a laravel application so if you are unsure how to deploy laravel please refer to the [Laravel Documentation](https://laravel.com/docs/5.3).
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+Assuming knowledge of Laravel follow the below steps.
 
-## Contributing
+- Upload the application to your server.
+- Generate a new app key <code>php artisan key:generate</code>.
+- Run the migrations <code>php artisan migrate</code>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+### Set your guild name
+- Edit <code>config/wow.php</code>
+- Change the following code, replacing 'My Guild' with your guild name (make sure the quotes remain).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+    'guild' => [
+        'name' => 'My Guild',
+    ],
 
-## License
+### Set the app name
+By default the app name is Stats Tracker, you can change this if you desire by changing <code>config/wow.php</code> and changing the app name, steps are similar to above guild name steps.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+### Add your battle.net API key (optional)
+This is only required if you wish to automatically pull character item levels from the wow API.  You can still enter these manually if you don't wish to set up an API key.
