@@ -5,6 +5,11 @@ return [
         'name' => 'Stats Tracker'
     ],
     'guild' => [
-        'name' => 'My Guild'
+        'name' => 'My Guild',
+    ],
+
+    'api'   => [
+        'key'    => '',
+        'secret' => '',
     ],
 ];
