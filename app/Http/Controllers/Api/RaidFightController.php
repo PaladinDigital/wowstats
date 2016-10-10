@@ -3,7 +3,6 @@
 use Auth;
 use Illuminate\Http\Request;
 use WoWStats\Http\Controllers\Controller;
-use WoWStats\Models\Raid;
 use WoWStats\Models\RaidFight;
 
 class RaidFightController extends Controller
@@ -13,26 +12,13 @@ class RaidFightController extends Controller
         $this->authorize('create', RaidFight::class);
 
         $this->validate($request, [
-            'raidzone_id' => 'required|integer|exists:raid_zones,id',
-            'date' => 'required',
-            'time' => 'required',
+            'raid_id' => 'required|integer|exists:raids,id',
+            'boss_id' => 'required|integer|exists:raid_bosses,id',
+            'killed' => 'required|integer|min:0|max:1',
         ]);
 
-        $input = $request->only(['raidzone_id', 'date', 'time']);
+        $data = $request->only(['raid_id', 'boss_id', 'killed']);
 
-        /* Get and Convert Date */
-        $date = $input['date'];
-        if (!isset($timezone)) {
-            $timezone = 'Europe/London';
-        }
-        $carbon = new Carbon($date, $timezone);
-        $date = $carbon->toDateString();
-        $data = [
-            'date' => $date,
-            'time' => $input['time'],
-            'raidzone_id' => $input['raidzone_id'],
-        ];
-
-        Raid::create($data);
+        RaidFight::create($data);
     }
 }
