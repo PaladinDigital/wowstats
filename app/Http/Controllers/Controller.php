@@ -10,4 +10,15 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function getData()
+    {
+        $guildName = config('wow.guild.name', 'My Guild');
+        $appName = config('wow.app.name', 'My Guild');
+
+        return [
+            'guildName' => $guildName,
+            'appName' => $appName
+        ];
+    }
 }
