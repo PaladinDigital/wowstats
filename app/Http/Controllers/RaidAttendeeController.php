@@ -1,10 +1,7 @@
-<?php
+<?php namespace WoWStats\Http\Controllers;
 
-use Lom\Security\ACL;
-
-class RaidAttendeeController extends BaseController
+class RaidAttendeeController extends Controller
 {
-
     // Lists all raids recorded on the site.
     public function api_store()
     {

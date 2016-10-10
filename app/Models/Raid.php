@@ -28,7 +28,7 @@ class Raid extends Model
 
     public function zone()
     {
-        return $this->belongsTo('RaidZone', 'raidzone_id', 'id');
+        return $this->belongsTo(RaidZone::class, 'raidzone_id', 'id');
     }
 
     public static function getRaidCount()

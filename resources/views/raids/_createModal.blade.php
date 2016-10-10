@@ -19,7 +19,8 @@
                 'options' => $raidzones
             ]
         ],
-        'url' => route('api.post.raid')
+        'url' => route('api.post.raid'),
+        'done' => 'reload',
     ];
 ?>
 @include('bootstrap.components._createModal', $raidModal)

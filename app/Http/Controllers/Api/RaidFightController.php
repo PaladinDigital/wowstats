@@ -3,14 +3,14 @@
 use Auth;
 use Illuminate\Http\Request;
 use WoWStats\Http\Controllers\Controller;
-use Carbon\Carbon;
 use WoWStats\Models\Raid;
+use WoWStats\Models\RaidFight;
 
-class RaidController extends Controller
+class RaidFightController extends Controller
 {
     public function store(Request $request)
     {
-        $this->authorize('create', Raid::class);
+        $this->authorize('create', RaidFight::class);
 
         $this->validate($request, [
             'raidzone_id' => 'required|integer|exists:raid_zones,id',

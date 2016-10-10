@@ -21,4 +21,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/admin', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
-Route::get('raids', ['uses' => 'PublicController@raids']);
+
+/* Raids */
+Route::get('raids',               [ 'as' => 'raid.index',          'uses' => 'PublicController@raids'        ]);
+Route::get('raid/{id}',           [ 'as' => 'raid.view',           'uses' => 'RaidController@view'           ]);
+Route::post('/raids',             [ 'as' => 'api.post.raid',       'uses' => 'Api\RaidController@store'      ]);
+Route::post('/raids/{id}/fights', [ 'as' => 'api.post.raid.fight', 'uses' => 'Api\RaidFightController@store' ]);

@@ -1,6 +1,6 @@
 <?php namespace WoWStats\Models;
 
-use WoWStats\Character;
+use WoWStats\Models\Character;
 
 class RaidAttendee extends Model
 {

@@ -58,15 +58,40 @@ if (!isset($modal_id)) {
                 @endif
 
                 @foreach($fields as $f)
-                    @if(in_array($f['type'], ['text', 'url', 'date', 'datetime', 'time', 'email', 'number']))
-                        <div class="input-group">
-                            <label class="label" for="{{ $f['name'] }}">{{ $f['label'] or ucfirst($f['name']) }}</label>
-                            <input class="form-control" id="{{ $f['name'] }}" <?php if(isset($f['value'])) { echo 'value="'. $f['value'] .'" '; } ?>type="{{ $f['type'] }}" placeholder="{{ $f['name'] }}" <?php if(isset($f['required']) && $f['required']) { echo 'required'; } ?> />
-                        </div>
-                    @elseif(in_array($f['type'], ['select']))
+                    @if ($f['type'] == 'select')
+
                         @if (isset($f['options']))
                             @include('html.select', ['options' => $f['options'], 'label' => $f['label'], 'id' => $f['name']])
                         @endif
+
+                    @else
+
+                        <div class="input-group">
+                            <label class="label" for="{{ $f['name'] }}">{{ $f['label'] or ucfirst($f['name']) }}</label>
+                            <?php
+                                $output = ' class="form-control" id="'. $f['name'] .'" type="'. $f['type'] . '"';
+                                if (isset($f['value'])) {
+                                    $output .= ' value="'. $f['value'] .'"';
+                                }
+                                if (isset($f['min'])) { $output .= ' min="'. $f['min'] .'"'; }
+                                if (isset($f['max'])) { $output .= ' max="'. $f['max'] .'"'; }
+                                if (array_key_exists('required', $f)) { $output .= ' required'; }
+                                /* Show placeholder on text-type inputs */
+                                if (in_array($f['type'], ['text', 'url', 'email'])) {
+                                    if (array_key_exists('label', $f)) {
+                                        $output .= ' placeholder="'. $f['label'] .'" ';
+                                    } else {
+                                        $output .= ' placeholder="'. $f['name'] .'" ';
+                                    }
+                                }
+                            ?>
+
+                            @if(in_array($f['type'], ['text', 'url', 'date', 'datetime', 'time', 'email', 'number']))
+                            <input {!! $output !!} />
+
+                        @endif
+                        </div>
+
                     @endif
                 @endforeach
             </div>
