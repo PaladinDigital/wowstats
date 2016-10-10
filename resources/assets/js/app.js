@@ -15,6 +15,7 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('my-characters', require('./components/MyCharacters.vue'));
+Vue.component('raid-modal', require('./components/RaidModal.vue'));
 
 const app = new Vue({
     el: '#app'

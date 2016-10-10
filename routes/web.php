@@ -19,3 +19,6 @@ Route::get('/', 'WelcomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/admin', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
+Route::get('raids', ['uses' => 'PublicController@raids']);

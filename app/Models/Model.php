@@ -1,6 +1,7 @@
 <?php namespace WoWStats\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Illuminate\Support\Facades\DB;
 
 class Model extends EloquentModel
 {

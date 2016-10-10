@@ -15,31 +15,28 @@ class AdminController extends Controller
 
     public function index()
     {
-        $data = [
-            'stats' => [
-                'users' => User::getCount(),
-                'raids' => Raid::getRaidCount(),
-                //'characters' => Character::getCount(),
-                //'character_stats' => CharacterStats::getCount(),
-            ]
+        $data = $this->getData();
+        $data['stats'] = [
+            'users' => User::getCount(),
+            'raids' => Raid::getRaidCount(),
         ];
+
         return view('admin/index', $data);
     }
 
     public function users()
     {
-        $users = User::all();
-        $data = [
-            'users' => $users
-        ];
+        $data = $this->getData();
+        $data['users'] = User::all();
         return view('admin/users/list', $data);
     }
 
     public function raiders()
     {
-        $data = [
-            'raiders' => Character::all()
-        ];
+        $data = $this->getData();
+
+        $data['raiders'] = Character::all();
+
         return view('admin/raiders/list', $data);
     }
 }

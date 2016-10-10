@@ -1,5 +1,8 @@
 <?php namespace WoWStats\Models;
 
+use \Validator;
+use Illuminate\Support\Facades\DB;
+
 class Raid extends Model
 {
     protected $table = 'raids';
