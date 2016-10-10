@@ -1,7 +1,10 @@
 <?php
 
-class RaidZoneSeeder extends Seeder {
+use Illuminate\Database\Seeder;
+use WoWStats\Models\RaidZone;
 
+class RaidZoneSeeder extends Seeder
+{
     public function run() {
         $zones = [
             /* Warlords of Draenor */
@@ -17,7 +20,6 @@ class RaidZoneSeeder extends Seeder {
             if (!RaidZone::exists($zid)) {
                 RaidZone::create(['id' => $zid, 'zone_name' => $name]);
             }
-
         }
     }
 }

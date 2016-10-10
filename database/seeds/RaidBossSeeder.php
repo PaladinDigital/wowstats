@@ -1,21 +1,12 @@
 <?php
 
-class RaidBossSeeder extends Seeder {
+use Illuminate\Database\Seeder;
+use WoWStats\Models\RaidBoss;
 
+class RaidBossSeeder extends Seeder
+{
     public function run() {
         $bosses = [
-            /* Warlords of Draenor */
-            /* Highmaul Bosses */
-            //994 => [
-            //    'Kargath Bladefist',
-            //    'The Butcher',
-            //    'Brackenspore (Optional)',
-            //    'Tectus (Optional)', // Wing 2
-            //    'Twin Ogron', // Wing 2
-            //    'Ko’ragh', // Wing 2
-            //    'Imperator Mar’gok', // Wing 3
-            //],
-
             /* Legion */
             1094 => [
                 'Nythendra', // 1st Boss
@@ -28,7 +19,7 @@ class RaidBossSeeder extends Seeder {
                 'Cenarius',
 
                 'Xavius'
-            ]
+            ],
         ];
 
         foreach ($bosses as $raid_id => $data) {

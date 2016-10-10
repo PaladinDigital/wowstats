@@ -1,7 +1,10 @@
 <?php
 
-class CharacterRolesSeeder extends Seeder {
+use Illuminate\Database\Seeder;
+use WoWStats\Models\CharacterRole;
 
+class CharacterRolesSeeder extends Seeder
+{
     public function run() {
         $roles = [
             'Tank',
@@ -10,7 +13,7 @@ class CharacterRolesSeeder extends Seeder {
         ];
 
         foreach ($roles as $role) {
-            PlayerRole::create(['name' => $role]);
+            CharacterRole::create(['name' => $role]);
         }
     }
 }
