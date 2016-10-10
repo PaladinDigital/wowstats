@@ -12,6 +12,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @if (isset($theme))
+        @if ($theme == 'horde')
+            <link href="{{ asset('css/horde.css') }}" rel="stylesheet" type="text/css" />
+        @elseif ($theme == 'alliance')
+            <link href="{{ asset('css/alliance.css') }}" rel="stylesheet" type="text/css" />
+    @endif
+@endif
 
     <!-- Scripts -->
     <script>
