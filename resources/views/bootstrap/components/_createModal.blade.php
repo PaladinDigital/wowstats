@@ -20,7 +20,7 @@ if (!isset($modal_id)) {
             @foreach($hidden_fields as $name => $value)
             "{{ $name }}": {{ $value }},
             @endforeach
-                    @endif
+            @endif
 
             "_token": "{{ csrf_token() }}"
         }
