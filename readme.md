@@ -2,6 +2,7 @@
 
 ## Planned Features
 
+- Assign characters to registered users.
 - Ability to create raids and track player statistics such as DPS, HPS, ilvl, etc.
 
 ## Installation
