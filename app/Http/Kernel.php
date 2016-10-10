@@ -3,6 +3,7 @@
 namespace WoWStats\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use WoWStats\Http\Middleware\admin;
 
 class Kernel extends HttpKernel
 {
@@ -52,5 +53,6 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \WoWStats\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'admin' => admin::class,
     ];
 }
