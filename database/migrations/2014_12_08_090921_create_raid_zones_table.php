@@ -10,7 +10,7 @@ class CreateRaidZonesTable extends Migration
         if (!Schema::hasTable('raid_zones')) {
             Schema::create('raid_zones', function ($table) {
                 $table->increments('id');
-                $table->string('zone_name');
+                $table->string('name');
                 $table->timestamps();
             });
         }
