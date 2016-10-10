@@ -16,9 +16,9 @@ if (!isset($modal_id)) {
             "{{ $f['name'] }}": $('#{{$f['name']}}').val(),
             @endforeach
 
-                    @if(isset($hidden_fields))
-                    @foreach($hidden_fields as $f)
-            "{{ $f['name'] }}": {{ $f['value'] }},
+            @if(isset($hidden_fields))
+            @foreach($hidden_fields as $name => $value)
+            "{{ $name }}": {{ $value }},
             @endforeach
                     @endif
 
@@ -28,7 +28,13 @@ if (!isset($modal_id)) {
         /* Send the post request */
         @if(isset($done))
             $.post( "{{ $url }}", data, function() {
-            <?php echo $done; ?>
+            <?php
+                if ($done == 'reload') {
+                    echo 'window.location.reload();';
+                } else {
+                    echo $done;
+                }
+            ?>
         });
         @else
             $.post("{{ $url }}", data);
