@@ -2,4 +2,18 @@
 
 .navbar-default {
   background-color: $horde_dark_red;
+
+  a {
+    color: $horde_white;
+  }
+}
+
+.panel-default {
+  border-color: $horde_dark_red;
+}
+
+.panel-default > .panel-heading {
+  background-color: $horde_dark_red;
+  border-color: $horde_dark_red;
+  color: $horde_white;
 }
