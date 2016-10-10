@@ -1,5 +1,4 @@
 <?php
-var_dump($raidzones);
     $raidModal = [
         'item' => 'Raid',
         'fields' => [
