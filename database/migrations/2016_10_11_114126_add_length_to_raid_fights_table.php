@@ -14,7 +14,7 @@ class AddLengthToRaidFightsTable extends Migration
     public function up()
     {
         Schema::table('raid_fights', function ($table) {
-            $table->time('length')->nullable();
+            $table->integer('length')->nullable();
         });
     }
 
