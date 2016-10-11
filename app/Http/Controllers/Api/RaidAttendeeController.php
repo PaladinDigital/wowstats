@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use WoWStats\Models\RaidAttendee;
+use WoWStats\Http\Controllers\Controller;
 
 class RaidAttendeeController extends Controller
 {
