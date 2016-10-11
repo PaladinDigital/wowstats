@@ -31,5 +31,6 @@ Route::get('raid/{rid}/fight/{id}',  [ 'as' => 'raid.fight.view',     'uses' => 
 Route::post('/raids/{id}/attendees', [ 'as' => 'api.post.raid.attendee', 'uses' => 'Api\RaidAttendeeController@store' ]);
 
 /* Characters */
-Route::get('characters',   [ 'as' => 'character.index',    'uses' => 'PublicController@characters'   ]);
-Route::post('/characters', [ 'as' => 'api.post.character', 'uses' => 'Api\CharacterController@store' ]);
+Route::get('characters',        [ 'as' => 'character.index',          'uses' => 'PublicController@characters'        ]);
+Route::post('/characters',      [ 'as' => 'api.post.character',       'uses' => 'Api\CharacterController@store'      ]);
+Route::post('/character/stats', [ 'as' => 'api.post.character.stats', 'uses' => 'Api\CharacterStatsController@store' ]);

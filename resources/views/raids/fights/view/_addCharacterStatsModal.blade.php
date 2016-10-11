@@ -17,13 +17,18 @@ $raidFightModal = [
             'label' => 'Stat',
             'type'  => 'select',
             'options' => $metrics,
+        ],
+        [
+            'name'  => 'value',
+            'label' => 'Value',
+            'type'  => 'number',
         ]
     ],
     'hidden_fields' => [
         'fight_id' => $fight->id,
     ],
     // Convert mm:ss to seconds.
-    'url' => route('api.post.raid.fight', $raid->id),
+    'url' => route('api.post.character.stats'),
     'done' => 'reload',
 ];
 ?>
