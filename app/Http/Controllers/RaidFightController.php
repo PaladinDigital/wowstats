@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use WoWStats\Models\CharacterStats;
+use WoWStats\Models\Metric;
 use WoWStats\Models\Raid;
 use WoWStats\Models\RaidFight;
 use WoWStats\Models\RaidAttendee;
@@ -20,6 +21,8 @@ class RaidFightController extends Controller
         } catch (ModelNotFoundException $e) {
             return view('errors.404');
         }
+
+        $data['metrics'] = Metric::all();
 
         $data['fight'] = $fight;
         $data['raid'] = Raid::with('zone')->where('id', $raid_id)->first();
