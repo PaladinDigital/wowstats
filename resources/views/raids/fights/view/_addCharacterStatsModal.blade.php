@@ -13,9 +13,10 @@ $raidFightModal = [
             'options' => $attendee_options,
         ],
         [
-            'name'  => 'length',
-            'label' => 'Fight Length',
-            'type'  => 'time'
+            'name'  => 'metric_id',
+            'label' => 'Stat',
+            'type'  => 'select',
+            'options' => $metrics,
         ]
     ],
     'hidden_fields' => [
