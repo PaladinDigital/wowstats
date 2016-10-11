@@ -25,4 +25,4 @@
         'done' => 'reload',
     ];
 ?>
-@include('bootstrap.components._createModal', $raidFightModal)
+@include('bootstrap3.components._createModal', $raidFightModal)
