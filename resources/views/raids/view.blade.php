@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-8">
         Fights
-
+        @include('raids.fights._list')
     </div>
     <div class="col-xs-12 col-sm-4">
         Characters
