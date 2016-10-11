@@ -34,7 +34,7 @@
         var total_sec = min_sec + secs;
         data.length = total_sec",
         'url' => route('api.post.raid.fight', $raid->id),
-        //'done' => 'reload',
+        'done' => 'reload',
     ];
 ?>
 @include('bootstrap3.components._createModal', $raidFightModal)
