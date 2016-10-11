@@ -14,6 +14,18 @@ $raidModal = [
             'label' => 'Class',
             'options' => $classes->getOptions(),
         ],
+        [
+            'name' => 'main_role_id',
+            'type' => 'select',
+            'label' => 'Primary Role',
+            'options' => \WoWStats\Models\CharacterRole::getOptions(),
+        ],
+        [
+            'name' => 'os_role_id',
+            'type' => 'select',
+            'label' => 'Secondary Role',
+            'options' => \WoWStats\Models\CharacterRole::getOptions(),
+        ],
     ],
     'url' => route('api.post.raid'),
     'done' => 'reload',
