@@ -18,7 +18,7 @@ class RaidZoneSeeder extends Seeder
         foreach ($zones as $zid => $name) {
             /* Create Zone if !Exists */
             if (!RaidZone::exists($zid)) {
-                RaidZone::create(['id' => $zid, 'zone_name' => $name]);
+                RaidZone::create(['id' => $zid, 'name' => $name]);
             }
         }
     }
