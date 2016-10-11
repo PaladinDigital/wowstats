@@ -9,7 +9,7 @@ class RaidAttendeeController extends Controller
     {
         $this->authorize('create', RaidAttendee::class);
 
-        $data = $request->only(['raid_id, $player_id']);
+        $data = $request->only(['raid_id', 'character_id']);
 
         RaidAttendee::create($data);
     }
