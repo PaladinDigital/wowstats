@@ -26,6 +26,7 @@
         'hidden_fields' => [
             'raid_id' => $raid->id,
         ],
+        // Convert mm:ss to seconds.
         'pre_send' => "var len = $('#length').val();
         var mins = len.substring(0, 2);
         var secs = parseInt(len.substring(3, 5));
