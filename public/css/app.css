@@ -5808,3 +5808,6 @@ button.close {
 
 .killed {
   color: #2ab27b; }
+  .killed a {
+    color: #2ab27b;
+    font-weight: bold; }

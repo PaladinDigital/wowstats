@@ -12,4 +12,8 @@
 
 .killed {
   color: $brand-success;
+  a {
+    color: $brand-success;
+    font-weight: bold;
+  }
 }
