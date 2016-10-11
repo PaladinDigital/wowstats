@@ -27,7 +27,7 @@ $raidModal = [
             'options' => \WoWStats\Models\CharacterRole::getOptions(),
         ],
     ],
-    'url' => route('api.post.raid'),
+    'url' => route('api.post.character'),
     'done' => 'reload',
 ];
 ?>
