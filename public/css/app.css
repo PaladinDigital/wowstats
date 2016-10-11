@@ -5767,6 +5767,15 @@ button.close {
     display: none !important; } }
 
 /* Cloth Wearers */
+.priest {
+  color: #FFFFFF; }
+
+.mage {
+  color: #69CCF0; }
+
+.warlock {
+  color: #9482C9; }
+
 /* Leather Wearers */
 .demon-hunter {
   color: #A330C9; }
@@ -5784,6 +5793,18 @@ button.close {
 .hunter {
   color: #ABD473; }
 
+.shaman {
+  color: #0070DE; }
+
 /* Plate Wearers */
+.warrior {
+  color: #C79C6E; }
+
+.paladin {
+  color: #F58CBA; }
+
+.death_knight {
+  color: #C41F3B; }
+
 .killed {
   color: #2ab27b; }

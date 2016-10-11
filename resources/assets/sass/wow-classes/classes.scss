@@ -1,7 +1,9 @@
 @import "colors";
 
 /* Cloth Wearers */
-
+.priest { color: $wow_priest; }
+.mage { color: $wow_mage; }
+.warlock { color: $wow_warlock; }
 
 /* Leather Wearers */
 .demon-hunter { color: $wow_demon_hunter; }
@@ -11,5 +13,9 @@
 
 /* Mail Wearers */
 .hunter { color: $wow_hunter; }
+.shaman { color: $wow_shaman; }
 
 /* Plate Wearers */
+.warrior { color: $wow_warrior; }
+.paladin { color: $wow_paladin; }
+.death_knight { color: $wow_death_knight; }
