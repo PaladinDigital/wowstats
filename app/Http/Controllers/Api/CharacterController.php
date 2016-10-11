@@ -13,23 +13,13 @@ class CharacterController extends Controller
         $this->authorize('create', Character::class);
 
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|unique',
+            'class_id' => 'required|integer',
+            'main_role_id' => 'integer|min:0|max:3',
+            'os_role_id' => 'integer|min:0|max:3',
         ]);
 
-        $input = $request->only(['name']);
-
-        /* Get and Convert Date */
-        $date = $input['date'];
-        if (!isset($timezone)) {
-            $timezone = 'Europe/London';
-        }
-        $carbon = new Carbon($date, $timezone);
-        $date = $carbon->toDateString();
-        $data = [
-            'date' => $date,
-            'time' => $input['time'],
-            'raidzone_id' => $input['raidzone_id'],
-        ];
+        $data = $request->only(['name', 'class_id', 'main_role_id', 'os_role_id']);
 
         Raid::create($data);
     }
