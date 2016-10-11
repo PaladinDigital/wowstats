@@ -7,13 +7,13 @@
     @endif
 
     @if (count($characters) > 0)
-        <table class="table table-striped">
+        <table class="table characters">
             <thead>
             <tr><th>Character</th><th>Class</th><th>Main Spec</th><th>Off-Spec</th></tr>
             </thead>
             <tbody>
             @foreach($characters as $c)
-                <tr>
+                <tr class="{{ $c->cssClass() }}">
                     <td>{{ $c->name }}</td>
                     <td>{{ $c->className() }}</td>
                     <td>{{ $c->mainSpec() }}</td>
