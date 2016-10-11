@@ -1,6 +1,7 @@
 <?php namespace WoWStats\Models;
 
 use Exception;
+use WoWStats\Models\CharacterRole;
 use WoWStats\Models\WoW\Classes;
 
 class Character extends Model
@@ -22,6 +23,24 @@ class Character extends Model
         $classes = new Classes();
         $class_name = $classes->getClassName((int)$this->class_id);
         return $class_name;
+    }
+
+    public function mainSpec()
+    {
+        if (!isset($this->main_role_id)) {
+            return 'Unknown';
+        }
+        $role = CharacterRole::where('id', $this->main_role_id)->first();
+        return $role->name;
+    }
+
+    public function offSpec()
+    {
+        if (!isset($this->os_role_id)) {
+            return 'Unknown';
+        }
+        $role = CharacterRole::where('id', $this->os_role_id)->first();
+        return $role->name;
     }
 
     public function get_attributes()

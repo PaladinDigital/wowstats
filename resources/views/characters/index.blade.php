@@ -16,8 +16,8 @@
                 <tr>
                     <td>{{ $c->name }}</td>
                     <td>{{ $c->className() }}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $c->mainSpec() }}</td>
+                    <td>{{ $c->offSpec() }}</td>
                 </tr>
             @endforeach
             </tbody>
