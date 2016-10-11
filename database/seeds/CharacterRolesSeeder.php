@@ -13,7 +13,9 @@ class CharacterRolesSeeder extends Seeder
         ];
 
         foreach ($roles as $role) {
-            CharacterRole::create(['name' => $role]);
+            if (!CharacterRole::exists($role)) {
+                CharacterRole::create(['name' => $role]);
+            }
         }
     }
 }

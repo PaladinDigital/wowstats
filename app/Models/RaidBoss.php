@@ -6,6 +6,12 @@ class RaidBoss extends Model
 
     protected $hidden = [];
 
+    public static function exists($zone_id, $boss_name)
+    {
+        $boss = RaidBoss::where(['raidzone_id' => $zone_id, 'name' => $boss_name])->get();
+        return (count($boss) > 0);
+    }
+
     public static function getRaidBosses($raid_id)
     {
         try {

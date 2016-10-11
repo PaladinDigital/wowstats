@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use WoWStats\Models\Metric;
 
-class MetricsSeeder extends Seeder
+class MetricSeeder extends Seeder
 {
     public function run() {
         $metrics = [

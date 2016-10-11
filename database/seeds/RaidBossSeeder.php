@@ -24,7 +24,9 @@ class RaidBossSeeder extends Seeder
 
         foreach ($bosses as $raid_id => $data) {
             foreach($data as $boss) {
-                RaidBoss::create(['raidzone_id' => $raid_id, 'name' => $boss]);
+                if (!RaidBoss::exists($raid_id, $boss)) {
+                    RaidBoss::create(['raidzone_id' => $raid_id, 'name' => $boss]);
+                }
             }
         }
     }

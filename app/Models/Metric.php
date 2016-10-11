@@ -19,7 +19,7 @@ class Metric extends Model
     public static function exists($attribute)
     {
         try {
-            $attr = Metric::where('name', $attribute)->firstOrFail();
+            $attr = Metric::where('name', $attribute)->first();
             return true;
         } catch (Exception $e) {
             return false;
@@ -28,7 +28,7 @@ class Metric extends Model
 
     public static function createIfNotExist($metric)
     {
-        if (!self::exists($metric)) {
+        if (!Metric::exists($metric)) {
             Metric::create(['name' => $metric]);
         } else {
             return false;
