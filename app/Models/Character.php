@@ -27,7 +27,7 @@ class Character extends Model
 
     public function mainSpec()
     {
-        if (!isset($this->main_role_id)) {
+        if (!isset($this->main_role_id) || $this->main_role_id == 0) {
             return 'Unknown';
         }
         $role = CharacterRole::where('id', $this->main_role_id)->first();
@@ -36,7 +36,7 @@ class Character extends Model
 
     public function offSpec()
     {
-        if (!isset($this->os_role_id)) {
+        if (!isset($this->os_role_id) || $this->os_role_id == 0) {
             return 'Unknown';
         }
         $role = CharacterRole::where('id', $this->os_role_id)->first();
