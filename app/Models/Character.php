@@ -25,6 +25,13 @@ class Character extends Model
         return $class_name;
     }
 
+    public function cssClass()
+    {
+        $classes = new Classes();
+        $css_class = $classes->getDisplayName($this->className());
+        return $css_class;
+    }
+
     public function mainSpec()
     {
         if (!isset($this->main_role_id) || $this->main_role_id == 0) {
