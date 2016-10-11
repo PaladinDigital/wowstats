@@ -1,5 +1,6 @@
 <?php namespace WoWStats\Http\Controllers;
 
+use \Auth;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -15,10 +16,16 @@ class Controller extends BaseController
         $appName = config('wow.app.name', 'My Guild');
         $theme = config('wow.app.theme', 'none');
 
-        return [
+        $data =  [
             'guildName' => $guildName,
             'appName'   => $appName,
             'theme'     => $theme
         ];
+
+        if (Auth::check()) {
+            $data['user'] = Auth::user();
+        }
+
+        return $data;
     }
 }
