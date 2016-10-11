@@ -15,9 +15,10 @@ class RaidFightController extends Controller
             'raid_id' => 'required|integer|exists:raids,id',
             'boss_id' => 'required|integer|exists:raid_bosses,id',
             'killed' => 'required|integer|min:0|max:1',
+            'length' => 'required|integer|min:1',
         ]);
 
-        $data = $request->only(['raid_id', 'boss_id', 'killed']);
+        $data = $request->only(['raid_id', 'boss_id', 'killed', 'length']);
 
         RaidFight::create($data);
     }

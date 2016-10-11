@@ -16,6 +16,11 @@
                     0 => 'No',
                     1 => 'Yes',
                 ]
+            ],
+            [
+                'name'  => 'length',
+                'label' => 'Fight Length',
+                'type'  => 'time'
             ]
         ],
         'hidden_fields' => [
