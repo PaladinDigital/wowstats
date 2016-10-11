@@ -1,13 +1,13 @@
-<?php
-
-namespace WoWStats\Providers;
+<?php namespace WoWStats\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
 use WoWStats\Models\Raid;
+use WoWStats\Policies\RaidPolicy;
+
 use WoWStats\Models\RaidFight;
 use WoWStats\Policies\RaidFightPolicy;
-use WoWStats\Policies\RaidPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -17,7 +17,6 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'WoWStats\Model' => 'WoWStats\Policies\ModelPolicy',
         Raid::class => RaidPolicy::class,
         RaidFight::class => RaidFightPolicy::class,
     ];
@@ -32,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('administrate', function ($user) {
-            return ($user->admin == 1);
+            return ($user->isAdmin());
         });
     }
 }
