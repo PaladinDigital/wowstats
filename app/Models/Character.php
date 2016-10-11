@@ -8,7 +8,7 @@ class Character extends Model
     protected $table = 'characters';
 
     // Hidden from API (json) output.
-    protected $hidden = ['main_role_id', 'os_role_id'];
+    protected $hidden = [];
 
     protected $fillable = ['name', 'class_id', 'rank', 'main_role_id', 'os_role_id'];
 
