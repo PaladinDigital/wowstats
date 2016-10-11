@@ -1,7 +1,5 @@
 <?php namespace WoWStats\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class CharactersController extends Controller
 {
 
