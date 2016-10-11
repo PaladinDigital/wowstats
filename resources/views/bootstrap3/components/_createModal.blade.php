@@ -1,6 +1,6 @@
 <?php
 // Required Fields: $item (eg Player), $fields[],
-// Optional Fields: $hidden_fields, $modal_id, $flash_id,
+// Optional Fields: $hidden_fields, $modal_id, $flash_id, $pre_send (javascript), $done (javascript|'reload')
 
 $trimmed_item = strpos($item, ' ') !== false ? join('', explode(' ', $item)) : $item;
 
@@ -24,6 +24,10 @@ if (!isset($modal_id)) {
 
             "_token": "{{ csrf_token() }}"
         }
+
+        @if(isset($pre_send))
+            <?php echo $pre_send; ?>
+        @endif
 
         /* Send the post request */
         @if(isset($done))
