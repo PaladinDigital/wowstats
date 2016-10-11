@@ -12,7 +12,7 @@ class CreateCharactersTable extends Migration
                 $table->increments('id');
                 $table->string('name');
                 $table->integer('class_id');
-                $table->integer('rank');
+                $table->integer('rank')->nullable();
                 $table->integer('main_role_id')->nullable(); // Main Spec
                 $table->integer('os_role_id')->nullable(); // Off-Spec
                 $table->timestamps();
