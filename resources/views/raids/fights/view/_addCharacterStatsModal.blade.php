@@ -22,6 +22,7 @@ $raidFightModal = [
             'name'  => 'value',
             'label' => 'Value',
             'type'  => 'number',
+            'step'  => 0.1,
         ]
     ],
     'hidden_fields' => [
