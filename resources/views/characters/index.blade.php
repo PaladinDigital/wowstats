@@ -13,7 +13,7 @@
             </thead>
             <tbody>
             @foreach($characters as $c)
-                <tr><td>{{ $c->name }}</td>{{ $c->class }}<td></td><td></td><td></td></tr>
+                <tr><td>{{ $c->name }}</td>{{ $c->className() }}<td></td><td></td><td></td></tr>
             @endforeach
             </tbody>
         </table>

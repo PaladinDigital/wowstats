@@ -29,9 +29,14 @@ Class Classes
      */
     public function getClassName($class_id)
     {
-        if (!array_key_exists($class_id, $this->class_data)) { \Log::debug("Class_id not found."); }
-        if (!isset($this->class_data[$class_id])) { \Log::debug("Class_id key is not set." . $class_id); }
-        if (!isset($this->class_data[$class_id]['class'])) { \Log::debug("Class key is not set." . $class_id); }
+        $classes = $this->class_data;
+
+        if (!array_key_exists($class_id, $classes)) {
+            return false;
+        }
+        if (!array_key_exists('class', $classes[$class_id])) {
+            return false;
+        }
         return $this->class_data[$class_id]['class'];
     }
 

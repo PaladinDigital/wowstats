@@ -14,13 +14,13 @@ class Character extends Model
 
     public function stats()
     {
-        return $this->hasMany('CharactereStats');
+        return $this->hasMany('CharacterStats');
     }
 
-    public function getClassName()
+    public function className()
     {
         $classes = new Classes();
-        $class_name = $classes->getClassName($this->class_id);
+        $class_name = $classes->getClassName((int)$this->class_id);
         return $class_name;
     }
 
