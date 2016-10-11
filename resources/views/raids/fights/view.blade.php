@@ -3,7 +3,7 @@
 @section('content')
     <h1>Raid: {{ $raid->zone->name }}</h1>
     <h2>Date: {{ $raid->date }}</h2>
-    <h3>Fight: {{ $fight->boss->name }} @if ($fight->killed === 1) (Kill) @endif</h3>
+    <h3<?php if ($fight->killed === 1) { echo ' class="killed"'; } ?>>Fight: {{ $fight->boss->name }} @if ($fight->killed === 1) (Kill) @endif</h3>
 
     <div class="row">
 
