@@ -1,27 +1,22 @@
 <?php
+$attendee_options = [];
+foreach ($attendees as $a) {
+    $attendee_options[$a->character->id] = $a->character->name;
+}
 $raidFightModal = [
-    'item' => 'CharacterStat',
+    'item' => 'CharacterStats',
     'fields' => [
-            [
-                    'name'    => 'boss_id',
-                    'type'    => 'select',
-                    'label'   => 'Boss',
-                    'options' => $bosses
-            ],
-            [
-                    'name'  => 'killed',
-                    'label' => 'Killed',
-                    'type'  => 'select',
-                    'options' => [
-                            0 => 'No',
-                            1 => 'Yes',
-                    ]
-            ],
-            [
-                    'name'  => 'length',
-                    'label' => 'Fight Length',
-                    'type'  => 'time'
-            ]
+        [
+            'name'  => 'character_id',
+            'label' => 'Character',
+            'type'  => 'select',
+            'options' => $attendee_options,
+        ],
+        [
+            'name'  => 'length',
+            'label' => 'Fight Length',
+            'type'  => 'time'
+        ]
     ],
     'hidden_fields' => [
         'fight_id' => $fight->id,

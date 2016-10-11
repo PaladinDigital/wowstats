@@ -37,7 +37,7 @@ class RaidFightController extends Controller
             'tank' => $this->build_tanking_data($tank_stats)
         ];
 
-        $data['raiders'] = RaidAttendee::with('character')->where('raid_id', $raid_id)->get();
+        $data['attendees'] = RaidAttendee::with('character')->where('raid_id', $raid_id)->get();
 
         return view('raids.fights.view', $data);
     }
