@@ -21,6 +21,6 @@ class CharacterController extends Controller
 
         $data = $request->only(['name', 'class_id', 'main_role_id', 'os_role_id']);
 
-        Raid::create($data);
+        Character::create($data);
     }
 }
