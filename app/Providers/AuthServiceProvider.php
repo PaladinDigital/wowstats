@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use WoWStats\Models\Character;
 use WoWStats\Models\Raid;
+use WoWStats\Models\RaidAttendee;
 use WoWStats\Policies\CharacterPolicy;
+use WoWStats\Policies\RaidAttendeePolicy;
 use WoWStats\Policies\RaidPolicy;
 
 use WoWStats\Models\RaidFight;
@@ -21,6 +23,7 @@ class AuthServiceProvider extends ServiceProvider
         Raid::class => RaidPolicy::class,
         RaidFight::class => RaidFightPolicy::class,
         Character::class => CharacterPolicy::class,
+        RaidAttendee::class => RaidAttendeePolicy::class,
     ];
 
     /**

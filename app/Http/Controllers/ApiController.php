@@ -11,7 +11,7 @@ class ApiController extends BaseController
     public function player_stats_store(Request $request)
     {
         $data = [
-            "player_id" => $request->input('player_id'),
+            "character_id" => $request->input('character_id'),
             "fight_id" => $request->input('fight_id'),
             "metric_id" => $request->input('metric_id'),
             "value" => $request->input('value')
@@ -22,26 +22,12 @@ class ApiController extends BaseController
             return $response;
         }
 
-        if (!PlayerStats::valid($data)) {
+        if (!CharacterStats::valid($data)) {
             \Log::debug(STATS_STORE_LOG_PREFIX . 'PlayerStats data invalid');
             \Log::debug($data);
             return Response::make('Bad Request', 400);
         }
 
         PlayerStats::create($data);
-    }
-
-    public function roster()
-    {
-        $players = Character::getRaiders();
-        return $players;
-    }
-
-    public function check_is_admin()
-    {
-        if (Auth::user()->can('administrate')) {
-            \Log::debug(STATS_STORE_LOG_PREFIX . 'Non-admin attempting to create stats');
-            return Response::make('Unauthorised', 401);
-        }
     }
 }
