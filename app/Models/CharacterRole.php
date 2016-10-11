@@ -8,11 +8,23 @@ class CharacterRole extends Model
 
     public static function exists($role)
     {
-        $zone = CharacterRole::where('name', $role)->first();
-        if (count($zone) > 0) {
+        $roles = CharacterRole::where('name', $role)->first();
+        if (count($roles) > 0) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public static function getOptions()
+    {
+        $options = [];
+        $roles = CharacterRole::all();
+        $options[0] = 'Please Select';
+        foreach ($roles as $role)
+        {
+            $options[$role->id] = $role->name;
+        }
+        return $options;
     }
 }
