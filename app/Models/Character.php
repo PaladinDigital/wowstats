@@ -1,6 +1,7 @@
 <?php namespace WoWStats\Models;
 
 use Exception;
+use WoWStats\Models\WoW\Classes;
 
 class Character extends Model
 {
@@ -9,7 +10,7 @@ class Character extends Model
     // Hidden from API (json) output.
     protected $hidden = ['main_role_id', 'os_role_id'];
 
-    protected $fillable = ['name', 'class_id', 'rank'];
+    protected $fillable = ['name', 'class_id', 'rank', 'main_role_id', 'os_role_id'];
 
     public function stats()
     {
