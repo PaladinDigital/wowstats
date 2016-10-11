@@ -16,7 +16,7 @@ class MetricSeeder extends Seeder
         ];
 
         foreach ($metrics as $metric) {
-            Metric::createIfNotExist(['name' => $metric]);
+            Metric::createIfNotExist($metric);
         }
     }
 }

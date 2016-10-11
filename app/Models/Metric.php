@@ -16,14 +16,10 @@ class Metric extends Model
         }
     }
 
-    public static function exists($attribute)
+    public static function exists($metric)
     {
-        try {
-            $attr = Metric::where('name', $attribute)->first();
-            return true;
-        } catch (Exception $e) {
-            return false;
-        }
+        $metrics = Metric::where('name', $metric)->get();
+        return (count($metrics) > 0);
     }
 
     public static function createIfNotExist($metric)
