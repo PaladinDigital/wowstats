@@ -13,7 +13,7 @@ class CharacterController extends Controller
         $this->authorize('create', Character::class);
 
         $this->validate($request, [
-            'name' => 'required|unique',
+            'name' => 'required|unique:characters,name',
             'class_id' => 'required|integer',
             'main_role_id' => 'integer|min:0|max:3',
             'os_role_id' => 'integer|min:0|max:3',
