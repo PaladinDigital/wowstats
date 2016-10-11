@@ -1,59 +1,42 @@
-<?php
+<?php namespace WoWStats\Http\Controllers;
 
-use Lom\Security\ACL;
-use Lom\WoW\Classes;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use WoWStats\Models\CharacterStats;
+use WoWStats\Models\Raid;
+use WoWStats\Models\RaidFight;
+use WoWStats\Models\RaidAttendee;
+use WoWStats\Models\WoW\Classes;
 
-class RaidFightController extends BaseController
+class RaidFightController extends Controller
 {
-    // Create a raid via jQuery
-    public function api_store()
+    public function view($raid_id, $fight_id)
     {
-        $data = [
-            "raid_id" => Input::get('raid_id'),
-            "boss_id" => Input::get('boss_id'),
-            "kill" => Input::get('kill')
-        ];
-        $killed = Input::get('kill');
-        $acl = new ACL();
-        if ($acl->isAdmin()) {
-            if (RaidFight::valid($data)) {
-                RaidFight::create($data);
-            } else {
-                \Log::debug('RaidFight data invalid');
-                \Log::debug($data);
-            }
-        }
-    }
+        $data = $this->getData();
 
-    public function view($fight_id)
-    {
-        $acl = new ACL();
-        /* Determine if fight exists */
+        // Check the fight exists
         try {
             $fight = RaidFight::with('boss')->where('id', $fight_id)->firstOrFail();
-            $raid = Raid::with('zone')->where('id', $fight->raid_id)->firstOrFail();
-            $dps_stats = PlayerStats::fightDpsStats($fight_id);
-            $hps_stats = PlayerStats::fightHpsStats($fight_id);
-            $tank_stats = PlayerStats::fightTankStats($fight_id);
-            $attendees = RaidAttendee::with('player')->where('raid_id', $fight->raid_id)->get();
-            $classes = new Classes();
-            $data = [
-                'fight' => $fight,
-                'stats' => [
-                    'damage' => $this->build_dps_data($dps_stats),
-                    'healing' => $this->build_healing_data($hps_stats),
-                    'tank' => $this->build_tanking_data($tank_stats)
-                ],
-                'raid' => $raid,
-                'raiders' => $attendees,
-                'classes' => $classes
-            ];
-            $data['acl'] = $acl;
-            return View::make('fights/view', $data);
-        } catch (Exception $e) {
-            \Log::error($e->getMessage());
-            return View::make('errors/404');
+        } catch (ModelNotFoundException $e) {
+            return view('errors.404');
         }
+
+        $data['fight'] = $fight;
+        $data['raid'] = Raid::with('zone')->where('id', $raid_id)->first();
+
+        $dps_stats = CharacterStats::fightDpsStats($fight_id);
+        $hps_stats = CharacterStats::fightHpsStats($fight_id);
+        $tank_stats = CharacterStats::fightTankStats($fight_id);
+
+        $data['stats'] = [
+            'damage' => $this->build_dps_data($dps_stats),
+            'healing' => $this->build_healing_data($hps_stats),
+            'tank' => $this->build_tanking_data($tank_stats)
+        ];
+
+        $data['raiders'] = RaidAttendee::with('character')->where('raid_id', $raid_id)->get();
+
+        return view('raids.fights.view', $data);
     }
 
     public function build_dps_data($data)

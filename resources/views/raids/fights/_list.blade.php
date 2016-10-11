@@ -14,7 +14,7 @@
             $duration = $fight->length;
             $duration = gmdate('i:s', $duration);
         ?>
-        <tr><td>{{ $fight->boss->name }}</td><td><?php echo ($killed == 1) ? 'Kill' : 'No' ?></td><td>{{ $duration }}</td></tr>
+        <tr><td><a href="{{ route('raid.fight.view', [$raid->id, $fight->id]) }}">{{ $fight->boss->name }}</a></td><td><?php echo ($killed == 1) ? 'Kill' : 'No' ?></td><td>{{ $duration }}</td></tr>
     @endforeach
     </tbody>
     </table>
