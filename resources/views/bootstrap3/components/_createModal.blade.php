@@ -77,8 +77,12 @@ if (!isset($modal_id)) {
                                 if (isset($f['value'])) {
                                     $output .= ' value="'. $f['value'] .'"';
                                 }
-                                if (isset($f['min'])) { $output .= ' min="'. $f['min'] .'"'; }
-                                if (isset($f['max'])) { $output .= ' max="'. $f['max'] .'"'; }
+                                if ($f['type'] == 'number') {
+                                    if (isset($f['min'])) { $output .= ' min="'. $f['min'] .'"'; }
+                                    if (isset($f['max'])) { $output .= ' max="'. $f['max'] .'"'; }
+                                    if (isset($f['step'])) { $output .= ' step="'. $f['step'] .'"'; }
+                                }
+
                                 if (array_key_exists('required', $f)) { $output .= ' required'; }
                                 /* Show placeholder on text-type inputs */
                                 if (in_array($f['type'], ['text', 'url', 'email'])) {
