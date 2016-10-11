@@ -9,6 +9,8 @@ class PublicController extends Controller
     public function characters()
     {
         $data = $this->getData();
+        $perPage = 25;
+        $data['characters'] = Character::paginate($perPage);
         return view('characters.index', $data);
     }
 

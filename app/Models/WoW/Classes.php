@@ -79,4 +79,16 @@ Class Classes
         $color = $this->class_data[$identifier]['color'];
         return $color;
     }
+
+    public function getOptions()
+    {
+        $options = [];
+
+        foreach ($this->class_data as $id => $class)
+        {
+            $options[$id] = $class['class'];
+        }
+
+        return $options;
+    }
 }
