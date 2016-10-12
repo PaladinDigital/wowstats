@@ -18,7 +18,7 @@ class CharacterStatsController extends Controller
             'value' => 'required|numeric',
         ]);
 
-        $data = $request->only(['name', 'class_id', 'main_role_id', 'os_role_id']);
+        $data = $request->only(['fight_id', 'character_id', 'metric_id', 'value']);
 
         CharacterStats::create($data);
     }
