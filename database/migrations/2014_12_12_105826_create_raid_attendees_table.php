@@ -18,6 +18,6 @@ class CreateRaidAttendeesTable extends Migration
 	}
 	public function down()
 	{
-		Schema::dropIfExists('raid_bosses');
+		Schema::dropIfExists('raid_attendees');
 	}
 }
