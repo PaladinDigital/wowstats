@@ -8,7 +8,22 @@
         @include('raids.fights.view._addCharacterStatsModal')
     @endif
 
+    <!-- Display each stats -->
+    @foreach($stats as $stat => $data)
+        @if (count($data) > 0)
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ $stat }}</div>
+                <div class="panel-body">
+                    <ul>
+                    @foreach($data as $s)
+                    <li >{{ $s['character']->name }} - {{ $s['value'] }}</li>
+                    @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+    @endforeach
+
     <div class="row">
-        {!! print_r($stats) !!}
     </div>
 @endsection

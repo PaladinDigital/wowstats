@@ -36,8 +36,10 @@ class RaidFightController extends Controller
             $data['stats'][$metric->name] = [];
 
             foreach ($stats as $s) {
-                $character = $s->character->name;
-                $data['stats'][$metric->name][$character] = $s->value;
+                $data['stats'][$metric->name][] = [
+                    'character' => $s->character,
+                    'value' => $s->value,
+                ];
             }
         }
 
