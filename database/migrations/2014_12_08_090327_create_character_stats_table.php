@@ -10,10 +10,10 @@ class CreateCharacterStatsTable extends Migration
         if (!Schema::hasTable('character_raid_stats')) {
             Schema::create('character_raid_stats', function ($table) {
                 $table->increments('id');
-                $table->integer('fight_id');
-                $table->integer('character_id');
-                $table->integer('metric_id');
-                $table->integer('value');
+                $table->integer('fight_id')->unsigned();
+                $table->integer('character_id')->unsigned();
+                $table->integer('metric_id')->unsigned();
+                $table->float('value');
                 $table->timestamps();
             });
         }
