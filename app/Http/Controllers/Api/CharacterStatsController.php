@@ -15,7 +15,7 @@ class CharacterStatsController extends Controller
             'fight_id' => 'required|exists:raid_fights,id',
             'character_id' => 'required|exists:characters,id',
             'metric_id' => 'required|exists:metrics,id',
-            'value' => 'integer',
+            'value' => 'required|numeric',
         ]);
 
         $data = $request->only(['name', 'class_id', 'main_role_id', 'os_role_id']);
