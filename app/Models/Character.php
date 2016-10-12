@@ -131,4 +131,13 @@ class Character extends Model
             return false;
         }
     }
+
+    public function __debugInfo() {
+        return [
+            'name'      => $this->name,
+            'class'     => $this->className(),
+            'main_spec' => $this->mainSpec(),
+            'off_spec'  => $this->offSpec(),
+        ];
+    }
 }
