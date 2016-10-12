@@ -40,6 +40,10 @@ class PromoteUser extends Command
     {
         $users = User::where('admin', 0)->get(['id', 'name', 'email']);
 
+        if (count($users) == 0) {
+            return $this->info('There are no users to promote.');
+        }
+
         // List users to select
         $headers = ['id', 'name', 'email'];
         $this->table($headers, $users->toArray());
