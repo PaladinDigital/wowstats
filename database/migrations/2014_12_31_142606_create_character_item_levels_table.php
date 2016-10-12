@@ -10,8 +10,8 @@ class CreateCharacterItemLevelsTable extends Migration
         if (!Schema::hasTable('character_item_levels')) {
             Schema::create('character_item_levels', function ($table) {
                 $table->increments('id');
-                $table->integer('character_id');
-                $table->integer('item_level');
+                $table->integer('character_id')->unsigned();
+                $table->integer('item_level')->unsigned();
                 $table->timestamps();
             });
         }

@@ -11,10 +11,10 @@ class CreateCharactersTable extends Migration
             Schema::create('characters', function ($table) {
                 $table->increments('id');
                 $table->string('name');
-                $table->integer('class_id');
-                $table->integer('rank')->nullable();
-                $table->integer('main_role_id')->nullable(); // Main Spec
-                $table->integer('os_role_id')->nullable(); // Off-Spec
+                $table->integer('class_id')->unsigned();
+                $table->integer('rank')->unsigned()->nullable();
+                $table->integer('main_role_id')->unsigned()->nullable(); // Main Spec
+                $table->integer('os_role_id')->unsigned()->nullable(); // Off-Spec
                 $table->timestamps();
             });
         }

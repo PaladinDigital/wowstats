@@ -11,8 +11,8 @@ class CreateRaidsTable extends Migration
             Schema::create('raids', function ($table) {
                 $table->increments('id');
                 $table->date('date');
-                $table->integer('raidzone_id');
-                $table->integer('locked')->default(0);
+                $table->integer('raidzone_id')->unsigned();
+                $table->boolean('locked')->default(0);
                 $table->timestamps();
             });
         }

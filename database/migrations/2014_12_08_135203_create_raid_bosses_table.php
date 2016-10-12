@@ -10,7 +10,7 @@ class CreateRaidBossesTable extends Migration
         if (!Schema::hasTable('raid_bosses')) {
             Schema::create('raid_bosses', function ($table) {
                 $table->increments('id');
-                $table->integer('raidzone_id');
+                $table->integer('raidzone_id')->unsigned();
                 $table->string('name');
                 $table->timestamps();
             });

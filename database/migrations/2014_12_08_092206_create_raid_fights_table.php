@@ -10,9 +10,9 @@ class CreateRaidFightsTable extends Migration
         if (!Schema::hasTable('raid_fights')) {
             Schema::create('raid_fights', function ($table) {
                 $table->increments('id');
-                $table->integer('raid_id');
-                $table->integer('boss_id');
-                $table->integer('killed');
+                $table->integer('raid_id')->unsigned();
+                $table->integer('boss_id')->unsigned();
+                $table->boolean('killed');
                 $table->integer('locked')->default(0);
                 $table->timestamps();
             });

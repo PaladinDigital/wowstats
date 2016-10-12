@@ -10,8 +10,8 @@ class CreateCharacterAttributesTable extends Migration
         if (!Schema::hasTable('character_attributes')) {
             Schema::create('character_attributes', function ($table) {
                 $table->increments('id');
-                $table->integer('character_id');
-                $table->integer('attribute_id');
+                $table->integer('character_id')->unsigned();
+                $table->integer('attribute_id')->unsigned();
                 $table->integer('value');
                 $table->timestamps();
             });

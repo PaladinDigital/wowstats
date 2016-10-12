@@ -10,8 +10,8 @@ class CreateRaidAttendeesTable extends Migration
         if (!Schema::hasTable('raid_attendees')) {
 			Schema::create('raid_attendees', function ($table) {
 				$table->increments('id');
-				$table->integer('raid_id');
-				$table->integer('character_id');
+				$table->integer('raid_id')->unsigned();
+				$table->integer('character_id')->unsigned();
 				$table->timestamps();
 			});
 		}
