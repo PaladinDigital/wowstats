@@ -9,6 +9,6 @@
     @endif
 
     <div class="row">
-
+        {!! print_r($stats) !!}
     </div>
 @endsection

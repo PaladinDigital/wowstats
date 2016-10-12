@@ -37,34 +37,44 @@ class CharacterStats extends Model
     public static function fightDpsStats($fight_id)
     {
         $stats = CharacterStats::with('character')->where('fight_id', $fight_id);
-        return $stats->where('metric_id', '<=', 2)->get();
+        // Get metric for dps
+        $dps_metric = Metric::where('name', 'dps')->first();
+        $damage_metric = Metric::where('name', 'damage')->first();
+        return $stats->whereIn('metric_id', [$dps_metric->id, $damage_metric->id])->get();
     }
 
     public static function fightTankStats($fight_id)
     {
         $stats = CharacterStats::with('character')->where('fight_id', $fight_id);
+
+        $dtps_metric = Metric::where('name', 'dtps')->first();
+        $damage_taken_metric = Metric::where('name', 'damage_taken')->first();
         return $stats
-            ->where('metric_id', '>=', 5)
-            ->where('metric_id', '<=', 6)
-            ->get();
+            ->whereIn('metric_id', [
+                $dtps_metric->id,
+                $damage_taken_metric->id
+            ])->get();
     }
 
     public static function fightHpsStats($fight_id)
     {
         $stats = CharacterStats::with('character')->where('fight_id', $fight_id);
+
+        $healing_metric = Metric::where('name', 'healing')->first();
+        $hps_metric = Metric::where('name', 'hps')->first();
         return $stats
-            ->where('metric_id', '>=', 3)
-            ->where('metric_id', '<=', 4)
-            ->get();
+            ->whereIn('metric_id', [
+                $healing_metric->id,
+                $hps_metric->id
+            ])->get();
     }
 
     public static function characterMetric($metric_id, $character_id)
     {
-        $stats = CharacterStats::with('character')
+        return CharacterStats::with('character')
             ->where('metric_id', $metric_id)
             ->where('character_id', $character_id)
             ->get();
-        return $stats->where('metric_id', '<=', 2)->get();
     }
 
     public static function getStatsCount()
