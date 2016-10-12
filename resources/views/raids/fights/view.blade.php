@@ -12,9 +12,10 @@
     @foreach($stats as $stat => $data)
         @if ($stat == 'dps')
             <div id="dps_chart"></div>
-            <table id="dps_data">
+            <table id="dps_data" style="display: none;">
                 <thead>
                     <tr>
+                        <th></th>
                         @foreach($data as $s)
                         <th>{{ $s['character']->name }}</th>
                         @endforeach
@@ -22,6 +23,7 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <th>DPS</th>
                         @foreach($data as $s)
                         <td>{{ $s['value'] }}</td>
                         @endforeach
