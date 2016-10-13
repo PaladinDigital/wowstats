@@ -25,6 +25,13 @@ class Character extends Model
         return $class_name;
     }
 
+    public function classColor()
+    {
+        $classes = new Classes();
+        $color = $classes->getClassColor((int)$this->class_id);
+        return $color;
+    }
+
     public function cssClass()
     {
         $classes = new Classes();

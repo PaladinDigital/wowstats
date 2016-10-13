@@ -1,32 +1,32 @@
 <script>
     <?php
-    $dps_characters = [];
-    $dps_values = [];
+    $hps_characters = [];
+    $hps_values = [];
     foreach($stats as $stat => $data) {
-        if ($stat == 'dps') {
+        if ($stat == 'hps') {
             foreach ($data as $s) {
-                $dps_characters[] = '"' . $s['character']->name . '"';
-                $dps_values[] = (object)[
+                $hps_characters[] = '"' . $s['character']->name . '"';
+                $hps_values[] = (object)[
                     'y' => $s['value'],
                     'color' => $s['character']->classColor()
                 ];
             }
         }
     }
-    $dps_values = json_encode($dps_values);
+    $hps_values = json_encode($hps_values);
     ?>
 
     $(function () {
-        $('#dps_chart').highcharts({
+        $('#hps_chart').highcharts({
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Fight DPS'
+                text: 'Fight HPS'
             },
             xAxis: {
                 categories: [
-                    <?php echo join(', ', $dps_characters); ?>
+                    <?php echo join(', ', $hps_characters); ?>
                 ]
             },
             yAxis: {
@@ -37,7 +37,7 @@
             },
             series: [
                 {
-                    data: <?php echo $dps_values; ?>
+                    data: <?php echo $hps_values; ?>
                 }
             ]
         });

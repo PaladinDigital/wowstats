@@ -10,72 +10,16 @@
 
     <!-- Display each stats -->
     @foreach($stats as $stat => $data)
-        @if ($stat == 'dps')
-            <div id="dps_chart"></div>
-            <table id="dps_data" style="display: none;">
-                <thead>
-                    <tr>
-                        <th></th>
-                        @foreach($data as $s)
-                        <th>{{ $s['character']->name }}</th>
-                        @endforeach
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>DPS</th>
-                        @foreach($data as $s)
-                        <td>{{ $s['value'] }}</td>
-                        @endforeach
-                    </tr>
-                </tbody>
-            </table>
-        @else
         @if (count($data) > 0)
-            <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ $stat }}</div>
-                <div class="panel-body">
-                    <ul>
-                    @foreach($data as $s)
-                    <li >{{ $s['character']->name }} - {{ $s['value'] }}</li>
-                    @endforeach
-                    </ul>
-                </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div id="{{$stat}}_chart"></div>
             </div>
-            </div>
-        @endif
         @endif
     @endforeach
 @endsection
 
 @section('scripts')
 <!-- DPS Chart -->
-<script>
-    $(function () {
-        $('#dps_chart').highcharts({
-            data: {
-                table: 'dps_data'
-            },
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Fight DPS'
-            },
-            yAxis: {
-                allowDecimals: false,
-                title: {
-                    text: 'DPS'
-                }
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                            this.point.y + ' ' + this.point.name.toLowerCase();
-                }
-            }
-        });
-    });
-</script>
+@include('raids.fights.charts._dps')
+@include('raids.fights.charts._hps')
 @endsection
