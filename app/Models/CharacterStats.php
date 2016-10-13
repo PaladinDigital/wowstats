@@ -102,7 +102,7 @@ class CharacterStats extends Model
     }
 
     // Scope by Character
-    public function scopeCharacter($query, $character)
+    public function scopeForCharacter($query, $character)
     {
         if (is_int($character)) {
             $character_id = $character;

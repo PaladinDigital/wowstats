@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use WoWStats\Models\Character;
+use WoWStats\Models\CharacterStats;
+use WoWStats\Models\Metric;
 
 class CharactersController extends Controller
 {
@@ -31,6 +33,17 @@ class CharactersController extends Controller
         try {
             $char = Character::where($prop, $id)->firstOrFail();
             $data['character'] = $char;
+            $data['class_color'] = $char->classColor();
+
+            $stats = [];
+
+            $metrics = Metric::all();
+            foreach ($metrics as $m) {
+                $stats[$m->name] = CharacterStats::forCharacter($char->id)->metric($m->id)->get();
+            }
+
+            $data['stats'] = $stats;
+
             return view('characters.view', $data);
         } catch(ModelNotFoundException $e) {
             return view('errors.404');
