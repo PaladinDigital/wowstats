@@ -8,14 +8,21 @@
         @include('raids.fights.view._addCharacterStatsModal')
     @endif
 
-    <!-- Display each stats -->
-    @foreach($stats as $stat => $data)
-        @if (count($data) > 0)
-            <div class="col-xs-12 col-sm-12 col-md-6">
-                <div id="{{$stat}}_chart"></div>
-            </div>
-        @endif
-    @endforeach
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div id="hps_chart"></div>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+            <div id="damage_taken_chart"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="dps_chart"></div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
