@@ -31,7 +31,7 @@ class RaidFightController extends Controller
 
         foreach($data['metrics'] as $metric)
         {
-            $stats = CharacterStats::where('metric_id', $metric->id)->get();
+            $stats = CharacterStats::metric($metric->id)->fight($fight->id)->get();
 
             $data['stats'][$metric->name] = [];
 
