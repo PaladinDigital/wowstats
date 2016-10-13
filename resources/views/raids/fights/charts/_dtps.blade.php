@@ -1,30 +1,29 @@
-<?php /*print_r($stats); die;*/ ?>
 <script>
     $(function () {
-        $('#hps_chart').highcharts({
+        $('#dtps_chart').highcharts({
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Healing / Second'
+                text: 'Damage Taken / Second'
             },
             xAxis: {
                 categories: [
-                    <?php echo $stats['hps_characters']; ?>
+                    <?php echo $stats['dtps_characters']; ?>
                 ]
             },
             yAxis: {
                 allowDecimals: false,
                 title: {
-                    text: 'HPS'
+                    text: 'DTPS'
                 },
             },
             series: [
                 {
                     showInLegend: false,
-                    name: 'HPS',
+                    name: 'Damage Done',
                     borderColor: '#111',
-                    data: <?php echo $stats['hps_values']; ?>
+                    data: <?php echo $stats['dtps_values']; ?>
                 }
             ]
         });

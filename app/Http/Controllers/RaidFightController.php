@@ -27,21 +27,8 @@ class RaidFightController extends Controller
         $data['fight'] = $fight;
         $data['raid'] = Raid::with('zone')->where('id', $raid_id)->first();
 
-        $data['stats'] = [];
-
-        foreach($data['metrics'] as $metric)
-        {
-            $stats = CharacterStats::metric($metric->id)->fight($fight->id)->get();
-
-            $data['stats'][$metric->name] = [];
-
-            foreach ($stats as $s) {
-                $data['stats'][$metric->name][] = [
-                    'character' => $s->character,
-                    'value' => $s->value,
-                ];
-            }
-        }
+        $stats = CharacterStats::fight($fight->id)->get();
+        $data['stats'] = CharacterStats::buildFightStats($stats);
 
         $data['attendees'] = RaidAttendee::with('character')->where('raid_id', $raid_id)->get();
 

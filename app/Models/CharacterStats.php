@@ -29,44 +29,14 @@ class CharacterStats extends Model
         return $this->belongsTo(Character::class, 'character_id');
     }
 
+    public function metric()
+    {
+        return $this->belongsTo(Metric::class, 'metric_id');
+    }
+
     public function raidfight()
     {
         return $this->belongsTo(RaidFight::class, 'fight_id');
-    }
-
-    public static function fightDpsStats($fight_id)
-    {
-        $stats = CharacterStats::with('character')->where('fight_id', $fight_id);
-        // Get metric for dps
-        $dps_metric = Metric::where('name', 'dps')->first();
-        $damage_metric = Metric::where('name', 'damage')->first();
-        return $stats->whereIn('metric_id', [$dps_metric->id, $damage_metric->id])->get();
-    }
-
-    public static function fightTankStats($fight_id)
-    {
-        $stats = CharacterStats::with('character')->where('fight_id', $fight_id);
-
-        $dtps_metric = Metric::where('name', 'dtps')->first();
-        $damage_taken_metric = Metric::where('name', 'damage_taken')->first();
-        return $stats
-            ->whereIn('metric_id', [
-                $dtps_metric->id,
-                $damage_taken_metric->id
-            ])->get();
-    }
-
-    public static function fightHpsStats($fight_id)
-    {
-        $stats = CharacterStats::with('character')->where('fight_id', $fight_id);
-
-        $healing_metric = Metric::where('name', 'healing')->first();
-        $hps_metric = Metric::where('name', 'hps')->first();
-        return $stats
-            ->whereIn('metric_id', [
-                $healing_metric->id,
-                $hps_metric->id
-            ])->get();
     }
 
     public static function characterMetric($metric_id, $character_id)
@@ -111,5 +81,31 @@ class CharacterStats extends Model
         }
 
         return $query->where('character_id', $character_id);
+    }
+
+    public static function buildFightStats($stats)
+    {
+        $stats_array = [];
+        $metrics = Metric::all();
+        foreach ($metrics as $m) {
+            $stats_array[$m->name . '_values'] = [];
+            $stats_array[$m->name . '_characters'] = [];
+        }
+
+        foreach($stats as $stat) {
+            $metric = $stat->metric->name;
+            $stats_array[$metric . '_values'][] = (object)[
+                'color' => $stat->character->classColor(),
+                'y' => $stat->value
+            ];
+            $stats_array[$metric . '_characters'][] = $stat->character->name;
+        }
+
+        foreach ($metrics as $m) {
+            $stats_array[$m->name . '_characters'] = json_encode($stats_array[$m->name . '_characters']);
+            $stats_array[$m->name . '_values'] = json_encode($stats_array[$m->name . '_values']);
+        }
+
+        return $stats_array;
     }
 }

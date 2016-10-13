@@ -1,30 +1,31 @@
 <?php /*print_r($stats); die;*/ ?>
 <script>
     $(function () {
-        $('#hps_chart').highcharts({
+        $('#healing_chart').highcharts({
             chart: {
-                type: 'column'
+                type: 'column',
+                height: 250
             },
             title: {
-                text: 'Healing / Second'
+                text: 'Healing Done'
             },
             xAxis: {
                 categories: [
-                    <?php echo $stats['hps_characters']; ?>
+                    <?php echo $stats['healing_characters']; ?>
                 ]
             },
             yAxis: {
                 allowDecimals: false,
                 title: {
-                    text: 'HPS'
+                    text: 'Healing'
                 },
             },
             series: [
                 {
                     showInLegend: false,
-                    name: 'HPS',
+                    name: 'Healing',
                     borderColor: '#111',
-                    data: <?php echo $stats['hps_values']; ?>
+                    data: <?php echo $stats['healing_values']; ?>
                 }
             ]
         });
