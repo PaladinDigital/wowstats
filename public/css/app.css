@@ -5767,43 +5767,43 @@ button.close {
     display: none !important; } }
 
 /* Cloth Wearers */
-.priest {
+.priest, .priest a {
   color: #FFFFFF; }
 
-.mage {
+.mage, .mage a {
   color: #69CCF0; }
 
-.warlock {
+.warlock, .warlock a {
   color: #9482C9; }
 
 /* Leather Wearers */
-.demon-hunter {
+.demon-hunter, .demon-hunter a {
   color: #A330C9; }
 
-.druid {
+.druid, .druid a {
   color: #FF7D0A; }
 
-.rogue {
+.rogue, .rogue a {
   color: #FFF569; }
 
-.monk {
+.monk, .monk a {
   color: #00FF96; }
 
 /* Mail Wearers */
-.hunter {
+.hunter, .hunter a {
   color: #ABD473; }
 
-.shaman {
+.shaman, .shaman a {
   color: #0070DE; }
 
 /* Plate Wearers */
-.warrior {
+.warrior, .warrior a {
   color: #C79C6E; }
 
-.paladin {
+.paladin, .paladin a {
   color: #F58CBA; }
 
-.death_knight {
+.death_knight, .death_knight a {
   color: #C41F3B; }
 
 .killed {

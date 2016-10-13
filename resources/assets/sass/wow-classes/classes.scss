@@ -1,21 +1,21 @@
 @import "colors";
 
 /* Cloth Wearers */
-.priest { color: $wow_priest; }
-.mage { color: $wow_mage; }
-.warlock { color: $wow_warlock; }
+.priest, .priest a { color: $wow_priest; }
+.mage, .mage a { color: $wow_mage; }
+.warlock, .warlock a { color: $wow_warlock; }
 
 /* Leather Wearers */
-.demon-hunter { color: $wow_demon_hunter; }
-.druid { color: $wow_druid; }
-.rogue { color: $wow_rogue; }
-.monk { color: $wow_monk; }
+.demon-hunter, .demon-hunter a { color: $wow_demon_hunter; }
+.druid, .druid a { color: $wow_druid; }
+.rogue, .rogue a { color: $wow_rogue; }
+.monk, .monk a { color: $wow_monk; }
 
 /* Mail Wearers */
-.hunter { color: $wow_hunter; }
-.shaman { color: $wow_shaman; }
+.hunter, .hunter a { color: $wow_hunter; }
+.shaman, .shaman a { color: $wow_shaman; }
 
 /* Plate Wearers */
-.warrior { color: $wow_warrior; }
-.paladin { color: $wow_paladin; }
-.death_knight { color: $wow_death_knight; }
+.warrior, .warrior a { color: $wow_warrior; }
+.paladin, .paladin a { color: $wow_paladin; }
+.death_knight, .death_knight a { color: $wow_death_knight; }
