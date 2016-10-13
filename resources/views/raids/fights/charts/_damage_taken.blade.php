@@ -39,6 +39,7 @@
                 {
                     showInLegend: false,
                     name: 'Damage Taken',
+                    borderColor: '#111',
                     data: <?php echo $dt_values; ?>
                 }
             ]

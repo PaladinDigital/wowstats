@@ -181,6 +181,24 @@ Class Classes
         return $color;
     }
 
+    public function getClassRGBColor($identifier)
+    {
+        if (strlen($identifier) > 2) {
+            $identifier = intval($identifier);
+        } else {
+            /* Convert to class id if a string is passed in */
+            if (is_string($identifier)) {
+                $identifier = intval($identifier);
+                if ($identifier === null) {
+                    return ['r' => 255, 'g' => 255, 'b' => 255];
+                }
+            }
+        }
+
+        $color = $this->class_data[$identifier]['color_rgb'];
+        return $color;
+    }
+
     public function getOptions()
     {
         $options = [];

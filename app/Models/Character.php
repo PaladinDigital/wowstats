@@ -32,6 +32,13 @@ class Character extends Model
         return $color;
     }
 
+    public function classRGBColor()
+    {
+        $classes = new Classes();
+        $color = $classes->getClassRGBColor((int)$this->class_id);
+        return $color;
+    }
+
     public function cssClass()
     {
         $classes = new Classes();

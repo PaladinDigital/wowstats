@@ -6,9 +6,11 @@
         if ($stat == 'dps') {
             foreach ($data as $s) {
                 $dps_characters[] = '"' . $s['character']->name . '"';
+                $char_rgb = $s['character']->classRGBColor();
                 $dps_values[] = (object)[
                     'y' => $s['value'],
-                    'color' => $s['character']->classColor()
+                    //'color' => $s['character']->classColor()
+                    'color' => 'rgba(' . $char_rgb['r']. ', ' . $char_rgb['g'].', '.$char_rgb['b'].', 0.8)'
                 ];
             }
         }
@@ -39,6 +41,7 @@
                 {
                     showInLegend: false,
                     name: 'DPS',
+                    borderColor: '#111',
                     data: <?php echo $dps_values; ?>
                 }
             ]

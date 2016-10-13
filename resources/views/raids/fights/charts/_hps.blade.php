@@ -39,6 +39,7 @@
                 {
                     showInLegend: false,
                     name: 'HPS',
+                    borderColor: '#111',
                     data: <?php echo $hps_values; ?>
                 }
             ]
