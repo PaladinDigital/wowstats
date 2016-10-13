@@ -96,7 +96,8 @@ class CharacterStats extends Model
             $metric = $stat->metric->name;
             $stats_array[$metric . '_values'][] = (object)[
                 'color' => $stat->character->classColor(),
-                'y' => $stat->value
+                'y' => $stat->value,
+                'x' => $stat->raidfight->id,
             ];
             $stats_array[$metric . '_characters'][] = $stat->character->name;
         }
@@ -122,7 +123,7 @@ class CharacterStats extends Model
             $metric = $stat->metric->name;
             $stats_array[$metric . '_values'][] = (object)[
                 'color' => $stat->character->classColor(),
-                'y' => $stat->value
+                'y' => $stat->value,
             ];
             $stats_array[$metric . '_characters'][] = $stat->character->name;
         }
