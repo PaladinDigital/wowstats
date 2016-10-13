@@ -1,27 +1,7 @@
-<script>
-    $(function () {
-        $('#damage_taken_chart').highcharts({
-            chart: {
-                type: 'column',
-                height: 250
-            },
-            title: {
-                text: 'Damage Taken Over Time'
-            },
-            yAxis: {
-                allowDecimals: false,
-                title: {
-                    text: 'Damage Taken'
-                },
-            },
-            series: [
-                {
-                    showInLegend: false,
-                    name: 'Damage Taken',
-                    borderColor: '#111',
-                    data: <?php echo $stats['damage_taken_values']; ?>
-                }
-            ]
-        });
-    });
-</script>
+<?php
+$options = [
+        'container' => 'damage_taken_chart',
+        'title' => 'Damage Taken - Over Time',
+        'values' => $stats['damage_taken_values']
+];
+?>@include('highcharts.chart.single_series.line', $options)
