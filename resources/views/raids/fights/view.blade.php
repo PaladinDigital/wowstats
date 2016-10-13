@@ -22,4 +22,5 @@
 <!-- DPS Chart -->
 @include('raids.fights.charts._dps')
 @include('raids.fights.charts._hps')
+@include('raids.fights.charts._damage_taken')
 @endsection
