@@ -87,4 +87,29 @@ class CharacterStats extends Model
     {
         DB::table('character_raid_stats')->where('character_id', $character_id)->delete();
     }
+
+    /* Query Scopes */
+
+    // Scope by Metric ID
+    public function scopeMetric($query, $metric_id)
+    {
+        return $query->where('metric_id', $metric_id);
+    }
+
+    public function scopeFight($query, $fight_id)
+    {
+        return $query->where('fight_id', $fight_id);
+    }
+
+    // Scope by Character
+    public function scopeCharacter($query, $character)
+    {
+        if (is_int($character)) {
+            $character_id = $character;
+        } elseif (is_object($character)) {
+            $character_id = $character->id;
+        }
+
+        return $query->where('character_id', $character_id);
+    }
 }
