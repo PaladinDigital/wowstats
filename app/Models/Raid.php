@@ -31,6 +31,11 @@ class Raid extends Model
         return $this->belongsTo(RaidZone::class, 'raidzone_id', 'id');
     }
 
+    public function attendees()
+    {
+        return $this->hasMany(RaidAttendee::class);
+    }
+
     public static function getRaidCount()
     {
         $results = DB::select('select COUNT(*) as count from raids');
