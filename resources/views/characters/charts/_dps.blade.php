@@ -4,11 +4,6 @@
             title: {
                 text: 'DPS Over Time'
             },
-            xAxis: {
-                categories: [
-                    <?php echo $stats['dps_characters']; ?>
-                ]
-            },
             yAxis: {
                 allowDecimals: false,
                 title: {

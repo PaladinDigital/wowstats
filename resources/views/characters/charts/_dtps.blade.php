@@ -7,11 +7,6 @@
             title: {
                 text: 'Damage Taken / Second Over time'
             },
-            xAxis: {
-                categories: [
-                    <?php echo $stats['dtps_characters']; ?>
-                ]
-            },
             yAxis: {
                 allowDecimals: false,
                 title: {

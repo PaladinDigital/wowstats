@@ -9,11 +9,6 @@
             title: {
                 text: 'Healing Done Over Time'
             },
-            xAxis: {
-                categories: [
-                    <?php echo $stats['healing_characters']; ?>
-                ]
-            },
             yAxis: {
                 allowDecimals: false,
                 title: {

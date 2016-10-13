@@ -8,11 +8,6 @@
             title: {
                 text: 'Healing / Second Over Time'
             },
-            xAxis: {
-                categories: [
-                    <?php echo $stats['hps_characters']; ?>
-                ]
-            },
             yAxis: {
                 allowDecimals: false,
                 title: {

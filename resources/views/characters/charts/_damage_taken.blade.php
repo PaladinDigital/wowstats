@@ -8,11 +8,6 @@
             title: {
                 text: 'Damage Taken Over Time'
             },
-            xAxis: {
-                categories: [
-                    <?php echo $stats['damage_taken_characters']; ?>
-                ]
-            },
             yAxis: {
                 allowDecimals: false,
                 title: {
