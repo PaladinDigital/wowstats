@@ -83,6 +83,32 @@ class CharacterStats extends Model
         return $query->where('character_id', $character_id);
     }
 
+    public static function buildCharacterStats($stats)
+    {
+        $stats_array = [];
+        $metrics = Metric::all();
+        foreach ($metrics as $m) {
+            $stats_array[$m->name . '_values'] = [];
+            $stats_array[$m->name . '_characters'] = [];
+        }
+
+        foreach($stats as $stat) {
+            $metric = $stat->metric->name;
+            $stats_array[$metric . '_values'][] = (object)[
+                'color' => $stat->character->classColor(),
+                'y' => $stat->value
+            ];
+            $stats_array[$metric . '_characters'][] = $stat->character->name;
+        }
+
+        foreach ($metrics as $m) {
+            $stats_array[$m->name . '_characters'] = json_encode($stats_array[$m->name . '_characters']);
+            $stats_array[$m->name . '_values'] = json_encode($stats_array[$m->name . '_values']);
+        }
+
+        return $stats_array;
+    }
+
     public static function buildFightStats($stats)
     {
         $stats_array = [];

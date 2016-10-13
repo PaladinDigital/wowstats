@@ -1,29 +1,16 @@
 <script>
-    <?php
-    $dt_characters = [];
-    $dt_values = [];
-    foreach($stats as $stat => $data) {
-        if ($stat == 'damage_taken') {
-            foreach ($data as $s) {
-                $dt_characters[] = '"' . $s['character']->name . '"';
-                $dt_values[] = (object)[
-                    'y' => $s['value'],
-                    'color' => $s['character']->classColor()
-                ];
-            }
-        }
-    }
-    $dt_values = json_encode($dt_values);
-    ?>
-
     $(function () {
         $('#damage_taken_chart').highcharts({
+            chart: {
+                type: 'column',
+                height: 250
+            },
             title: {
-                text: 'Damage Taken'
+                text: 'Damage Taken Over Time'
             },
             xAxis: {
                 categories: [
-                    <?php echo join(', ', $dt_characters); ?>
+                    <?php echo $stats['damage_taken_characters']; ?>
                 ]
             },
             yAxis: {
@@ -37,8 +24,7 @@
                     showInLegend: false,
                     name: 'Damage Taken',
                     borderColor: '#111',
-                    color: '<?php echo $class_color; ?>',
-                    data: <?php echo $dt_values; ?>
+                    data: <?php echo $stats['damage_taken_values']; ?>
                 }
             ]
         });

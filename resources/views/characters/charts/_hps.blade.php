@@ -1,13 +1,16 @@
+<?php /*print_r($stats); die;*/ ?>
 <script>
-    <?php var_dump($stats); die; ?>
     $(function () {
         $('#hps_chart').highcharts({
+            chart: {
+                type: 'column'
+            },
             title: {
-                text: 'Fight HPS'
+                text: 'Healing / Second Over Time'
             },
             xAxis: {
                 categories: [
-                    {!! $hps_characters !!}
+                    <?php echo $stats['hps_characters']; ?>
                 ]
             },
             yAxis: {
@@ -21,8 +24,7 @@
                     showInLegend: false,
                     name: 'HPS',
                     borderColor: '#111',
-                    color: '<?php echo $class_color; ?>',
-                    data: <?php echo $hps_values; ?>
+                    data: <?php echo $stats['hps_values']; ?>
                 }
             ]
         });

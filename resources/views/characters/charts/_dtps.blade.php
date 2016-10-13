@@ -1,26 +1,29 @@
 <script>
     $(function () {
-        $('#dps_chart').highcharts({
+        $('#dtps_chart').highcharts({
+            chart: {
+                type: 'column'
+            },
             title: {
-                text: 'DPS Over Time'
+                text: 'Damage Taken / Second Over time'
             },
             xAxis: {
                 categories: [
-                    <?php echo $stats['dps_characters']; ?>
+                    <?php echo $stats['dtps_characters']; ?>
                 ]
             },
             yAxis: {
                 allowDecimals: false,
                 title: {
-                    text: 'DPS'
+                    text: 'DTPS'
                 },
             },
             series: [
                 {
                     showInLegend: false,
-                    name: 'DPS',
+                    name: 'Damage Done',
                     borderColor: '#111',
-                    data: <?php echo $stats['dps_values']; ?>
+                    data: <?php echo $stats['dtps_values']; ?>
                 }
             ]
         });

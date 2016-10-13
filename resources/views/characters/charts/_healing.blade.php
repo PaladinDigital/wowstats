@@ -1,26 +1,31 @@
+<?php /*print_r($stats); die;*/ ?>
 <script>
     $(function () {
-        $('#dps_chart').highcharts({
+        $('#healing_chart').highcharts({
+            chart: {
+                type: 'column',
+                height: 250
+            },
             title: {
-                text: 'DPS Over Time'
+                text: 'Healing Done Over Time'
             },
             xAxis: {
                 categories: [
-                    <?php echo $stats['dps_characters']; ?>
+                    <?php echo $stats['healing_characters']; ?>
                 ]
             },
             yAxis: {
                 allowDecimals: false,
                 title: {
-                    text: 'DPS'
+                    text: 'Healing'
                 },
             },
             series: [
                 {
                     showInLegend: false,
-                    name: 'DPS',
+                    name: 'Healing',
                     borderColor: '#111',
-                    data: <?php echo $stats['dps_values']; ?>
+                    data: <?php echo $stats['healing_values']; ?>
                 }
             ]
         });

@@ -7,7 +7,6 @@ use WoWStats\Models\Metric;
 
 class CharactersController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -35,14 +34,8 @@ class CharactersController extends Controller
             $data['character'] = $char;
             $data['class_color'] = $char->classColor();
 
-            $stats = [];
-
-            $metrics = Metric::all();
-            foreach ($metrics as $m) {
-                $stats[$m->name] = CharacterStats::forCharacter($char->id)->metric($m->id)->get();
-            }
-
-            $data['stats'] = $stats;
+            $stats = CharacterStats::forCharacter($char->id)->get();
+            $data['stats'] = CharacterStats::buildCharacterStats($stats);
 
             return view('characters.view', $data);
         } catch(ModelNotFoundException $e) {
