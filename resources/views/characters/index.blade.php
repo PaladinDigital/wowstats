@@ -14,7 +14,7 @@
             <tbody>
             @foreach($characters as $c)
                 <tr class="{{ $c->cssClass() }}">
-                    <td>{{ $c->name }}</td>
+                    <td><a href="{{ route('character.view', $c->name) }}">{{ $c->name }}</a></td>
                     <td>{{ $c->className() }}</td>
                     <td>{{ $c->mainSpec() }}</td>
                     <td>{{ $c->offSpec() }}</td>
