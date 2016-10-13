@@ -37,6 +37,8 @@
             },
             series: [
                 {
+                    showInLegend: false,
+                    name: 'DPS',
                     data: <?php echo $dps_values; ?>
                 }
             ]

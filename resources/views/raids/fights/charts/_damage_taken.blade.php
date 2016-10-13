@@ -37,6 +37,8 @@
             },
             series: [
                 {
+                    showInLegend: false,
+                    name: 'Damage Taken',
                     data: <?php echo $dt_values; ?>
                 }
             ]

@@ -37,6 +37,8 @@
             },
             series: [
                 {
+                    showInLegend: false,
+                    name: 'HPS',
                     data: <?php echo $hps_values; ?>
                 }
             ]
