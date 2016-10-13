@@ -9,9 +9,7 @@
                 text: 'Healing / Second'
             },
             xAxis: {
-                categories: [
-                    <?php echo $stats['hps_characters']; ?>
-                ]
+                categories: <?php echo $stats['hps_characters']; ?>
             },
             yAxis: {
                 allowDecimals: false,

@@ -8,9 +8,7 @@
                 text: 'Fight DPS'
             },
             xAxis: {
-                categories: [
-                    <?php echo $stats['dps_characters']; ?>
-                ]
+                categories: <?php echo $stats['dps_characters']; ?>
             },
             yAxis: {
                 allowDecimals: false,

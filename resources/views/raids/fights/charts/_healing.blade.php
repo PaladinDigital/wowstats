@@ -10,9 +10,7 @@
                 text: 'Healing Done'
             },
             xAxis: {
-                categories: [
-                    <?php echo $stats['healing_characters']; ?>
-                ]
+                categories: <?php echo $stats['healing_characters']; ?>
             },
             yAxis: {
                 allowDecimals: false,

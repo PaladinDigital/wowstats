@@ -9,9 +9,7 @@
                 text: 'Fight Damage'
             },
             xAxis: {
-                categories: [
-                    <?php echo $stats['damage_characters']; ?>
-                ]
+                categories: <?php echo $stats['damage_characters']; ?>
             },
             yAxis: {
                 allowDecimals: false,

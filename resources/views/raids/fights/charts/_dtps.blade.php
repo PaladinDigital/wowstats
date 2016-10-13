@@ -8,9 +8,7 @@
                 text: 'Damage Taken / Second'
             },
             xAxis: {
-                categories: [
-                    <?php echo $stats['dtps_characters']; ?>
-                ]
+                categories: <?php echo $stats['dtps_characters']; ?>
             },
             yAxis: {
                 allowDecimals: false,
