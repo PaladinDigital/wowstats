@@ -1,11 +1,9 @@
 <?php namespace WoWStats\Http\Controllers;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use WoWStats\Models\Character;
 use WoWStats\Models\CharacterStats;
-use WoWStats\Models\Metric;
 
-class CharactersController extends Controller
+class GuildController extends Controller
 {
 
     public function __construct()
@@ -19,34 +17,13 @@ class CharactersController extends Controller
         return view('home', $data);
     }
 
-    public function view($id)
+    public function stats()
     {
-        if (is_int($id)) {
-            $prop = 'id';
-        } else {
-            $prop = 'name';
-        }
-
         $data = $this->getData();
 
-        // Get the character
-        try {
-            $char = Character::where($prop, $id)->firstOrFail();
-            $data['character'] = $char;
-            $data['class_color'] = $char->classColor();
+        $stats = CharacterStats::get();
+        $data['stats'] = $stats;
 
-            $stats = [];
-
-            $metrics = Metric::all();
-            foreach ($metrics as $m) {
-                $stats[$m->name] = CharacterStats::forCharacter($char->id)->metric($m->id)->get();
-            }
-
-            $data['stats'] = $stats;
-
-            return view('characters.view', $data);
-        } catch(ModelNotFoundException $e) {
-            return view('errors.404');
-        }
+        return view('guild.view', $data);
     }
 }
