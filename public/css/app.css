@@ -5811,3 +5811,6 @@ button.close {
   .killed a {
     color: #2ab27b;
     font-weight: bold; }
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #222; }
