@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "VanguardGaming/wow-stats",
+    "description": "WoW Stats Tracker",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
