@@ -20,8 +20,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
-
 /* Raids */
 Route::get('raids',                  [ 'as' => 'raid.index',          'uses' => 'PublicController@raids'              ]);
 Route::get('raid/{id}',              [ 'as' => 'raid.view',           'uses' => 'RaidController@view'                 ]);
@@ -35,3 +33,7 @@ Route::get('characters',        [ 'as' => 'character.index',          'uses' => 
 Route::post('/characters',      [ 'as' => 'api.post.character',       'uses' => 'Api\CharacterController@store'      ]);
 Route::post('/character/stats', [ 'as' => 'api.post.character.stats', 'uses' => 'Api\CharacterStatsController@store' ]);
 Route::get('characters/{id}',   [ 'as' => 'character.view',           'uses' => 'CharactersController@view'          ]);
+
+/* Administration */
+Route::get('/admin',       ['as' => 'admin.index', 'uses' => 'AdminController@index']);
+Route::get('/admin/stats', ['as' => 'admin.stats', 'uses' => 'AdminController@stats']);

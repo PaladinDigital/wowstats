@@ -39,4 +39,13 @@ class AdminController extends Controller
 
         return view('admin/raiders/list', $data);
     }
+
+    public function stats()
+    {
+        $data = $this->getData();
+
+        $data['stats'] = CharacterStats::paginate(50);
+
+        return view('admin/stats/index', $data);
+    }
 }
