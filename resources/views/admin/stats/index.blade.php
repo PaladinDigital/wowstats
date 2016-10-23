@@ -25,7 +25,7 @@
                     <td>{{ $s->character->name }}</td>
                     <td>{{ $s->metric->name }}</td>
                     <td>{{ $s->value }}</td>
-                    <td></td>
+                    <td><button class="btn btn-xs btn-danger" onclick="return deleteStat('{{ route('admin.stat.delete', $s->id) }}');">Delete</button></td>
                 </tr>
             @endforeach
             </tbody>
@@ -35,4 +35,23 @@
             <p>There are currently no stats recorded.</p>
         @endif
     </section>
+@stop
+
+@section('scripts')
+    <script>
+        function deleteStat(url)
+        {
+            var data = {
+                '_token': '{{ csrf_token() }}',
+                '_method': 'DELETE'
+            }
+
+            /* Prompt user to confirm action */
+            if (confirm('Are you sure you wish to delete this stat?')) {
+                $.post(url, data).done(function () {
+                    window.location.reload();
+                });
+            }
+        }
+    </script>
 @stop

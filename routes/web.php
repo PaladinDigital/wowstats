@@ -29,11 +29,12 @@ Route::get('raid/{rid}/fight/{id}',  [ 'as' => 'raid.fight.view',     'uses' => 
 Route::post('/raids/{id}/attendees', [ 'as' => 'api.post.raid.attendee', 'uses' => 'Api\RaidAttendeeController@store' ]);
 
 /* Characters */
-Route::get('characters',        [ 'as' => 'character.index',          'uses' => 'PublicController@characters'        ]);
-Route::post('/characters',      [ 'as' => 'api.post.character',       'uses' => 'Api\CharacterController@store'      ]);
-Route::post('/character/stats', [ 'as' => 'api.post.character.stats', 'uses' => 'Api\CharacterStatsController@store' ]);
-Route::get('characters/{id}',   [ 'as' => 'character.view',           'uses' => 'CharactersController@view'          ]);
+Route::get('characters',           [ 'as' => 'character.index',          'uses' => 'PublicController@characters'         ]);
+Route::post('/characters',         [ 'as' => 'api.post.character',       'uses' => 'Api\CharacterController@store'       ]);
+Route::post('/character/stats',    [ 'as' => 'api.post.character.stats', 'uses' => 'Api\CharacterStatsController@store'  ]);
+Route::delete('/admin/stats/{id}', [ 'as' => 'admin.stat.delete',        'uses' => 'Api\CharacterStatsController@delete' ]);
+Route::get('characters/{id}',      [ 'as' => 'character.view',           'uses' => 'CharactersController@view'           ]);
 
 /* Administration */
-Route::get('/admin',       ['as' => 'admin.index', 'uses' => 'AdminController@index']);
-Route::get('/admin/stats', ['as' => 'admin.stats', 'uses' => 'AdminController@stats']);
+Route::get('/admin',               [ 'as' => 'admin.index', 'uses' => 'AdminController@index' ]);
+Route::get('/admin/stats',         [ 'as' => 'admin.stats', 'uses' => 'AdminController@stats' ]);
