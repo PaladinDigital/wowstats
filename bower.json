@@ -1,0 +1,25 @@
+{
+  "name": "wow-stats",
+  "description": "Laravel App to track World of Warcraft Stats",
+  "main": "",
+  "authors": [
+    "PrivateSniper <privatesniper@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Warcraft",
+    "Laravel",
+    "Stats"
+  ],
+  "homepage": "https://github.com/VanguardGaming/wow-stats",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
