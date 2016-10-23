@@ -24,7 +24,7 @@ class CharacterStatsController extends Controller
         CharacterStats::create($data);
     }
 
-    public function delete(Request $request, $statId)
+    public function delete($statId)
     {
         $this->authorize('delete', CharacterStats::class);
 
