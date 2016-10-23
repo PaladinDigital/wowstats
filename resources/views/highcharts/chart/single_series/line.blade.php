@@ -21,6 +21,9 @@ if (!isset($height)) { $height = 400; }
             },
             series: [
                 {
+                    <?php if (isset($character)): ?>
+                    color: '<?php echo $character->classColor(); ?>',
+                    <?php endif; ?>
                     showInLegend: false,
                     name: '{{ $series_title or '' }}',
                     borderColor: '#111',
