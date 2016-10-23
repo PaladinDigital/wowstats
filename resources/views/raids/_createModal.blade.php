@@ -17,6 +17,17 @@
                 'type' => 'select',
                 'label' => 'Raid Zone',
                 'options' => $raidzones
+            ],
+            [
+                'name' => 'difficulty_id',
+                'type' => 'select',
+                'label' => 'Difficulty',
+                'options' => [
+                    0 => 'LFR',
+                    1 => 'Normal',
+                    2 => 'Heroic',
+                    3 => 'Mythic',
+                ]
             ]
         ],
         'url' => route('api.post.raid'),

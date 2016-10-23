@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Raid: {{ $raid->zone->name }}</h1>
+<h1>Raid: {{ $raid->zone->name }} ({{ $raid->difficulty() }})</h1>
 <h2>Date: {{ $raid->date }}</h2>
 @if ($user->can('administrate'))
 @include('raids.fights._createModal')
