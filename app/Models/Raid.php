@@ -14,7 +14,7 @@ class Raid extends Model
 
     protected $hidden = [];
 
-    protected $fillable = ['date','raidzone_id'];
+    protected $fillable = [ 'date', 'raidzone_id' ];
 
     public static function valid($data)
     {

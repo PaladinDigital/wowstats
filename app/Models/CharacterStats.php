@@ -83,6 +83,17 @@ class CharacterStats extends Model
         return $query->where('character_id', $character_id);
     }
 
+    public function __debugInfo() {
+        return [
+            'fight_id'    => $this->fight_id,
+            'character_id' => $this->character_id,
+            'metric_id' => $this->metric_id,
+            'value' => $this->value,
+            'character' => $this->character,
+            'fight' => $this->raidfight,
+        ];
+    }
+
     public static function buildCharacterStats($stats)
     {
         $stats_array = [];
