@@ -7,11 +7,17 @@
     @if (count($raids) > 0)
         <table class="table table-striped">
         <thead>
-            <tr><th>Raid</th><th>Date / Time</th></tr>
+            <tr>
+                <th>Raid</th>
+                <th>Date / Time</th>
+            </tr>
         </thead>
         <tbody>
         @foreach($raids as $raid)
-            <tr><td><a href="{{ route('raid.view', $raid->id) }}">{{ $raid->zone->name }}</a></td><td>{{ $raid->date }}</td></tr>
+            <tr>
+                <td><a href="{{ route('raid.view', $raid->id) }}">{{ $raid->zone->name }}</a> ({{ $raid->difficulty() }})</td>
+                <td>{{ $raid->date }}</td>
+            </tr>
         @endforeach
         </tbody>
         </table>

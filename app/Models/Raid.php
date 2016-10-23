@@ -10,11 +10,31 @@ class Raid extends Model
     protected static $rules = [
         'date' => ['required', 'min:6'],
         'raidzone_id' => ['required', 'min:2'],
+        'difficulty_id' => ['required', 'min:0', 'max:3']
     ];
 
     protected $hidden = [];
 
-    protected $fillable = [ 'date', 'raidzone_id' ];
+    protected $fillable = [ 'date', 'raidzone_id', 'difficulty_id' ];
+
+    public function difficulty()
+    {
+        switch ($this->difficulty_id) {
+            case 0:
+                $difficulty = 'LFR';
+                break;
+            case 1:
+                $difficulty = 'Normal';
+                break;
+            case 2:
+                $difficulty = 'Heroic';
+                break;
+            case 3:
+                $difficulty = 'Mythic';
+                break;
+        }
+        return $difficulty;
+    }
 
     public static function valid($data)
     {
