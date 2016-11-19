@@ -20,6 +20,11 @@ class RaidBossSeeder extends Seeder
 
                 'Xavius'
             ],
+            1114 => [
+                'Odyn',
+                'Guarm',
+                'Helya',
+            ]
         ];
 
         foreach ($bosses as $raid_id => $data) {
