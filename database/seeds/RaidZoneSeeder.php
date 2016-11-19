@@ -13,6 +13,7 @@ class RaidZoneSeeder extends Seeder
             /* Legion */
             1088 => 'The Nighthold',
             1094 => 'The Emerald Nightmare',
+            1114 => 'Trial of Valor',
         ];
 
         foreach ($zones as $zid => $name) {
