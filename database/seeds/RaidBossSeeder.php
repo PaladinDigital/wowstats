@@ -8,6 +8,7 @@ class RaidBossSeeder extends Seeder
     public function run() {
         $bosses = [
             /* Legion */
+            // Emerald Nightmare
             1094 => [
                 'Nythendra', // 1st Boss
 
@@ -20,11 +21,13 @@ class RaidBossSeeder extends Seeder
 
                 'Xavius'
             ],
+            // Trial of Valor
             1114 => [
                 'Odyn',
                 'Guarm',
                 'Helya',
-            ]
+            ],
+            // The Nighthold
         ];
 
         foreach ($bosses as $raid_id => $data) {
