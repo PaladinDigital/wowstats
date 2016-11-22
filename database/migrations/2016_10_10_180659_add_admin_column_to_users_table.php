@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class AddAdminColumnToUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('users', function ($table) {
@@ -18,11 +13,6 @@ class AddAdminColumnToUsersTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('users', function ($table) {
