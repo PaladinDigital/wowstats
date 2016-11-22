@@ -1,9 +1,15 @@
 # WoW Stats Tracker
 
-## Planned Features
+## Features
+- Users are able to claim unclaimed characters
+- Users can unclaim characters
+- Admins can create raids and fights.
+- Admins can add player stats against given fights (dps, hps, etc).
 
-- Assign characters to registered users.
-- Ability to create raids and track player statistics such as DPS, HPS, ilvl, etc.
+### Planned Features (TODO)
+
+- Allow administrators to release character claims.
+- Allow administrators to assign characters to users.
 
 ## Installation
 
@@ -26,6 +32,3 @@ Assuming knowledge of Laravel follow the below steps.
 
 ### Set the app name
 By default the app name is Stats Tracker, you can change this if you desire by changing <code>config/wow.php</code> and changing the app name, steps are similar to above guild name steps.
-
-### Add your battle.net API key (optional)
-This is only required if you wish to automatically pull character item levels from the wow API.  You can still enter these manually if you don't wish to set up an API key.
