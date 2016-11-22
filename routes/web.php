@@ -38,6 +38,9 @@ Route::get('characters/{id}',      [ 'as' => 'character.view',           'uses' 
 Route::post('/character/claim',   ['as' => 'character.claim', 'uses' => 'CharactersController@claim']);
 Route::post('/character/unclaim', ['as' => 'character.unclaim', 'uses' => 'CharactersController@unclaim']);
 
+/* Comparisons */
+Route::get('leaderboards', ['uses' => 'ComparisonController@leaderboards']);
+
 /* Administration */
 Route::get('/admin',               [ 'as' => 'admin.index', 'uses' => 'AdminController@index' ]);
 Route::get('/admin/stats',         [ 'as' => 'admin.stats', 'uses' => 'AdminController@stats' ]);
