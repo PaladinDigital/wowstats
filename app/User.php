@@ -5,6 +5,7 @@ namespace WoWStats;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
+use WoWStats\Models\Character;
 
 class User extends Authenticatable
 {
@@ -31,6 +32,11 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return ($this->admin == 1);
+    }
+
+    public function characters()
+    {
+        return $this->hasMany(Character::class);
     }
 
     public static function getCount()
