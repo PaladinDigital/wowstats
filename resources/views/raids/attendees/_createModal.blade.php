@@ -6,7 +6,7 @@ $raidModal = [
             'name' => 'character_id',
             'type' => 'select',
             'label' => 'Character',
-            'options' => \WoWStats\Models\Character::all(),
+            'options' => $raiders,
         ]
     ],
     'hidden_fields' => [

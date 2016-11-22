@@ -56,6 +56,16 @@ class Raid extends Model
         return $this->hasMany(RaidAttendee::class);
     }
 
+    public function getAttendees()
+    {
+        $attendees = RaidAttendee::with('character')
+            ->where('raid_id', $this->id)
+            ->get();
+        return $attendees->sortBy(function($item){
+            return $item->character->name;
+        });
+    }
+
     public static function getRaidCount()
     {
         $results = DB::select('select COUNT(*) as count from raids');

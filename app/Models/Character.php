@@ -119,7 +119,7 @@ class Character extends Model
     public static function getNameSortedActiveRaiders()
     {
         try {
-            $characters = Character::where('active', 1)->get()->sortBy('name');
+            $characters = Character::all()->sortBy('name');
             return $characters;
         } catch (Exception $e) {
             return null;
