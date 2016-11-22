@@ -4,7 +4,7 @@
     <h1>Leaderboards</h1>
 
     <?php /* DPS */ ?>
-    <div class="col-xs-12 col-md-6 col-lg-3">
+    <div class="col-xs-12 col-md-6 col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">DPS</div>
             <div class="panel-body">
@@ -24,7 +24,7 @@
     </div>
 
     <?php /* HPS */ ?>
-    <div class="col-xs-12 col-md-6 col-lg-3">
+    <div class="col-xs-12 col-md-6 col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">HPS</div>
             <div class="panel-body">
@@ -43,7 +43,7 @@
     </div>
 
     <?php /* Damage Taken */ ?>
-    <div class="col-xs-12 col-md-6 col-lg-3">
+    <div class="col-xs-12 col-md-6 col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">Damage Taken</div>
             <div class="panel-body">
