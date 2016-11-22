@@ -5806,6 +5806,9 @@ button.close {
 .death_knight, .death_knight a {
   color: #C41F3B; }
 
+li {
+  list-style: none; }
+
 .killed {
   color: #2ab27b; }
   .killed a {
@@ -5814,3 +5817,6 @@ button.close {
 
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #222; }
+
+th {
+  color: #ececec; }

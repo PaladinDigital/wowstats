@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="{{ $character->cssClass() }}">{{ $character->name }}</h1>
+    <h1 class="{{ $character->cssClass() }}">{{ $character->name }}
+        @include('characters.claim._button')</h1>
     <p>Main Spec: {{ $character->mainSpec() }}, Off-Spec: {{ $character->offSpec() }}</p>
 
     <?php

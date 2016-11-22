@@ -17,4 +17,7 @@ elixir(mix => {
     mix.sass('app.scss')
     mix.sass('alliance.scss')
     mix.sass('horde.scss');
+    mix.scripts([
+        'claim.js'
+    ]);
 });
