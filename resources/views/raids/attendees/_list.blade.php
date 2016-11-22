@@ -1,7 +1,7 @@
 @if (isset($attendees) && count($attendees) > 0)
-    <ul>
+    <ul class="list-group">
         @foreach($attendees as $a)
-            <ul class="{{ $a->character->cssClass() }}">{{ $a->character->name }}</ul>
+            <li class="{{ $a->character->cssClass() }}">{{ $a->character->name }}</li>
         @endforeach
     </ul>
 @endif
