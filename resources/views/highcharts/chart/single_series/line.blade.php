@@ -8,7 +8,8 @@ if (!isset($height)) { $height = 400; }
     $(function () {
         $('#{{ $container }}').highcharts({
             chart: {
-                height: {{ $height }}
+                height: {{ $height }},
+                type: 'spline'
             },
             title: {
                 text: '{{ $title }}'
