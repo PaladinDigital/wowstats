@@ -19,10 +19,10 @@
             </thead>
             <tbody>
             @foreach($stats as $s)
-                <tr>
+                <tr class="{{ $s->character->cssClass() }}">
                     <td>{{ $s->raidfight->raid->zone->name }}</td>
                     <td>{{ $s->raidfight->boss->name }}</td>
-                    <td class="{{ $s->character->cssClass() }}">{{ $s->character->name }}</td>
+                    <td>{{ $s->character->name }}</td>
                     <td>{{ $s->metric->name }}</td>
                     <td>{{ $s->value }}</td>
                     <td><button class="btn btn-xs btn-danger" onclick="return deleteStat('{{ route('admin.stat.delete', $s->id) }}');">Delete</button></td>
