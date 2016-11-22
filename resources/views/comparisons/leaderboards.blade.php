@@ -11,8 +11,8 @@
                 <table class="table">
                     <tbody>
                     @foreach ($dps_leaderboard as $entry)
-                        <tr class="{{ $entry['character']->cssClass() }}">
-                            <td>{{ $entry['character']->name }}</td>
+                        <tr class="{{ $entry['css'] }}">
+                            <td>{{ $entry['character'] }}</td>
                             <td>{{ $entry['dps'] }}</td>
                         </tr>
                     @endforeach
@@ -31,8 +31,8 @@
                 <table class="table">
                     <tbody>
                     @foreach ($hps_leaderboard as $entry)
-                        <tr class="{{ $entry['character']->cssClass() }}">
-                            <td>{{ $entry['character']->name }}</td>
+                        <tr class="{{ $entry['css'] }}">
+                            <td>{{ $entry['character'] }}</td>
                             <td>{{ $entry['hps'] }}</td>
                         </tr>
                     @endforeach
@@ -50,8 +50,8 @@
                 <table class="table">
                     <tbody>
                     @foreach ($dt_leaderboard as $entry)
-                        <tr class="{{ $entry['character']->cssClass() }}">
-                            <td>{{ $entry['character']->name }}</td>
+                        <tr class="{{ $entry['css'] }}">
+                            <td>{{ $entry['character'] }}</td>
                             <td>{{ $entry['damage_taken'] }}</td>
                         </tr>
                     @endforeach

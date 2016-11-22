@@ -25,12 +25,14 @@ class ComparisonController extends Controller
         {
             $metric = $stat->metric->name;
             $character = $stat->character->name;
+            $cssClass = $stat->character->cssClass();
             $value = $stat->value;
             if ($metric == $metric_name) {
                 if (!array_key_exists($character, $leaderboard)) {
                     $leaderboard[$character] = [
                         $metric_name => $value,
-                        'character' => $stat->character,
+                        'character' => $character,
+                        'css' => $cssClass,
                     ];
                 } else {
                     $previousValue = $leaderboard[$character][$metric_name];
@@ -40,6 +42,13 @@ class ComparisonController extends Controller
                 }
             }
         }
+
+        $collection = collect(array_values($leaderboard));
+
+        $leaderboard = $collection->sortByDesc(function($item) use ($metric_name) {
+            return $item[$metric_name];
+        });
+
         return $leaderboard;
     }
 
@@ -51,12 +60,14 @@ class ComparisonController extends Controller
         {
             $metric = $stat->metric->name;
             $character = $stat->character->name;
+            $cssClass = $stat->character->cssClass();
             $value = $stat->value;
             if ($metric == $metric_name) {
                 if (!array_key_exists($character, $leaderboard)) {
                     $leaderboard[$character] = [
                         $metric_name => $value,
-                        'character' => $stat->character,
+                        'character' => $character,
+                        'css' => $cssClass,
                     ];
                 } else {
                     $previousValue = $leaderboard[$character][$metric_name];
@@ -64,6 +75,12 @@ class ComparisonController extends Controller
                 }
             }
         }
+        $collection = collect(array_values($leaderboard));
+
+        $leaderboard = $collection->sortByDesc(function($item) use ($metric_name) {
+            return $item[$metric_name];
+        });
+
         return $leaderboard;
     }
 }
