@@ -24,9 +24,13 @@ Route::get('/home', 'HomeController@index');
 Route::get('raids',                  [ 'as' => 'raid.index',          'uses' => 'PublicController@raids'              ]);
 Route::get('raid/{id}',              [ 'as' => 'raid.view',           'uses' => 'RaidController@view'                 ]);
 Route::post('/raids',                [ 'as' => 'api.post.raid',       'uses' => 'Api\RaidController@store'            ]);
+Route::post('/raids/{id}/attendees', [ 'as' => 'api.post.raid.attendee', 'uses' => 'Api\RaidAttendeeController@store' ]);
+/* Raid Fights */
 Route::post('/raids/{id}/fights',    [ 'as' => 'api.post.raid.fight', 'uses' => 'Api\RaidFightController@store'       ]);
 Route::get('raid/{rid}/fight/{id}',  [ 'as' => 'raid.fight.view',     'uses' => 'RaidFightController@view'            ]);
-Route::post('/raids/{id}/attendees', [ 'as' => 'api.post.raid.attendee', 'uses' => 'Api\RaidAttendeeController@store' ]);
+/* Fights */
+Route::post('/fight/{id}/lock', ['as' => 'fight.lock', 'uses' => 'RaidFightController@lock']);
+Route::post('/fight/{id}/unlock', ['as' => 'fight.unlock', 'uses' => 'RaidFightController@unlock']);
 
 /* Characters */
 Route::get('characters',           [ 'as' => 'character.index',          'uses' => 'PublicController@characters'         ]);
