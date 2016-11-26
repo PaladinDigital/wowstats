@@ -5,6 +5,7 @@
             <th>Boss</th>
             <th>Killed</th>
             <th>Length</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -14,7 +15,12 @@
             $duration = $fight->length;
             $duration = gmdate('i:s', $duration);
         ?>
-        <tr<?php if ($killed === 1) { echo ' class="killed"'; } ?>><td><a href="{{ route('raid.fight.view', [$raid->id, $fight->id]) }}">{{ $fight->boss->name }}</a></td><td><?php echo ($killed == 1) ? 'Kill' : 'No' ?></td><td>{{ $duration }}</td></tr>
+        <tr<?php if ($killed === 1) { echo ' class="killed"'; } ?>>
+            <td><a href="{{ route('raid.fight.view', [$raid->id, $fight->id]) }}">{{ $fight->boss->name }}</a></td>
+            <td><?php echo ($killed == 1) ? 'Kill' : 'No' ?></td>
+            <td>{{ $duration }}</td>
+            <td>@if ($fight->locked > 0) <i class="fa fa-lock"></i> @endif</td>
+        </tr>
     @endforeach
     </tbody>
     </table>
