@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />
     @if (isset($theme))
         @if ($theme == 'horde')
             <link href="{{ asset('css/horde.css') }}" rel="stylesheet" />
