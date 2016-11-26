@@ -12,6 +12,11 @@ use WoWStats\Models\WoW\Classes;
 
 class RaidFightController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function view($raid_id, $fight_id)
     {
         $data = $this->getData();
