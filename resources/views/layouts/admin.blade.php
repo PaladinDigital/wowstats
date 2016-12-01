@@ -18,6 +18,7 @@
         @elseif ($theme == 'alliance')
             <link href="{{ asset('css/alliance.css') }}" rel="stylesheet" />
     @endif
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />
 @endif
 
 <!-- Scripts -->
