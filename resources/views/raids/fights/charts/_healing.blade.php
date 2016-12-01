@@ -1,4 +1,3 @@
-<?php /*print_r($stats); die;*/ ?>
 <script>
     $(function () {
         $('#healing_chart').highcharts({
