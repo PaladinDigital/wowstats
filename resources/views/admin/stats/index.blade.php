@@ -25,7 +25,7 @@
                     <td>{{ $s->character->name }}</td>
                     <td>{{ $s->metric->name }}</td>
                     <td>{{ $s->value }}</td>
-                    <td><button class="btn btn-xs btn-danger" onclick="return deleteStat('{{ route('admin.stat.delete', $s->id) }}');">Delete</button></td>
+                    <td><button class="btn btn-xs btn-danger" onclick="return deleteStat('{{ route('admin.stat.delete', $s->id) }}');"><i class="fa fa-trash"></i> Delete</button></td>
                 </tr>
             @endforeach
             </tbody>
