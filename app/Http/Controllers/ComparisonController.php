@@ -165,19 +165,28 @@ class ComparisonController extends Controller
             }
         }
 
+        $char1series = [
+            'name' => $char1->name,
+            'color' => $char1->classColor(),
+            'data' => array_values($char1hps),
+        ];
+
+        $char2series = [
+            'name' => $char2->name,
+            'color' => $char2->classColor(),
+            'data' => array_values($char2hps),
+        ];
+
+        if ($char1series['color'] == $char2series['color']) {
+            $char1series['color'] = 'red';
+            $char2series['color'] = 'blue';
+        }
+
         $series = [
             // Char 1
-            (object)[
-                'name' => $char1->name,
-                'color' => $char1->classColor(),
-                'data' => array_values($char1hps),
-            ],
+            (object)$char1series,
             // Char 2
-            (object)[
-                'name' => $char2->name,
-                'color' => $char2->classColor(),
-                'data' => array_values($char2hps),
-            ],
+            (object)$char2series,
         ];
 
         return [
