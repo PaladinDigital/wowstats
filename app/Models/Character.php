@@ -101,6 +101,7 @@ class Character extends Model
     {
         return CharacterItemLevel::where('character_id', $this->id)->orderBy('item_level', 'ASC')->get();
     }
+
     public function hasStats()
     {
         try {
@@ -110,6 +111,7 @@ class Character extends Model
             return false;
         }
     }
+
     public function getStats($type = null)
     {
         if (isset($type)) {

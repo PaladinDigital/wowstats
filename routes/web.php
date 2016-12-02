@@ -44,7 +44,9 @@ Route::post('/character/unclaim', ['as' => 'character.unclaim', 'uses' => 'Chara
 
 /* Comparisons */
 Route::get('leaderboards', ['uses' => 'ComparisonController@leaderboards']);
+Route::get('compare/{char1}/{char2}', ['uses' => 'ComparisonController@compareCharacters']);
 
 /* Administration */
-Route::get('/admin',               [ 'as' => 'admin.index', 'uses' => 'AdminController@index' ]);
-Route::get('/admin/stats',         [ 'as' => 'admin.stats', 'uses' => 'AdminController@stats' ]);
+Route::get('/admin',               [ 'as' => 'admin.index',      'uses' => 'AdminController@index'   ]);
+Route::get('/admin/stats',         [ 'as' => 'admin.stats',      'uses' => 'AdminController@stats'   ]);
+Route::get('/admin/characters',    [ 'as' => 'admin.characters', 'uses' => 'AdminController@raiders' ]);
