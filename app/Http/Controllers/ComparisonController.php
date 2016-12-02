@@ -39,12 +39,12 @@ class ComparisonController extends Controller
             switch ($charTwoSpec) {
                 case 'Healer':
                     // Build HPS comparison
-                    $data['hps_comparison'] = $this->buildHpsComparisonChartData($charOne, $charTwo);
+                    $data['hps_comparison'] = $this->buildMetricComparisonChartData('hps', $charOne, $charTwo);
                     break;
                 case 'Tank':
                     break;
                 case 'DPS':
-                    $data['dps_comparison'] = $this->buildDpsComparisonChartData($charOne, $charTwo);
+                    $data['dps_comparison'] = $this->buildMetricComparisonChartData('dps', $charOne, $charTwo);
                     break;
                 default:
                     break;
@@ -145,69 +145,6 @@ class ComparisonController extends Controller
         $metric = Metric::where('name', $metricName)->first();
         $stats = CharacterStats::where('metric_id', $metric->id)->get();
         return $stats;
-    }
-
-    public function buildDpsComparisonChartData($char1, $char2)
-    {
-        return $this->buildMetricComparisonChartData('dps', $char1, $char2);
-    }
-
-    public function buildHpsComparisonChartData($char1, $char2)
-    {
-        $fights = RaidFight::all();
-        $stats = $this->getStatsByMetric('hps');
-        $stats = $this->characterCompareStats($stats, $char1, $char2);
-
-        $categories = [];
-        $char1hps = [];
-        $char2hps = [];
-
-        foreach ($fights as $fight) {
-            $categories[] = $fight->id;
-            $char1stat = $stats->where('fight_id', $fight->id)->where('character_id', $char1->id)->first();
-            $char2stat = $stats->where('fight_id', $fight->id)->where('character_id', $char2->id)->first();
-            if (empty($char1stat)) {
-                $char1hps[$fight->id] = null;
-            } else {
-                $char1hps[$fight->id] = $char1stat->value;
-            }
-
-
-            if (empty($char2stat)) {
-                $char2hps[$fight->id] = null;
-            } else {
-                $char2hps[$fight->id] = $char2stat->value;
-            }
-        }
-
-        $char1series = [
-            'name' => $char1->name,
-            'color' => $char1->classColor(),
-            'data' => array_values($char1hps),
-        ];
-
-        $char2series = [
-            'name' => $char2->name,
-            'color' => $char2->classColor(),
-            'data' => array_values($char2hps),
-        ];
-
-        if ($char1series['color'] == $char2series['color']) {
-            $char1series['color'] = 'red';
-            $char2series['color'] = 'blue';
-        }
-
-        $series = [
-            // Char 1
-            (object)$char1series,
-            // Char 2
-            (object)$char2series,
-        ];
-
-        return [
-            'categories' => json_encode($categories),
-            'series' => json_encode($series),
-        ];
     }
 
     public function buildMetricComparisonChartData($metric, $char1, $char2)
