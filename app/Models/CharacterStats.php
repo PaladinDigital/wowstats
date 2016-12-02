@@ -103,6 +103,8 @@ class CharacterStats extends Model
             $stats_array[$m->name . '_characters'] = [];
         }
 
+        $stats = $stats->sortBy('fight_id');
+
         foreach($stats as $stat) {
             $metric = $stat->metric->name;
             $stats_array[$metric . '_values'][] = (object)[
