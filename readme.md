@@ -5,6 +5,7 @@
 - Users can unclaim characters
 - Admins can create raids and fights.
 - Admins can add player stats against given fights (dps, hps, etc).
+- Users can view comparisons of DPS or HPS of given characters by going to the url /compare/{char1}/{char2}
 
 ### Planned Features (TODO)
 
