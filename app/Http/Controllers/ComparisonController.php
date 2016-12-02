@@ -42,6 +42,10 @@ class ComparisonController extends Controller
                     $data['hps_comparison'] = $this->buildHpsComparisonChartData($charOne, $charTwo);
                     break;
                 case 'Tank':
+                    break;
+                case 'DPS':
+                    $data['dps_comparison'] = $this->buildDpsComparisonChartData($charOne, $charTwo);
+                    break;
                 default:
                     break;
             }
@@ -136,11 +140,22 @@ class ComparisonController extends Controller
         return $leaderboard;
     }
 
+    public function getStatsByMetric($metricName)
+    {
+        $metric = Metric::where('name', $metricName)->first();
+        $stats = CharacterStats::where('metric_id', $metric->id)->get();
+        return $stats;
+    }
+
+    public function buildDpsComparisonChartData($char1, $char2)
+    {
+        return $this->buildMetricComparisonChartData('dps', $char1, $char2);
+    }
+
     public function buildHpsComparisonChartData($char1, $char2)
     {
         $fights = RaidFight::all();
-        $hps = Metric::where('name', 'hps')->first();
-        $stats = CharacterStats::where('metric_id', $hps->id)->get();
+        $stats = $this->getStatsByMetric('hps');
         $stats = $this->characterCompareStats($stats, $char1, $char2);
 
         $categories = [];
@@ -175,6 +190,64 @@ class ComparisonController extends Controller
             'name' => $char2->name,
             'color' => $char2->classColor(),
             'data' => array_values($char2hps),
+        ];
+
+        if ($char1series['color'] == $char2series['color']) {
+            $char1series['color'] = 'red';
+            $char2series['color'] = 'blue';
+        }
+
+        $series = [
+            // Char 1
+            (object)$char1series,
+            // Char 2
+            (object)$char2series,
+        ];
+
+        return [
+            'categories' => json_encode($categories),
+            'series' => json_encode($series),
+        ];
+    }
+
+    public function buildMetricComparisonChartData($metric, $char1, $char2)
+    {
+        $fights = RaidFight::all();
+        $stats = $this->getStatsByMetric($metric);
+        $stats = $this->characterCompareStats($stats, $char1, $char2);
+
+        $categories = [];
+        $char1metric = [];
+        $char2metric = [];
+
+        foreach ($fights as $fight) {
+            $categories[] = $fight->id;
+            $char1stat = $stats->where('fight_id', $fight->id)->where('character_id', $char1->id)->first();
+            $char2stat = $stats->where('fight_id', $fight->id)->where('character_id', $char2->id)->first();
+            if (empty($char1stat)) {
+                $char1metric[$fight->id] = null;
+            } else {
+                $char1metric[$fight->id] = $char1stat->value;
+            }
+
+
+            if (empty($char2stat)) {
+                $char2metric[$fight->id] = null;
+            } else {
+                $char2metric[$fight->id] = $char2stat->value;
+            }
+        }
+
+        $char1series = [
+            'name' => $char1->name,
+            'color' => $char1->classColor(),
+            'data' => array_values($char1metric),
+        ];
+
+        $char2series = [
+            'name' => $char2->name,
+            'color' => $char2->classColor(),
+            'data' => array_values($char2metric),
         ];
 
         if ($char1series['color'] == $char2series['color']) {
