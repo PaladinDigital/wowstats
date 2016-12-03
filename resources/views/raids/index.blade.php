@@ -9,6 +9,8 @@
         <thead>
             <tr>
                 <th>Raid</th>
+                <th>Fights</th>
+                <th>Kills</th>
                 <th>Date / Time</th>
             </tr>
         </thead>
@@ -16,6 +18,8 @@
         @foreach($raids as $raid)
             <tr>
                 <td><a href="{{ route('raid.view', $raid->id) }}">{{ $raid->zone->name }}</a> ({{ $raid->difficulty() }})</td>
+                <td>{{ $raid->getFightCount() }}</td>
+                <td>{{ $raid->getBossKillCount() }}</td>
                 <td>{{ $raid->date }}</td>
             </tr>
         @endforeach

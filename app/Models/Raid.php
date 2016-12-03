@@ -46,6 +46,7 @@ class Raid extends Model
         return false;
     }
 
+    // Eloquent Relations
     public function zone()
     {
         return $this->belongsTo(RaidZone::class, 'raidzone_id', 'id');
@@ -56,6 +57,7 @@ class Raid extends Model
         return $this->hasMany(RaidAttendee::class);
     }
 
+    // Helper Methods
     public function getAttendees()
     {
         $attendees = RaidAttendee::with('character')
@@ -64,6 +66,18 @@ class Raid extends Model
         return $attendees->sortBy(function($item){
             return $item->character->name;
         });
+    }
+
+    public function getFightCount()
+    {
+        $fights = RaidFight::where('raid_id', $this->id)->get();
+        return count($fights);
+    }
+
+    public function getBossKillCount()
+    {
+        $kills = RaidFight::where('raid_id', $this->id)->where('killed', 1)->get();
+        return count($kills);
     }
 
     public static function getRaidCount()
