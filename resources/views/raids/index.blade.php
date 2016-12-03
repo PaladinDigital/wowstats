@@ -16,7 +16,15 @@
         </thead>
         <tbody>
         @foreach($raids as $raid)
-            <tr>
+            <?php
+                $kills = $raid->getBossKillCount();
+                if ($kills > 0) {
+                    $tr_class = 'killed';
+                } else {
+                    $tr_class = 'progression';
+                }
+            ?>
+            <tr class="{{ $tr_class }}">
                 <td><a href="{{ route('raid.view', $raid->id) }}">{{ $raid->zone->name }}</a> ({{ $raid->difficulty() }})</td>
                 <td>{{ $raid->getFightCount() }}</td>
                 <td>{{ $raid->getBossKillCount() }}</td>
