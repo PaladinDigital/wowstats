@@ -7,7 +7,7 @@
 </thead>
 <tbody>
 @foreach($users as $user)
-<tr><td>{{ $user->username }}</td></tr>
+<tr><td>{{ $user->name }}</td></tr>
 @endforeach
 </tbody>
 </table>
