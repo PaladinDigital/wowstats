@@ -75,6 +75,6 @@ class Raid extends Model
     public static function getLastRaid()
     {
         $raid = DB::select('SELECT `id`, `date`, `created_at`, `difficulty_id`, `raidzone_id` FROM raids ORDER BY created_at DESC LIMIT 0 , 1');
-        return $results[0];
+        return $raid[0];
     }
 }
