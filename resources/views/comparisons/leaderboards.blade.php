@@ -11,10 +11,13 @@
                 <table class="table">
                     <tbody>
                     @foreach ($dps_leaderboard as $entry)
+                        <?php $i = 0; ?>
+                        @if ($i < 10)
                         <tr class="{{ $entry['css'] }}">
                             <td>{{ $entry['character'] }}</td>
                             <td>{{ $entry['dps'] }}</td>
                         </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
