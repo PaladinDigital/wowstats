@@ -17,6 +17,7 @@
                             <td>{{ $entry['character'] }}</td>
                             <td>{{ $entry['dps'] }}</td>
                         </tr>
+                        <?php $i++; ?>
                         @endif
                     @endforeach
                     </tbody>
