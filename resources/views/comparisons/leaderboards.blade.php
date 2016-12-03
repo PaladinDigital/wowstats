@@ -6,7 +6,7 @@
     <?php /* DPS */ ?>
     <div class="col-xs-12 col-md-6 col-lg-4">
         <div class="panel panel-default">
-            <div class="panel-heading">DPS</div>
+            <div class="panel-heading">DPS (Top 10)</div>
             <div class="panel-body">
                 <table class="table">
                     <tbody>
@@ -30,15 +30,19 @@
     <?php /* HPS */ ?>
     <div class="col-xs-12 col-md-6 col-lg-4">
         <div class="panel panel-default">
-            <div class="panel-heading">HPS</div>
+            <div class="panel-heading">HPS (Top 10)</div>
             <div class="panel-body">
                 <table class="table">
                     <tbody>
+                    <?php $h = 0; ?>
                     @foreach ($hps_leaderboard as $entry)
+                        @if ($h < 10)
                         <tr class="{{ $entry['css'] }}">
                             <td>{{ $entry['character'] }}</td>
                             <td>{{ $entry['hps'] }}</td>
                         </tr>
+                        <?php $h++; ?>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
