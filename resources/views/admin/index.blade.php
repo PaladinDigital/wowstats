@@ -11,6 +11,7 @@
     <section>
         <h1>Administration</h1>
         <ul>
+            <li><a href="{{ route('admin.users') }}">Users</a></li>
             <li>Raids</li>
             <li>Raid Zones</li>
             <li>Bosses</li>
