@@ -89,4 +89,11 @@ class CharactersController extends Controller
             return response('Character not found', 404);
         }
     }
+
+    public function delete(Request $request)
+    {
+        $user = Auth::user();
+
+
+    }
 }
