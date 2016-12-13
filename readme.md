@@ -1,5 +1,7 @@
 # WoW Stats Tracker
 
+[![Build Status](https://travis-ci.org/PaladinDigital/wowstats.svg?branch=master)](https://travis-ci.org/PaladinDigital/wowstats)
+
 ## Features
 - Users are able to claim unclaimed characters
 - Users can unclaim characters
@@ -18,9 +20,11 @@ This is a laravel application so if you are unsure how to deploy laravel please 
 
 Assuming knowledge of Laravel follow the below steps.
 
-- Upload the application to your server.
+- Clone the application to your server.
+- Copy .env.example to .env and configure your database connection.
 - Generate a new app key <code>php artisan key:generate</code>.
 - Run the migrations <code>php artisan migrate</code>
+- Seed the database <code>php artisan db:seed</code>
 
 ### Set your guild name
 - Edit <code>config/wow.php</code>

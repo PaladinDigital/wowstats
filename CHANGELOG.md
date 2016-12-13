@@ -10,4 +10,3 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add ability to create raids and fights.
 - Add ability to lock raid fights.
 - Admins can create character stats against a fight (hps, dps, etc).
- 
