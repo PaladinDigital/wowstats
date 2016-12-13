@@ -1,5 +1,5 @@
 {
-    "name": "paladindigital/wow-stats",
+    "name": "paladindigital/wowstats",
     "description": "WoW Stats Tracker",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
