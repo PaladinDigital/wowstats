@@ -7,5 +7,7 @@ php:
 install:
   - composer install
   - composer dumpautoload
+  - mv .env.example .env
+  - php artisan app:key
 
 script: phpunit --coverage-text
