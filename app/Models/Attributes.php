@@ -1,6 +1,6 @@
 <?php namespace WoWStats\Models;
 
-class Attributes extends Eloquent
+class Attributes extends Model
 {
     protected $table = 'attributes';
 

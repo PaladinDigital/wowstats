@@ -1,7 +1,7 @@
 <?php namespace WoWStats\Models;
 
+use \DB;
 use \Validator;
-use Illuminate\Support\Facades\DB;
 
 class Raid extends Model
 {

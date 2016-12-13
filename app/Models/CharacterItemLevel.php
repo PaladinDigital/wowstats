@@ -1,6 +1,6 @@
 <?php namespace WoWStats\Models;
 
-class CharacterItemLevel extends Eloquent
+class CharacterItemLevel extends Model
 {
     protected $table = 'character_item_levels';
 
