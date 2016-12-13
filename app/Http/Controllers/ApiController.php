@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 
-class ApiController extends BaseController
+class ApiController extends Controller
 {
     const STATS_STORE_LOG_PREFIX = "ApiController: Player Stats Store: ";
     const FORUM_CAT_STORE_LOG_PREFIX = "ApiController: Forum Category Store: ";
