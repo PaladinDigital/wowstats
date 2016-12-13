@@ -5,9 +5,9 @@ use Lom\WoW\Classes;
 use Lom\WoW\Ranks;
 use Lom\Security\ACL;
 
-class RaidersController extends BaseController
+class RaidersController extends Controller
 {
-    // Lists all raids recorded on the site.
+    // Lists all raiders recorded on the site.
     public function index()
     {
         $acl = new ACL();
