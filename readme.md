@@ -20,11 +20,13 @@ This is a laravel application so if you are unsure how to deploy laravel please 
 
 Assuming knowledge of Laravel follow the below steps.
 
-- Clone the application to your server.
+- Clone the application to your server.  (You can install from zip if you desire but then you would have to overwrite when the package changes).
 - Copy .env.example to .env and configure your database connection.
 - Generate a new app key <code>php artisan key:generate</code>.
 - Run the migrations <code>php artisan migrate</code>
 - Seed the database <code>php artisan db:seed</code>
+- Register as a user in the application http://example.com/register
+- Run the following command to promote yourself to an administrator <code>php artisan promote:user</code>
 
 ### Set your guild name
 - Edit <code>config/wow.php</code>
