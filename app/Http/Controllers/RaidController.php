@@ -18,9 +18,16 @@ class RaidController extends Controller
             $data['bosses'] = RaidBoss::where('raidzone_id', $raid->zone->id)->get();
             $data['fights'] = RaidFight::with('boss')->where('raid_id', $id)->get();
             $data['bosses_killed'] = RaidFight::with('boss')->where('raid_id', $id)->where('killed', 1)->get();
-            $data['raiders'] = Character::getNameSortedActiveRaiders();
-
-            $data['attendees'] = $raid->getAttendees();
+            // Raid Attendees
+            $attendees = $raid->getAttendees();
+            $data['attendees'] = $attendees;
+            $attendee_ids = [];
+            foreach ($attendees as $attendee) {
+                $attendee_ids[] = $attendee->character_id;
+            }
+            // Raiders
+            $raiders = Character::notId(array_values($attendee_ids))->byName()->get();
+            $data['raiders'] = $raiders;
 
             return view('raids/view', $data);
         } catch (Exception $e) {

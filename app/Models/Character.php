@@ -122,6 +122,16 @@ class Character extends Model
         return $stats;
     }
 
+    public function scopeByName($query, $order = 'ASC')
+    {
+        return $query->orderBy('name', $order);
+    }
+
+    public function scopeNotId($query, $ids = [])
+    {
+        return $query->whereNotIn('id', $ids);
+    }
+
     public static function getNameSortedActiveRaiders()
     {
         try {
