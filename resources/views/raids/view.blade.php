@@ -5,7 +5,7 @@
 <h2>Date: {{ $raid->date }}</h2>
 @if ($user->can('administrate'))
 @include('raids.fights._createModal')
-@include('raids.attendees._createModal')
+@include('raids.attendees._addAttendeeModel')
 @endif
 
 <div class="row">
@@ -14,7 +14,7 @@
         @include('raids.fights._list')
     </div>
     <div class="col-xs-12 col-sm-4">
-        <h3>Attendees @if ($raid->locked == 0 && $user->can('administrate')) <button data-toggle="modal" data-target="#createRaidAttendeeModal" class="btn btn-sm btn-success pull-right"><i class="fa fa-plus"></i> Add Attendee</button> @endif</h3>
+        <h3>Attendees @if ($raid->locked == 0 && $user->can('administrate')) <button data-toggle="modal" data-target="#addAttendeeModal" class="btn btn-sm btn-success pull-right"><i class="fa fa-plus"></i> Add Attendee</button> @endif</h3>
         @include('raids.attendees._list')
     </div>
 </div>

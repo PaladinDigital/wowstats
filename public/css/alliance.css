@@ -40,3 +40,9 @@ h1, h2, h3, h4 {
 
 .modal-footer {
   background-color: #1f2271; }
+
+#addAttendeeModal select {
+  background: #111; }
+
+#addAttendeeModal option:hover {
+  background: #111 !important; }

@@ -9,3 +9,13 @@
 .modal-footer {
   background-color: $colorPrimary;
 }
+
+#addAttendeeModal select
+{
+  background: #111;
+}
+
+#addAttendeeModal option:hover
+{
+  background: #111 !important;
+}
