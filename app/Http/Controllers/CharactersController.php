@@ -1,6 +1,7 @@
 <?php namespace WoWStats\Http\Controllers;
 
-use Auth;
+use \Auth;
+use \DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use WoWStats\Models\Character;
@@ -100,6 +101,9 @@ class CharactersController extends Controller
             }
 
             // TODO: Delete Character Stats
+            DB::delete('delete from character_raid_stats where character_id = ?', [$character_id]);
+            DB::delete('delete from raid_attendees where character_id = ?', [$character_id]);
+
             // TODO: Delete RaidAttendee's
 
             $character->delete();
