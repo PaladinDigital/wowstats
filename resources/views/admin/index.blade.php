@@ -16,6 +16,7 @@
             <li>Raid Zones</li>
             <li>Bosses</li>
             <li>Raid Fights</li>
+            <li><a href="{{ route('admin.characters') }}">Characters</a></li>
             <li><a href="{{ route('admin.stats') }}">Character Stats</a></li>
         </ul>
     </section>

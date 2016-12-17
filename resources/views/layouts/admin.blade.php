@@ -24,7 +24,8 @@
 <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
+            'csrfToken' => csrf_token(),
+            'base_url' => url('/'),
         ]); ?>
     </script>
 </head>
@@ -36,9 +37,6 @@
     </div>
 </div>
 
-<!-- Scripts -->
-<script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-@yield('scripts')
+@include('layouts._scripts')
 </body>
 </html>

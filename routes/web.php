@@ -35,6 +35,7 @@ Route::post('/fight/{id}/unlock', ['as' => 'fight.unlock', 'uses' => 'RaidFightC
 /* Characters */
 Route::get('characters',           [ 'as' => 'character.index',          'uses' => 'PublicController@characters'         ]);
 Route::post('/characters',         [ 'as' => 'api.post.character',       'uses' => 'Api\CharacterController@store'       ]);
+Route::delete('character/{id}',    [ 'as' => 'character.delete',         'uses' => 'CharactersController@delete'         ]);
 Route::post('/character/stats',    [ 'as' => 'api.post.character.stats', 'uses' => 'Api\CharacterStatsController@store'  ]);
 Route::delete('/admin/stats/{id}', [ 'as' => 'admin.stat.delete',        'uses' => 'Api\CharacterStatsController@delete' ]);
 Route::get('characters/{id}',      [ 'as' => 'character.view',           'uses' => 'CharactersController@view'           ]);

@@ -18,6 +18,7 @@ elixir(mix => {
     mix.sass('alliance.scss')
     mix.sass('horde.scss');
     mix.scripts([
+        'characters.js',
         'claim.js',
         'fightlock.js',
     ]);

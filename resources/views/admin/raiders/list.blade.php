@@ -14,7 +14,7 @@
 <?php $class_name = $raider->cssClass($raider->class_id); ?>
 <tr class="{{ $class_name }}">
     <td>{{ $raider->name }}</td>
-    <td><button class="btn btn-xs btn-danger">Delete</button></td>
+    <td><button class="btn btn-xs btn-danger" onclick="return deleteCharacter({{ $raider->id }});">Delete</button></td>
 </tr>
 @endforeach
 </tbody>

@@ -90,10 +90,19 @@ class CharactersController extends Controller
         }
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request, $character_id)
     {
         $user = Auth::user();
+        try {
+            $character = Character::where('id', $character_id)->firstOrFail();
+            if ($user->cannot('delete', $character)) {
+                return redirect()->route('admin.characters');
+            }
 
+            $character->delete();
 
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('admin.characters');
+        }
     }
 }
