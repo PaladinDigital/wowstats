@@ -12,6 +12,7 @@
 @endif
 <?php
 $data = [];
+    $data['height'] = 600;
     if (isset($hps_comparison)) {
         $data['container'] = 'hps_comparison';
         $data['title'] = 'HPS Comparison';
