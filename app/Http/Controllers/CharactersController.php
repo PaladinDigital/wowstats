@@ -99,6 +99,9 @@ class CharactersController extends Controller
                 return redirect()->route('admin.characters');
             }
 
+            // TODO: Delete Character Stats
+            // TODO: Delete RaidAttendee's
+
             $character->delete();
 
         } catch (ModelNotFoundException $e) {
