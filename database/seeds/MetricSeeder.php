@@ -13,6 +13,8 @@ class MetricSeeder extends Seeder
             'dps',
             'damage_taken',
             'dtps',
+            'dispells',
+            'deaths'
         ];
 
         foreach ($metrics as $metric) {
