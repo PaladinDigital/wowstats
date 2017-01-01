@@ -14,6 +14,7 @@ class MetricSeeder extends Seeder
             'damage_taken',
             'dtps',
             'dispells',
+            'interrupts',
             'deaths'
         ];
 
