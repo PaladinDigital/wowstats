@@ -55,7 +55,7 @@
 
         <div class="col-xs-4">
             <div id="deaths">
-                {{ var_dump($deaths) }}
+                {!! $deaths !!}
             </div>
         </div>
     </div>
