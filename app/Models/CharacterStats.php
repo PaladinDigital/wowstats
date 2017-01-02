@@ -189,6 +189,9 @@ class CharacterStats extends Model
             $table .= '<tfoot><tr><td>Total</td><td>'. $tableTotal .'</td></tr></tfoot>';
         }
         $table .= '</table>';
+        if ($tableTotal === 0) {
+            return '';
+        }
         return $table;
     }
 }
