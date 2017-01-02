@@ -174,7 +174,7 @@ class CharacterStats extends Model
 
             if ($metric->name === $m) {
 
-                $table .= '<tr class="'. $stat->character->classColor() .'">
+                $table .= '<tr class="'. $stat->character->cssClass() .'">
                     <td>'. $stat->character->name .'</td>
                     <td>'. $stat->value .'</td>
                 </tr>';
