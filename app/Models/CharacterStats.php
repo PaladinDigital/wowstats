@@ -151,7 +151,14 @@ class CharacterStats extends Model
 
     public static function buildFightStatsTable($stats, $metric)
     {
-        $table = '<table><tbody>';
+        $table = '<table class="table">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>'. $metric->name .'</th>
+            </tr>
+        </thead>
+        <tbody>';
         $metric = Metric::where('name', $metric)->first();
 
         foreach($stats as $stat) {
