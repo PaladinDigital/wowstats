@@ -148,4 +148,25 @@ class CharacterStats extends Model
 
         return $stats_array;
     }
+
+    public static function buildFightStatsTable($stats, $metric)
+    {
+        $table = '<table><tbody>';
+        $metric = Metric::where('name', $metric)->first();
+
+        foreach($stats as $stat) {
+            $m = $stat->metric->name;
+
+            if ($metric === $m) {
+
+                $table .= '<tr class="'. $stat->character->classColor() .'">
+                    <td>'. $stat->character->name .'</td>
+                    <td>'. $stat->value .'</td>
+                </tr>';
+
+            }
+        }
+        $table .= '</tbody></table>';
+        return $table;
+    }
 }
