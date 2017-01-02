@@ -146,6 +146,24 @@ class CharacterStats extends Model
             $stats_array[$m->name . '_values'] = json_encode($stats_array[$m->name . '_values']);
         }
 
+        $stats_array = self::convertChartToTabular($stats_array, ['interrupts', 'dispells', 'deaths']);
+
         return $stats_array;
+    }
+
+    public static function convertChartToTabular($stats, $metric)
+    {
+        foreach ($metric as $m) {
+            // Create a variable for that values tabular data
+            $stats[$m . '_table'] = [];
+            $valueCount = count($stats[$m . '_characters']);
+            // Loop through each character and their value.
+            for ($i = 0; $i < $valueCount; $i++) {
+                $char = $stats[$m . '_characters'][$i]; // Character
+                $value = $stats[$m . '_values'][$i]; // Value;
+                $stats[$m . '_table'][$stats[$i]][$char] = $value;
+            }
+        }
+        return $stats;
     }
 }
