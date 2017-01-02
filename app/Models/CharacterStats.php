@@ -185,7 +185,9 @@ class CharacterStats extends Model
             }
         }
         $table .= '</tbody>';
-        $table .= '<tfoot><tr><td>Total</td><td>'. $tableTotal .'</td></tr></tfoot>';
+        if ($tableTotal > 0) {
+            $table .= '<tfoot><tr><td>Total</td><td>'. $tableTotal .'</td></tr></tfoot>';
+        }
         $table .= '</table>';
         return $table;
     }
