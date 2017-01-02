@@ -35,6 +35,7 @@ class RaidFightController extends Controller
 
         $stats = CharacterStats::fight($fight->id)->get();
         $data['stats'] = CharacterStats::buildFightStats($stats);
+        $data['deaths'] = CharacterStats::buildFightStatsTable($stats, 'deaths');
 
         $data['attendees'] = RaidAttendee::with('character')->where('raid_id', $raid_id)->get();
 
