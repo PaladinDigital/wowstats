@@ -1,5 +1,7 @@
 <?php namespace WoWStats\Models;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 class CharacterStats extends Model
 {
     protected $table = 'character_raid_stats';
@@ -151,6 +153,12 @@ class CharacterStats extends Model
 
     public static function buildFightStatsTable($stats, $metric)
     {
+        try {
+            $metric = Metric::where('name', $metric)->first();
+        } catch (ModelNotFoundException $e) {
+            return '';
+        }
+
         $table = '<table class="table">
         <thead>
             <tr>
@@ -159,7 +167,7 @@ class CharacterStats extends Model
             </tr>
         </thead>
         <tbody>';
-        $metric = Metric::where('name', $metric)->first();
+
 
         foreach($stats as $stat) {
             $m = $stat->metric->name;
