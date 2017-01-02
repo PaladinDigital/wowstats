@@ -39,6 +39,26 @@
             <div id="damage_taken_chart"></div>
         </div>
     </div>
+
+    <?php /* Stats */ ?>
+    <div class="row">
+        <div class="col-xs-4">
+            <div id="interrupts">
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div id="dispells">
+
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div id="deaths">
+                {{ var_dump($stats['deaths_table']) }}
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
