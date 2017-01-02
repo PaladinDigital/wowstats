@@ -157,7 +157,7 @@ class CharacterStats extends Model
         foreach($stats as $stat) {
             $m = $stat->metric->name;
 
-            if ($metric === $m) {
+            if ($metric->name === $m) {
 
                 $table .= '<tr class="'. $stat->character->classColor() .'">
                     <td>'. $stat->character->name .'</td>
