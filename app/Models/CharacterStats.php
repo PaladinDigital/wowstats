@@ -159,6 +159,8 @@ class CharacterStats extends Model
             return '';
         }
 
+        $tableTotal = 0;
+
         $table = '<table class="table">
         <thead>
             <tr>
@@ -167,7 +169,6 @@ class CharacterStats extends Model
             </tr>
         </thead>
         <tbody>';
-
 
         foreach($stats as $stat) {
             $m = $stat->metric->name;
@@ -179,9 +180,13 @@ class CharacterStats extends Model
                     <td>'. $stat->value .'</td>
                 </tr>';
 
+                $tableTotal += $stat->value;
+
             }
         }
-        $table .= '</tbody></table>';
+        $table .= '</tbody>';
+        $table .= '<tfoot><tr><td>Total</td><td>'. $tableTotal .'</td></tr></tfoot>';
+        $table .= '</table>';
         return $table;
     }
 }
