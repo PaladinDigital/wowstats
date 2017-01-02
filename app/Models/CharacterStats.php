@@ -163,7 +163,7 @@ class CharacterStats extends Model
         <thead>
             <tr>
                 <th>Player</th>
-                <th>'. $metric->name .'</th>
+                <th>'. ucfirst($metric->name) .'</th>
             </tr>
         </thead>
         <tbody>';
