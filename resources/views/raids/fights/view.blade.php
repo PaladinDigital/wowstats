@@ -44,12 +44,13 @@
     <div class="row">
         <div class="col-xs-4">
             <div id="interrupts">
+                {!! $interrupts !!}
             </div>
         </div>
 
         <div class="col-xs-4">
             <div id="dispells">
-
+                {!! $dispells !!}
             </div>
         </div>
 
