@@ -1,7 +1,10 @@
 <?php namespace WoWStats\Http\Controllers;
 
 use Illuminate\Http\Request;
+use WoWStats\Models\Character;
+use WoWStats\Models\CharacterStats;
 use WoWStats\Models\Metric;
+use League\Csv\Reader as CsvReader;
 
 class LogsController extends Controller
 {
@@ -26,14 +29,7 @@ class LogsController extends Controller
         $metric = $request->get('metric');
         $csv = $this->getCsv($request, $metric . '_csv');
 
-        switch ($metric) {
-            case 'deaths':
-                break;
-            default:
-                break;
-        }
-
-        var_dump($csv);
+        $this->storeMetrics($csv, $metric, $fight_id);
     }
 
     /**
@@ -65,5 +61,60 @@ class LogsController extends Controller
 
         $csv = $request->file($tag);
         return $csv;
+    }
+
+    public function storeMetrics($csv, $metric)
+    {
+        $reader = CsvReader::createFromPath($csv->path());
+
+        switch ($metric) {
+            case 'deaths':
+                $deaths = $this->buildDeathsArray($reader);
+                // Get the deaths metric id.
+                $metric_id = Metric::where('name', 'deaths')->id;
+                // Create the character stats.
+                foreach ($deaths as $character => $death_count) {
+                    // Check if the character exists
+                    $char = Character::where('name')
+                    $data = [
+                        'fight_id'
+                    ];
+                    'fight_id', 'character_id', 'metric_id', 'value'
+
+                    CharacterStats::create([])
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * Build an array with the count of each characters deaths.
+     * @param $reader
+     * @return array
+     */
+    public function buildDeathsArray($reader)
+    {
+        $deaths = [];
+        foreach ($reader as $index => $row) {
+            // Skip headers
+            if ($index === 0) {
+                continue;
+            }
+
+            // $row[0] = Time,
+            // $row[1] = Event.
+            $event = $row[1];
+            $words = explode(' ', $event);
+            $character = $words[0];
+            if (!array_key_exists($character, $deaths)) {
+                $deaths[$character] = 1;
+            } else {
+                $deaths[$character] = $deaths[$character] + 1;
+            }
+        }
+
+        return $deaths;
     }
 }
