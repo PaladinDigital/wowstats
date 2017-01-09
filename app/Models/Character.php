@@ -78,7 +78,9 @@ class Character extends Model
     {
         try {
             $attr_id = Attributes::getAttributeId($attr);
-            if ($attr_id === false) { return false; }
+            if ($attr_id === false) {
+                return false;
+            }
             $attr = CharacterAttributes::where('character_id', $this->id)->where('attribute_id', $attr_id)->get();
             return $attr;
         } catch (Exception $e) {
@@ -136,7 +138,7 @@ class Character extends Model
     {
         try {
             $characters = Character::all();
-            return $characters->sortBy(function($character) { return $character->name; });
+            return $characters->sortBy(function ($character) { return $character->name; });
         } catch (Exception $e) {
             return null;
         }
@@ -162,7 +164,8 @@ class Character extends Model
         }
     }
 
-    public function __debugInfo() {
+    public function __debugInfo()
+    {
         return [
             'name'      => $this->name,
             'class'     => $this->className(),

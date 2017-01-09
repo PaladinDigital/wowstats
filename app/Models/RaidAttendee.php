@@ -17,8 +17,7 @@ class RaidAttendee extends Model
             'character_id' => ['required', 'integer', 'min:1'],
         ];
         $validator = Validator::make($data, $rules);
-        if ($validator->passes())
-        {
+        if ($validator->passes()) {
             return true;
         }
         return false;

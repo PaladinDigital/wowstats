@@ -19,8 +19,7 @@ class CharacterStats extends Model
             'value' => ['required', 'integer', 'min:1'],
         ];
         $validator = Validator::make($data, $rules);
-        if ($validator->passes())
-        {
+        if ($validator->passes()) {
             return true;
         }
         return false;
@@ -85,7 +84,8 @@ class CharacterStats extends Model
         return $query->where('character_id', $character_id);
     }
 
-    public function __debugInfo() {
+    public function __debugInfo()
+    {
         return [
             'fight_id'    => $this->fight_id,
             'character_id' => $this->character_id,
@@ -107,7 +107,7 @@ class CharacterStats extends Model
 
         $stats = $stats->sortBy('fight_id');
 
-        foreach($stats as $stat) {
+        foreach ($stats as $stat) {
             $metric = $stat->metric->name;
             $stats_array[$metric . '_values'][] = (object)[
                 'color' => $stat->character->classColor(),
@@ -134,7 +134,7 @@ class CharacterStats extends Model
             $stats_array[$m->name . '_characters'] = [];
         }
 
-        foreach($stats as $stat) {
+        foreach ($stats as $stat) {
             $metric = $stat->metric->name;
             $stats_array[$metric . '_values'][] = (object)[
                 'color' => $stat->character->classColor(),
@@ -174,14 +174,12 @@ class CharacterStats extends Model
             $m = $stat->metric->name;
 
             if ($metric->name === $m) {
-
                 $table .= '<tr class="'. $stat->character->cssClass() .'">
                     <td>'. $stat->character->name .'</td>
                     <td>'. $stat->value .'</td>
                 </tr>';
 
                 $tableTotal += $stat->value;
-
             }
         }
         $table .= '</tbody>';

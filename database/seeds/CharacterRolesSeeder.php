@@ -5,7 +5,8 @@ use WoWStats\Models\CharacterRole;
 
 class CharacterRolesSeeder extends Seeder
 {
-    public function run() {
+    public function run()
+    {
         $roles = [
             'Tank',
             'Healer',

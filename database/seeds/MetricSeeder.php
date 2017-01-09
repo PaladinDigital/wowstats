@@ -5,7 +5,8 @@ use WoWStats\Models\Metric;
 
 class MetricSeeder extends Seeder
 {
-    public function run() {
+    public function run()
+    {
         $metrics = [
             'healing',
             'hps',

@@ -39,8 +39,7 @@ class Raid extends Model
     public static function valid($data)
     {
         $validator = Validator::make($data, self::$rules);
-        if ($validator->passes())
-        {
+        if ($validator->passes()) {
             return true;
         }
         return false;
@@ -63,7 +62,7 @@ class Raid extends Model
         $attendees = RaidAttendee::with('character')
             ->where('raid_id', $this->id)
             ->get();
-        return $attendees->sortBy(function($item){
+        return $attendees->sortBy(function ($item){
             return $item->character->name;
         });
     }

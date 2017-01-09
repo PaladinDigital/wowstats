@@ -28,5 +28,4 @@ class WarcraftLogs
 
         return $options;
     }
-
 }

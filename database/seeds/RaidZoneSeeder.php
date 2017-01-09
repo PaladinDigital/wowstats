@@ -5,7 +5,8 @@ use WoWStats\Models\RaidZone;
 
 class RaidZoneSeeder extends Seeder
 {
-    public function run() {
+    public function run()
+    {
         $zones = [
             /* Warlords of Draenor */
             //994  => 'Highmaul',

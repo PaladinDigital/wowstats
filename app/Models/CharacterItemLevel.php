@@ -20,7 +20,7 @@ class CharacterItemLevel extends Model
 
     public static function createIfNotExist($id, $iLevel)
     {
-        if(!self::exist($id, $iLevel)) {
+        if (!self::exist($id, $iLevel)) {
             CharacterItemLevel::create([
                 'character_id' => $id,
                 'item_level' => $iLevel

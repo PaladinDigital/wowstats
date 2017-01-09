@@ -1,6 +1,6 @@
 <?php namespace WoWStats\Models\WoW;
 
-Class Classes
+class Classes
 {
     public $class_data;
 
@@ -138,7 +138,7 @@ Class Classes
 
     public function getClassId($class_name)
     {
-        foreach($this->class_data as $id => $data) {
+        foreach ($this->class_data as $id => $data) {
             $class = $data['class'];
             if ($class == $class_name) {
                 return $id;
@@ -149,8 +149,7 @@ Class Classes
 
     public function getDisplayName($class_name)
     {
-        switch ($class_name)
-        {
+        switch ($class_name) {
             case 'Death Knight':
                 $display_class = 'death_knight';
                 break;
@@ -173,7 +172,9 @@ Class Classes
             /* Convert to class id if a string is passed in */
             if (is_string($identifier)) {
                 $identifier = intval($identifier);
-                if ($identifier === null) { return '#FFFFFF'; }
+                if ($identifier === null) {
+                    return '#FFFFFF';
+                }
             }
         }
 
@@ -203,8 +204,7 @@ Class Classes
     {
         $options = [];
 
-        foreach ($this->class_data as $id => $class)
-        {
+        foreach ($this->class_data as $id => $class) {
             $options[$id] = $class['class'];
         }
 

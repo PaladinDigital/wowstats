@@ -5,7 +5,6 @@ use WoWStats\Models\CharacterStats;
 
 class GuildController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');

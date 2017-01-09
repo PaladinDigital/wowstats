@@ -5,7 +5,8 @@ use WoWStats\Models\RaidBoss;
 
 class RaidBossSeeder extends Seeder
 {
-    public function run() {
+    public function run()
+    {
         $bosses = [
             /* Legion */
             // Emerald Nightmare
@@ -31,7 +32,7 @@ class RaidBossSeeder extends Seeder
         ];
 
         foreach ($bosses as $raid_id => $data) {
-            foreach($data as $boss) {
+            foreach ($data as $boss) {
                 if (!RaidBoss::exists($raid_id, $boss)) {
                     RaidBoss::create(['raidzone_id' => $raid_id, 'name' => $boss]);
                 }
