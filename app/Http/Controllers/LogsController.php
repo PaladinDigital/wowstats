@@ -113,7 +113,7 @@ class LogsController extends Controller
                 $dps = $damageStats['dps'];
                 $damage = $damageStats['damage'];
 
-                // Create the HPS stats.
+                // Create the DPS stats.
                 foreach ($dps as $character => $dps_value) {
                     // Check if the character exists
                     if (Character::characterExists($character)) {
@@ -135,7 +135,7 @@ class LogsController extends Controller
                     }
                 }
 
-                // Create the Healing stats.
+                // Create the Damage stats.
                 foreach ($damage as $character => $damage_done) {
                     // Check if the character exists
                     if (Character::characterExists($character)) {
@@ -161,7 +161,58 @@ class LogsController extends Controller
             // Tanking
             case 'damage_taken':
             case 'dtps':
-                break;
+            $damageTakenStats = $this->buildTankingArray($reader);
+            // Get the deaths metric id.
+            $damage_taken_id = Metric::where('name', 'damage_taken')->first()->id;
+            $dtps_id = Metric::where('name', 'dtps')->first()->id;
+
+            $dtps = $damageTakenStats['dtps'];
+            $damage_taken = $damageTakenStats['damage_taken'];
+
+            // Create the DTPS stats.
+            foreach ($dtps as $character => $dtps_value) {
+                // Check if the character exists
+                if (Character::characterExists($character)) {
+                    $char = Character::where('name', $character)->firstOrFail();
+
+                    // Check if the stat already exists
+                    $exists = CharacterStats::exists($fight_id, $char->id, $dtps_id);
+
+                    if (!$exists) {
+                        $data = [
+                            'fight_id' => $fight_id,
+                            'character_id' => $char->id,
+                            'metric_id' => $dtps_id,
+                            'value' => $dtps_value,
+                        ];
+
+                        CharacterStats::create($data);
+                    }
+                }
+            }
+
+            // Create the DamageTaken stats.
+            foreach ($damage_taken as $character => $damage_taken_value) {
+                // Check if the character exists
+                if (Character::characterExists($character)) {
+                    $char = Character::where('name', $character)->firstOrFail();
+
+                    // Check if the stat already exists
+                    $exists = CharacterStats::exists($fight_id, $char->id, $damage_taken_id);
+
+                    if (!$exists) {
+                        $data = [
+                            'fight_id' => $fight_id,
+                            'character_id' => $char->id,
+                            'metric_id' => $damage_taken_id,
+                            'value' => $damage_taken_value,
+                        ];
+
+                        CharacterStats::create($data);
+                    }
+                }
+            }
+            break;
 
             // Healing
             case 'healing':
@@ -334,17 +385,17 @@ class LogsController extends Controller
             // $row[3] = Active
             // $row[4] = DTPS
 
-            $character = $row[1];
+            $character = $row[0];
 
-            $damage_taken_amount = $this->extractWlMetricShortform($row[2]);
-            $dtps_amount = $row[4];
+            $damage_taken_amount = $this->extractWlMetricShortform($row[1]);
+            $dtps_amount = $this->floatValue($row[4]);
 
             $damage_taken[$character] = $damage_taken_amount;
             $dtps[$character] = $dtps_amount;
         }
 
         return [
-            'damage_taken' => $damage_taken_amount,
+            'damage_taken' => $damage_taken,
             'dtps' => $dtps,
         ];
     }
