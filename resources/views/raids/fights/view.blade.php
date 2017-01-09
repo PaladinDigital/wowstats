@@ -7,6 +7,7 @@
     @if ( isset($user) && $user->can('administrate') && ($fight->locked === 0) )
         @include('raids.fights.view.addCharacterStats._modal')
     @endif
+    @if($fight->logs_url !== '')<small><a href="{{ $fight->logs_url  }}" target="_blank" rel="nofollow noreferrer">{{ $fight->logs_url  }}</a></small>@endif
 
     <?php /* Primary Charts */ ?>
     <div class="row">
