@@ -35,6 +35,8 @@ class CharacterStatsController extends Controller
             $stat->delete();
         } catch (ModelNotFoundException $e) {
             return response('Page not found.', 404);
-        } catch (\Exception $e) { return response('An unknown error occurred.', 500); }
+        } catch (\Exception $e) {
+            return response('An unknown error occurred.', 500);
+        }
     }
 }

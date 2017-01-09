@@ -49,7 +49,7 @@ class PromoteUser extends Command
         $this->table($headers, $users->toArray());
 
         $valid_ids = [];
-        foreach($users as $u) {
+        foreach ($users as $u) {
             $valid_ids[] = $u['id'];
         }
 
