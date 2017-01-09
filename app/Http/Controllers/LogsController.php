@@ -71,7 +71,7 @@ class LogsController extends Controller
             case 'deaths':
                 $deaths = $this->buildDeathsArray($reader);
                 // Get the deaths metric id.
-                $metric_id = Metric::where('name', 'deaths')->id;
+                $metric_id = Metric::where('name', 'deaths')->first()->id;
                 // Create the character stats.
                 foreach ($deaths as $character => $death_count) {
                     // Check if the character exists
