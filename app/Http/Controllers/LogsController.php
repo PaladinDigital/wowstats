@@ -105,6 +105,57 @@ class LogsController extends Controller
             // DPS
             case 'damage':
             case 'dps':
+                $damageStats = $this->buildDamageArray($reader);
+                // Get the deaths metric id.
+                $damage_id = Metric::where('name', 'damage')->first()->id;
+                $dps_id = Metric::where('name', 'dps')->first()->id;
+
+                $dps = $damageStats['dps'];
+                $damage = $damageStats['damage'];
+
+                // Create the HPS stats.
+                foreach ($dps as $character => $dps_value) {
+                    // Check if the character exists
+                    if (Character::characterExists($character)) {
+                        $char = Character::where('name', $character)->firstOrFail();
+
+                        // Check if the stat already exists
+                        $exists = CharacterStats::exists($fight_id, $char->id, $dps_id);
+
+                        if (!$exists) {
+                            $data = [
+                                'fight_id' => $fight_id,
+                                'character_id' => $char->id,
+                                'metric_id' => $dps_id,
+                                'value' => $dps_value,
+                            ];
+
+                            CharacterStats::create($data);
+                        }
+                    }
+                }
+
+                // Create the Healing stats.
+                foreach ($damage as $character => $damage_done) {
+                    // Check if the character exists
+                    if (Character::characterExists($character)) {
+                        $char = Character::where('name', $character)->firstOrFail();
+
+                        // Check if the stat already exists
+                        $exists = CharacterStats::exists($fight_id, $char->id, $damage_id);
+
+                        if (!$exists) {
+                            $data = [
+                                'fight_id' => $fight_id,
+                                'character_id' => $char->id,
+                                'metric_id' => $damage_id,
+                                'value' => $damage_done,
+                            ];
+
+                            CharacterStats::create($data);
+                        }
+                    }
+                }
                 break;
 
             // Tanking
@@ -118,7 +169,7 @@ class LogsController extends Controller
                 $healingStats = $this->buildHealingArray($reader);
                 // Get the deaths metric id.
                 $healing_id = Metric::where('name', 'healing')->first()->id;
-                $hps_id = Metric::where('name', 'healing')->first()->id;
+                $hps_id = Metric::where('name', 'hps')->first()->id;
 
                 $hps = $healingStats['hps'];
                 $healing = $healingStats['healing'];
@@ -167,6 +218,7 @@ class LogsController extends Controller
                     }
                 }
                 break;
+
             default:
                 break;
         }
@@ -222,7 +274,7 @@ class LogsController extends Controller
             $character = $row[1];
 
             $healing_amount = $this->extractWlMetricShortform($row[2]);
-            $hps_amount = $row[7];
+            $hps_amount = $this->floatValue($row[7]);
 
             $healing[$character] = $healing_amount;
             $hps[$character] = $hps_amount;
@@ -254,7 +306,7 @@ class LogsController extends Controller
             $character = $row[1];
 
             $damage_amount = $this->extractWlMetricShortform($row[2]);
-            $dps_amount = $row[6];
+            $dps_amount = $this->floatValue($row[6]);
 
             $damage[$character] = $damage_amount;
             $dps[$character] = $dps_amount;
@@ -300,13 +352,18 @@ class LogsController extends Controller
     public function extractWlMetricShortform($column)
     {
         // "raw$percent%shortm"
+        // Returns the final part of the string (ie 128.22m = 128.22).
 
-        $percent_pos = strpos($column, "%");
-        $m_pos = strpos($column, "m");
-        $len = $m_pos - $percent_pos;
+        $shortform_explode = explode("%", $column);
+        $shortform = $shortform_explode[1];
+        $shortform = str_replace('m', '', $shortform);
+        return (float)$shortform;
+    }
 
-        $short = substr($percent_pos, $len);
-        $value = str_replace(',', "", $short);
+    public function floatValue($column)
+    {
+        // "raw$percent%shortm"
+        $value = str_replace(',', "", $column);
         return (float)$value;
     }
 }

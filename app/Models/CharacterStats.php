@@ -25,6 +25,19 @@ class CharacterStats extends Model
         return false;
     }
 
+    public static function exists($fight_id, $character_id, $metric_id)
+    {
+        try {
+            $stats = CharacterStats::where('metric_id', $metric_id)
+                ->where('character_id', $character_id)
+                ->where('fight_id', $fight_id)->firstOrFail();
+
+            return true;
+        } catch (ModelNotFoundException $e) {
+            return false;
+        }
+    }
+
     public function character()
     {
         return $this->belongsTo(Character::class, 'character_id');
