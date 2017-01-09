@@ -137,7 +137,9 @@ class Character extends Model
     {
         try {
             $characters = Character::all();
-            return $characters->sortBy(function ($character) { return $character->name; });
+            return $characters->sortBy(function ($character) {
+                return $character->name;
+            });
         } catch (Exception $e) {
             return null;
         }
