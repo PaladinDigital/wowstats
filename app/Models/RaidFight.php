@@ -4,7 +4,7 @@ class RaidFight extends Model
 {
     protected $table = 'raid_fights';
 
-    protected $fillable = ['raid_id', 'boss_id', 'killed', 'length'];
+    protected $fillable = ['raid_id', 'boss_id', 'killed', 'length', 'logs_url'];
 
     protected $hidden = [];
 
