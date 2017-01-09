@@ -1,6 +1,7 @@
 <?php namespace WoWStats\Http\Controllers;
 
 use Illuminate\Http\Request;
+use WoWStats\Models\Metric;
 
 class LogsController extends Controller
 {
@@ -9,23 +10,30 @@ class LogsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function importForm($raid_id, $fight_id)
     {
+        $data = $this->getData();
+        $metrics = Metric::all();
+        $data['metrics'] = $metrics;
+        $data['raid_id'] = $raid_id;
+        $data['fight_id'] = $fight_id;
         // Log upload entry point, user selects raid, fight, metrics and then clicks upload.
-        return view('logs.upload.index');
+        return view('logs.upload.import', $data);
     }
 
-    public function storeDeaths(Request $request, $fight)
+    public function store(Request $request, $fight_id)
     {
-        $csv = 'deaths_csv';
+        $metric = $request->get('metric');
+        $csv = $this->getCsv($request, $metric . '_csv');
 
-        $deaths_csv = $this->getCsv($request, $csv);
-        if ($deaths_csv === false) {
-            return redirect()->route('raid.fight.view', $fight);
+        switch ($metric) {
+            case 'deaths':
+                break;
+            default:
+                break;
         }
 
-        $deaths_csv = $request->file($csv);
-        var_dump($deaths_csv);
+        var_dump($csv);
     }
 
     /**

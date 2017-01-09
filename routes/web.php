@@ -21,15 +21,17 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 /* Raids */
-Route::get('raids',                  [ 'as' => 'raid.index',          'uses' => 'PublicController@raids'              ]);
-Route::get('raid/{id}',              [ 'as' => 'raid.view',           'uses' => 'RaidController@view'                 ]);
-Route::post('/raids',                [ 'as' => 'api.post.raid',       'uses' => 'Api\RaidController@store'            ]);
+Route::get('raids',                  [ 'as' => 'raid.index',             'uses' => 'PublicController@raids'              ]);
+Route::get('raid/{id}',              [ 'as' => 'raid.view',              'uses' => 'RaidController@view'                 ]);
+Route::post('/raids',                [ 'as' => 'api.post.raid',          'uses' => 'Api\RaidController@store'            ]);
 Route::post('/raids/{id}/attendees', [ 'as' => 'api.post.raid.attendee', 'uses' => 'Api\RaidAttendeeController@store' ]);
 /* Raid Fights */
-Route::post('/raids/{id}/fights',    [ 'as' => 'api.post.raid.fight', 'uses' => 'Api\RaidFightController@store'       ]);
-Route::get('raid/{rid}/fight/{id}',  [ 'as' => 'raid.fight.view',     'uses' => 'RaidFightController@view'            ]);
+Route::post('/raids/{id}/fights',           [ 'as' => 'api.post.raid.fight',   'uses' => 'Api\RaidFightController@store' ]);
+Route::get('raid/{rid}/fight/{id}',         [ 'as' => 'raid.fight.view',       'uses' => 'RaidFightController@view'      ]);
+Route::get('raid/{rid}/fight/{id}/import',  [ 'as' => 'raid.fight.import',     'uses' => 'LogsController@importForm'     ]);
+Route::post('raid/{rid}/fight/{id}/csv',    [ 'as' => 'raid.fight.csv.store',  'uses' => 'LogsController@store'          ]);
 /* Fights */
-Route::post('/fight/{id}/lock', ['as' => 'fight.lock', 'uses' => 'RaidFightController@lock']);
+Route::post('/fight/{id}/lock',   ['as' => 'fight.lock', 'uses' => 'RaidFightController@lock']);
 Route::post('/fight/{id}/unlock', ['as' => 'fight.unlock', 'uses' => 'RaidFightController@unlock']);
 
 /* Characters */
@@ -40,15 +42,15 @@ Route::post('/character/stats',    [ 'as' => 'api.post.character.stats', 'uses' 
 Route::delete('/admin/stats/{id}', [ 'as' => 'admin.stat.delete',        'uses' => 'Api\CharacterStatsController@delete' ]);
 Route::get('characters/{id}',      [ 'as' => 'character.view',           'uses' => 'CharactersController@view'           ]);
 
-Route::post('/character/claim',   ['as' => 'character.claim', 'uses' => 'CharactersController@claim']);
+Route::post('/character/claim',   ['as' => 'character.claim',   'uses' => 'CharactersController@claim']);
 Route::post('/character/unclaim', ['as' => 'character.unclaim', 'uses' => 'CharactersController@unclaim']);
 
 /* Comparisons */
-Route::get('leaderboards', ['uses' => 'ComparisonController@leaderboards']);
+Route::get('leaderboards',            ['uses' => 'ComparisonController@leaderboards']);
 Route::get('compare/{char1}/{char2}', ['uses' => 'ComparisonController@compareCharacters']);
 
 /* Administration */
-Route::get('admin',               [ 'as' => 'admin.index',      'uses' => 'AdminController@index'   ]);
+Route::get('admin', [ 'as' => 'admin.index',      'uses' => 'AdminController@index'   ]);
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('stats',      [ 'as' => 'admin.stats',      'uses' => 'AdminController@stats'   ]);
