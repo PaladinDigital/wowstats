@@ -24,7 +24,7 @@ class LogsController extends Controller
         return view('logs.upload.import', $data);
     }
 
-    public function store(Request $request, $fight_id)
+    public function store(Request $request, $raid_id, $fight_id)
     {
         $metric = $request->get('metric');
         $csv = $this->getCsv($request, $metric . '_csv');
@@ -63,7 +63,7 @@ class LogsController extends Controller
         return $csv;
     }
 
-    public function storeMetrics($csv, $metric)
+    public function storeMetrics($csv, $metric, $fight_id)
     {
         $reader = CsvReader::createFromPath($csv->path());
 
@@ -75,13 +75,18 @@ class LogsController extends Controller
                 // Create the character stats.
                 foreach ($deaths as $character => $death_count) {
                     // Check if the character exists
-                    $char = Character::where('name')
-                    $data = [
-                        'fight_id'
-                    ];
-                    'fight_id', 'character_id', 'metric_id', 'value'
+                    if (Character::characterExists($character)) {
+                        $char = Character::where('name', $character)->firstOrFail();
 
-                    CharacterStats::create([])
+                        $data = [
+                            'fight_id' => $fight_id,
+                            'character_id' => $char->id,
+                            'metric_id' => $metric_id,
+                            'value' => $death_count,
+                        ];
+
+                        return CharacterStats::create($data);
+                    }
                 }
                 break;
             default:
