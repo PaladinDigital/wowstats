@@ -40,7 +40,7 @@ Assuming knowledge of Laravel follow the below steps.
 ### Set the app name
 By default the app name is Stats Tracker, you can change this if you desire by changing <code>config/wow.php</code> and changing the app name, steps are similar to above guild name steps.
 
-### Importing data from warcraft logs.
+## Importing data from warcraft logs.
 
-#### Deaths
+### Deaths
 Open the fight > deaths > Events (instead of tables) > CSV
