@@ -93,8 +93,7 @@ class Character extends Model
         try {
             $ilvl = CharacterItemLevel::where('character_id', $this->id)->orderBy('item_level', 'DESC')->firstOrFail();
             return $ilvl->item_level;
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             return 0;
         }
     }

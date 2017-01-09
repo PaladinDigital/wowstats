@@ -170,7 +170,7 @@ class CharacterStats extends Model
         </thead>
         <tbody>';
 
-        foreach($stats as $stat) {
+        foreach ($stats as $stat) {
             $m = $stat->metric->name;
 
             if ($metric->name === $m) {

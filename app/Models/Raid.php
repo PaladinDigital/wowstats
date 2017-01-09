@@ -62,7 +62,7 @@ class Raid extends Model
         $attendees = RaidAttendee::with('character')
             ->where('raid_id', $this->id)
             ->get();
-        return $attendees->sortBy(function ($item){
+        return $attendees->sortBy(function ($item) {
             return $item->character->name;
         });
     }

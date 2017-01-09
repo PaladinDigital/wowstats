@@ -21,8 +21,7 @@ class CharacterRole extends Model
         $options = [];
         $roles = CharacterRole::all();
         $options[0] = 'Please Select';
-        foreach ($roles as $role)
-        {
+        foreach ($roles as $role) {
             $options[$role->id] = $role->name;
         }
         return $options;
