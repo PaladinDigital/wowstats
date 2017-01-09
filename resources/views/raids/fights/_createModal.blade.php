@@ -21,6 +21,11 @@
                 'name'  => 'length',
                 'label' => 'Fight Length',
                 'type'  => 'time'
+            ],
+            [
+                'name' => 'logs_url',
+                'label' => 'Logs url',
+                'type' => 'text'
             ]
         ],
         'hidden_fields' => [
