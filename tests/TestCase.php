@@ -1,6 +1,11 @@
 <?php
 
-abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
+namespace WoWStats\Tests;
+
+use \Illuminate\Foundation\Testing\TestCase as IllumunateTestCase;
+use \Illuminate\Contracts\Console\Kernel;
+
+abstract class TestCase extends IllumunateTestCase
 {
     /**
      * The base URL to use while testing the application.
@@ -18,7 +23,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     {
         $app = require __DIR__.'/../bootstrap/app.php';
 
-        $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+        $app->make(Kernel::class)->bootstrap();
 
         return $app;
     }
