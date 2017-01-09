@@ -3,10 +3,11 @@
 @section('content')
     <h1>Raid: {{ $raid->zone->name }} ({{ $raid->difficulty() }}) @include('raids.fights.view._lock')</h1>
     <h2>Date: {{ $raid->date }}</h2>
-    <h3<?php if ($fight->killed === 1) { echo ' class="killed"'; } ?>>Fight: {{ $fight->boss->name }} @if ($fight->killed === 1) (Kill) @endif @include('raids.fights.view.addCharacterStats._button')</h3>
+    <h3<?php if ($fight->killed === 1) { echo ' class="killed"'; } ?>>Fight: {{ $fight->boss->name }} @if ($fight->killed === 1) (Kill) @endif @include('raids.fights.view.importStats._button') @include('raids.fights.view.addCharacterStats._button')</h3>
     @if ( isset($user) && $user->can('administrate') && ($fight->locked === 0) )
         @include('raids.fights.view.addCharacterStats._modal')
     @endif
+    @if($fight->logs_url !== '')<small><a href="{{ $fight->logs_url  }}" target="_blank" rel="nofollow noreferrer">{{ $fight->logs_url  }}</a></small>@endif
 
     <?php /* Primary Charts */ ?>
     <div class="row">
