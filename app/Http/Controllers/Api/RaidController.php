@@ -37,5 +37,4 @@ class RaidController extends Controller
 
         Raid::create($data);
     }
-
 }

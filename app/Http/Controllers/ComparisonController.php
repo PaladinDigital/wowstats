@@ -70,8 +70,7 @@ class ComparisonController extends Controller
     {
         $leaderboard = [];
 
-        foreach ($stats as $stat)
-        {
+        foreach ($stats as $stat) {
             $metric = $stat->metric->name;
             $character = $stat->character->name;
             $cssClass = $stat->character->cssClass();
@@ -94,7 +93,7 @@ class ComparisonController extends Controller
 
         $collection = collect(array_values($leaderboard));
 
-        $leaderboard = $collection->sortByDesc(function($item) use ($metric_name) {
+        $leaderboard = $collection->sortByDesc(function ($item) use ($metric_name) {
             return $item[$metric_name];
         });
 
@@ -112,8 +111,7 @@ class ComparisonController extends Controller
     {
         $leaderboard = [];
 
-        foreach ($stats as $stat)
-        {
+        foreach ($stats as $stat) {
             $metric = $stat->metric->name;
             $character = $stat->character->name;
             $cssClass = $stat->character->cssClass();
@@ -133,7 +131,7 @@ class ComparisonController extends Controller
         }
         $collection = collect(array_values($leaderboard));
 
-        $leaderboard = $collection->sortByDesc(function($item) use ($metric_name) {
+        $leaderboard = $collection->sortByDesc(function ($item) use ($metric_name) {
             return $item[$metric_name];
         });
 

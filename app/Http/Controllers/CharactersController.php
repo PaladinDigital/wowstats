@@ -41,7 +41,7 @@ class CharactersController extends Controller
             $data['stats'] = CharacterStats::buildCharacterStats($stats);
 
             return view('characters.view', $data);
-        } catch(ModelNotFoundException $e) {
+        } catch (ModelNotFoundException $e) {
             return view('errors.404');
         }
     }
@@ -68,7 +68,6 @@ class CharactersController extends Controller
         } catch (ModelNotFoundException $e) {
             return response('Character not found', 404);
         }
-
     }
 
     public function unclaim(Request $request)
@@ -100,14 +99,10 @@ class CharactersController extends Controller
                 return redirect()->route('admin.characters');
             }
 
-            // TODO: Delete Character Stats
             DB::delete('delete from character_raid_stats where character_id = ?', [$character_id]);
             DB::delete('delete from raid_attendees where character_id = ?', [$character_id]);
 
-            // TODO: Delete RaidAttendee's
-
             $character->delete();
-
         } catch (ModelNotFoundException $e) {
             return redirect()->route('admin.characters');
         }
