@@ -30,6 +30,8 @@ class LogsController extends Controller
         $csv = $this->getCsv($request, $metric . '_csv');
 
         $this->storeMetrics($csv, $metric, $fight_id);
+
+        return redirect()->route('raid.fight.view', [$raid_id, $fight_id]);
     }
 
     /**
@@ -85,7 +87,7 @@ class LogsController extends Controller
                             'value' => $death_count,
                         ];
 
-                        return CharacterStats::create($data);
+                        CharacterStats::create($data);
                     }
                 }
                 break;
