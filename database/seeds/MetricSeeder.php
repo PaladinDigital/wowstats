@@ -9,14 +9,15 @@ class MetricSeeder extends Seeder
     {
         $metrics = [
             'healing',
-            'hps',
+            'hps', // This is effective HPS (excluding overheal).
             'damage',
             'dps',
             'damage_taken',
             'dtps',
             'dispells',
             'interrupts',
-            'deaths'
+            'deaths',
+            'hps_raw', // Raw HPS (including overheal).
         ];
 
         foreach ($metrics as $metric) {
