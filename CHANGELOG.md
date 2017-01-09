@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [v1.0.0] - 2017-01-09
 ### Added
 - Add ability for administrators to create characters.
 - Add ability to create raids and fights.
