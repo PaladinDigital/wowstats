@@ -126,14 +126,22 @@ class Character extends Model
 
         if ($mainSpec == 'Healer' || $offSpec == 'Healer') {
             // Average HPS
-            $average_hps = array_sum($hps) / count($hps);
-            $output['average_hps'] = $average_hps;
+            $count = count($hps);
+            if ($count > 0) {
+                $average_hps = array_sum($hps) / count($hps);
+                $output['average_hps'] = $average_hps;
+                $output['max_hps'] = max($hps);
+            }
         }
 
         if ($mainSpec == 'DPS') {
-            // Average DPS
-            $average_dps = array_sum($dps) / count($dps);
-            $output['average_dps'] = $average_dps;
+            $count = count($dps);
+            if ($count > 0) {
+                // Average DPS
+                $average_dps = array_sum($dps) / count($dps);
+                $output['average_dps'] = $average_dps;
+                $output['max_dps'] = max($dps);
+            }
         }
 
         if ($mainSpec == 'Tank' || $offSpec == 'Tank') {

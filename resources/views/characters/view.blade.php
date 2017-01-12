@@ -61,13 +61,19 @@
                 <div class="panel-heading">Stats: Recent Fights (Last 10 Fights)</div>
                 <div class="panel-body">
                     @if ($recentStats['deaths'] > 0)
-                        Deaths: {{ $recentStats['deaths'] }}
+                        <p>Deaths: {{ $recentStats['deaths'] }}</p>
                     @endif
                     @if (array_key_exists('average_hps', $recentStats))
-                        Average HPS: {{ $recentStats['average_hps'] }}
+                        <p>Average HPS: {{ $recentStats['average_hps'] }}</p>
+                    @endif
+                    @if (array_key_exists('max_hps', $recentStats))
+                        <p>Max HPS: {{ $recentStats['max_hps'] }}</p>
                     @endif
                     @if (array_key_exists('average_dps', $recentStats))
-                        Average DPS: {{ $recentStats['average_dps'] }}
+                        <p>Average DPS: {{ $recentStats['average_dps'] }}</p>
+                    @endif
+                    @if (array_key_exists('max_dps', $recentStats))
+                        <p>Max DPS: {{ $recentStats['max_dps'] }}</p>
                     @endif
                 </div>
             </div>
