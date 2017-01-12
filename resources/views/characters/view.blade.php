@@ -54,6 +54,28 @@
         }
     ?>
 
+    <?php /* Recent Fight Stats */ ?>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Stats: Recent Fights (Last 10 Fights)</div>
+                <div class="panel-body">
+                    @if ($recentStats['deaths'] > 0)
+                        Deaths: {{ $recentStats['deaths'] }}
+                    @endif
+                    @if (array_key_exists('average_hps', $recentStats))
+                        Average HPS: {{ $recentStats['average_hps'] }}
+                    @endif
+                    @if (array_key_exists('average_dps', $recentStats))
+                        Average DPS: {{ $recentStats['average_dps'] }}
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <?php /* Primary Charts */ ?>
     <div class="row">
         <div class="col-xs-12 col-md-6">

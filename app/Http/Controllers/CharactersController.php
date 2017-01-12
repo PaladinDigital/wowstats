@@ -39,6 +39,7 @@ class CharactersController extends Controller
 
             $stats = CharacterStats::forCharacter($char->id)->get();
             $data['stats'] = CharacterStats::buildCharacterStats($stats);
+            $data['recentStats'] = $char->buildRecentRaidStats();
 
             return view('characters.view', $data);
         } catch (ModelNotFoundException $e) {
