@@ -99,17 +99,25 @@ class Character extends Model
         $deaths = 0;
         $stats = $this->getRecentRaidStats(10);
         $hps = [];
+        $dps = [];
+        $dtps = [];
 
         // Build Stats
         foreach ($stats as $s) {
             $metricName = $s->metric->name;
 
-            if ($metricName === 'deaths') {
-                $deaths = $deaths + $s->value;
-            }
-
-            if ($metricName === 'hps') {
-                $hps[] = $s->value;
+            switch ($metricName) {
+                case 'deaths':
+                    $deaths = $deaths + $s->value;
+                    break;
+                case 'hps':
+                    $hps[] = $s->value;
+                    break;
+                case 'dps':
+                    $dps[] = $s->value;
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -120,6 +128,16 @@ class Character extends Model
             // Average HPS
             $average_hps = array_sum($hps) / count($hps);
             $output['average_hps'] = $average_hps;
+        }
+
+        if ($mainSpec == 'DPS') {
+            // Average DPS
+            $average_dps = array_sum($dps) / count($dps);
+            $output['average_dps'] = $average_dps;
+        }
+
+        if ($mainSpec == 'Tank' || $offSpec == 'Tank') {
+            // Average DTPS
         }
 
         return $output;
