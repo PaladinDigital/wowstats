@@ -12,8 +12,11 @@ class Character extends Model
     protected $hidden = [];
 
     protected $fillable = [
-        'name', 'class_id', 'rank',
-        'main_role_id', 'os_role_id',
+        'name',
+        'class_id',
+        'rank',
+        'main_role_id',
+        'os_role_id',
         'user_id'
     ];
 
@@ -76,20 +79,50 @@ class Character extends Model
 
     public function getRecentRaidStats($fightCount = 10)
     {
-	    $fight_ids = [];
-	    // Get last N raid fights
-	    $fights = RaidFight::orderBy('id', 'desc')->take($fightCount)->get();
-	    foreach ($fights as $f) {
-		    $fight_ids[] = $f->id;
-	    }
-	    // Get the character stats
-	    $stats = CharacterStats::whereIn('fight_id', $fight_ids)->get();
-	    return $stats;
+        $fight_ids = [];
+        // Get last N raid fights
+        $fights = RaidFight::orderBy('id', 'desc')->take($fightCount)->get();
+        foreach ($fights as $f) {
+            $fight_ids[] = $f->id;
+        }
+        // Get the character stats
+        $stats = CharacterStats::whereIn('fight_id', $fight_ids)->get();
+        return $stats;
     }
 
     public function buildRecentRaidStats()
     {
-        var_dump($this->getRecentRaidStats(10));
+        $mainSpec = $this->mainSpec();
+        $offSpec = $this->offSpec();
+
+        $output = [];
+        $deaths = 0;
+        $stats = $this->getRecentRaidStats(10);
+        $hps = [];
+
+        // Build Stats
+        foreach ($stats as $s) {
+            $metricName = $s->metric->name;
+
+            if ($metricName === 'deaths') {
+                $deaths = $deaths + $s->value;
+            }
+
+            if ($metricName === 'hps') {
+                $hps[] = $s->value;
+            }
+        }
+
+        // Output Stats
+        $output['deaths'] = $deaths;
+
+        if ($mainSpec == 'Healer' || $offSpec == 'Healer') {
+            // Average HPS
+            $average_hps = array_sum($hps) / count($hps);
+            $output['average_hps'] = $average_hps;
+        }
+
+        return $output;
     }
 
     public function has_attribute($attr)
@@ -186,10 +219,10 @@ class Character extends Model
     public function __debugInfo()
     {
         return [
-            'name'      => $this->name,
-            'class'     => $this->className(),
+            'name' => $this->name,
+            'class' => $this->className(),
             'main_spec' => $this->mainSpec(),
-            'off_spec'  => $this->offSpec(),
+            'off_spec' => $this->offSpec(),
         ];
     }
 }
