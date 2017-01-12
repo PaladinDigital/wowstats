@@ -86,7 +86,7 @@ class Character extends Model
             $fight_ids[] = $f->id;
         }
         // Get the character stats
-        $stats = CharacterStats::whereIn('fight_id', $fight_ids)->get();
+        $stats = CharacterStats::where('character_id', $this->id)->whereIn('fight_id', $fight_ids)->get();
         return $stats;
     }
 
