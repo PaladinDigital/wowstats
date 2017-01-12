@@ -74,6 +74,24 @@ class Character extends Model
         return $attributes;
     }
 
+    public function getRecentRaidStats($fightCount = 10)
+    {
+	    $fight_ids = [];
+	    // Get last N raid fights
+	    $fights = RaidFight::orderBy('id', 'desc')->take($fightCount)->get();
+	    foreach ($fights as $f) {
+		    $fight_ids[] = $f->id;
+	    }
+	    // Get the character stats
+	    $stats = CharacterStats::whereIn('fight_id', $fight_ids)->get();
+	    return $stats;
+    }
+
+    public function buildRecentRaidStats()
+    {
+        var_dump($this->getRecentRaidStats(10));
+    }
+
     public function has_attribute($attr)
     {
         try {
