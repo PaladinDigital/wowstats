@@ -8,6 +8,11 @@ use WoWStats\Models\RaidAttendee;
 
 class PageController extends Controller
 {
+    public function raiding()
+    {
+        return $this->view('raiding');
+    }
+
     public function view($page)
     {
         $data = $this->getData();
