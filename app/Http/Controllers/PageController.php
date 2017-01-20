@@ -10,7 +10,22 @@ class PageController extends Controller
 {
     public function raiding()
     {
-        return $this->page('raiding');
+        $data = [
+            'progression_team' => [
+                (object)[ 'name' => 'Wolirraw' ],
+                (object)[ 'name' => 'Murmundamus' ],
+                (object)[ 'name' => 'Nuuru' ],
+                (object)[ 'name' => 'Sniperdrood' ],
+                (object)[ 'name' => 'Labobbob' ],
+                (object)[ 'name' => 'Vag' ],
+                (object)[ 'name' => 'Phanotos' ],
+            ],
+            'raid_team' => [
+
+            ],
+        ];
+
+        return $this->page('raiding', $data);
     }
 
     public function officers()
