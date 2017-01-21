@@ -64,6 +64,7 @@
             }
 
             .intro {
+                font-size: 1.2em;
                 max-width: 80%;
             }
         </style>
