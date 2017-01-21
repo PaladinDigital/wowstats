@@ -12,7 +12,6 @@ class RaidZoneSeeder extends Seeder
             //994  => 'Highmaul',
             //988  => 'Blackrock Foundry',
             /* Legion */
-            1088 => 'The Nighthold',
             1094 => 'The Emerald Nightmare', /* 8026 */
             1114 => 'Trial of Valor',
             8025 => 'The Nighthold'
