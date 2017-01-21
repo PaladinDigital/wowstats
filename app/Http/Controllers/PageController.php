@@ -31,8 +31,8 @@ class PageController extends Controller
         $data = [
             'progression_team' => [
                 /* Officers */
-                'tanks' => $this->characters->tanks,
-                'healers' => $this->characters->healers,
+                'tank' => $this->characters['tanks'],
+                'healer' => $this->characters['healers'],
             ],
             'raid_team' => [
                 (object)[ 'name' => 'Azkadélia', 'class' => 'Mage', 'cssClass' => 'mage' ],
