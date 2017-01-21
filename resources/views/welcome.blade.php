@@ -62,6 +62,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .intro {
+                max-width: 80%;
+            }
         </style>
     </head>
     <body>
@@ -79,8 +83,10 @@
                 <div class="title m-b-md">
                     <p>{{ $guildName }}<br/><small>Magtheridon EU</small></p>
                 </div>
-                <p>A guild for those who like to raid but aren’t interested in elitist dongsnoffler BS. We raid Seriously but Casually meaning we expect our members to take it seriously but we aren’t screaming at eachother and guild kicking for Morging out.</p>
-                <p>We keep the membership at 18+ due to the generally adult nature of the humour. Do not join us if you are easily offended but if you like downing current content and dick and fart jokes, this could be the place for you.</p>
+                <div class="intro">
+                    <p>A guild for those who like to raid but aren’t interested in elitist dongsnoffler BS. We raid Seriously but Casually meaning we expect our members to take it seriously but we aren’t screaming at eachother and guild kicking for Morging out.</p>
+                    <p>We keep the membership at 18+ due to the generally adult nature of the humour. Do not join us if you are easily offended but if you like downing current content and dick and fart jokes, this could be the place for you.</p>
+                </div>
             </div>
         </div>
     </body>
