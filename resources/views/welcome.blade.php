@@ -68,6 +68,8 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                    <li><a href="{{ url('/raiding') }}">Raiding</a></li>
+                    <li><a href="{{ url('/officers') }}">Officers</a></li>
                     <a href="{{ url('/login') }}">Login</a>
                     <a href="{{ url('/register') }}">Register</a>
                 </div>
