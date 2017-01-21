@@ -13,16 +13,20 @@ class PageController extends Controller
             'Zonraja', 'Locutor', 'Pepperstash'
         ];
         $tanks = [ 'Nuuruhuine', 'Wulfar' ];
-        $dps = [
+        $progression_dps = [
             'Murmundamus', 'Wolirraw',
             'Zenjaquin', 'Vagrasis', 'Labobbob', 'Phanotos', 'Bananael',
-            'Glasha', 'Azkadélia',
+            'Glasha',
+        ];
+        $raid_dps = [
+            'Azkadélia'
         ];
 
         $this->characters = [
-            'tanks'   => Character::whereIn('name', $tanks)->get(),
-            'healers' => Character::whereIn('name', $healers)->get(),
-            'dps'     => Character::whereIn('name', $dps)->get(),
+            'tanks'           => Character::whereIn('name', $tanks)->get(),
+            'healers'         => Character::whereIn('name', $healers)->get(),
+            'progression_dps' => Character::whereIn('name', $progression_dps)->get(),
+            'raid_dps'        => Character::whereIn('name', $raid_dps)->get(),
         ];
     }
 
@@ -31,11 +35,12 @@ class PageController extends Controller
         $data = [
             'progression_team' => [
                 /* Officers */
-                'Tanks' => $this->characters['tanks'],
+                'Tanks'   => $this->characters['tanks'],
                 'Healers' => $this->characters['healers'],
+                'DPS'     => $this->characters['progression_dps'],
             ],
             'raid_team' => [
-                (object)[ 'name' => 'Azkadélia', 'class' => 'Mage', 'cssClass' => 'mage' ],
+                'DPS'     => $this->characters['raid_dps'],
             ],
         ];
 

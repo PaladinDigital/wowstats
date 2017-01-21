@@ -16,17 +16,19 @@
                 @endforeach
             </ul>
         @endforeach
-        <ul>
     @endif
 
     <h2>Guild Raid Team</h2>
     <p>The guild raid team raids regularly as well, consists of a large amount of our progression team as well as guild members who want to raid and trial for the progression team.</p>
     @if (isset($raid_team) && !empty($raid_team))
         <h3>Roster</h3>
-        <ul>
-        @foreach($raid_team as $character)
-            <li>{{ $character->name }}</li>
+        @foreach($raid_team as $role => $characters)
+            <h4>{{ $role }}</h4>
+            <ul>
+                @foreach ($characters as $c)
+                    <li class="{{ $c->cssClass() }}">{{ $c->name }}</li>
+                @endforeach
+            </ul>
         @endforeach
-        </ul>
     @endif
 @endsection
