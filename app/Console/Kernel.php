@@ -5,6 +5,7 @@ namespace WoWStats\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use WoWStats\Console\Commands\PromoteUser;
+use WoWStats\Console\Commands\ResetStats;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,6 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         PromoteUser::class,
+        ResetStats::class,
     ];
 
     /**
