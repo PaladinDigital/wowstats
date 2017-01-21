@@ -5,7 +5,7 @@
 
     @foreach($officers as $officer)
         <div class="officer">
-            <h2>{{ $officer->name }}</h2>
+            <h2 class="{{ $officer->cssClass }}">{{ $officer->name }}</h2>
         </div>
     @endforeach
 @endsection
