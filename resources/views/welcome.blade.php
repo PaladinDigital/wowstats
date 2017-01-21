@@ -65,6 +65,8 @@
 
             .intro {
                 font-size: 1.2em;
+                margin-left: auto;
+                margin-right: auto;
                 max-width: 80%;
             }
         </style>
