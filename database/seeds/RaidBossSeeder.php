@@ -29,6 +29,20 @@ class RaidBossSeeder extends Seeder
                 'Helya',
             ],
             // The Nighthold
+            8025 => [
+                'Skorpyron',
+                'Chronomatic Anomaly',
+                'Trillax',
+                'Spellblade Aluriel',
+
+                'Krosus',
+                'Star Augur Etraeus',
+                "High Botanist Tel'arn",
+                'Tichondrius',
+
+                'Grand Magistrix Elisande',
+                "Gul'Dan",
+            ]
         ];
 
         foreach ($bosses as $raid_id => $data) {
