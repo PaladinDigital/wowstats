@@ -51,12 +51,24 @@ class PageController extends Controller
     {
         $data = [
             'officers' => [
-                (object)[ 'name' => 'Wolirraw',    'class' => 'Hunter',       'cssClass' => 'hunter'        ],
-                (object)[ 'name' => 'Murmundamus', 'class' => 'Warlock',      'cssClass' => 'warlock'       ],
-                (object)[ 'name' => 'Nuuruhuine',  'class' => 'Death Knight', 'cssClass' => 'death_knight'  ],
-                (object)[ 'name' => 'Sniperdrood', 'class' => 'Druid',        'cssClass' => 'druid'         ],
-                (object)[ 'name' => 'Labobbob',    'class' => 'Death Knight', 'cssClass' => 'death_knight' ],
-                (object)[ 'name' => 'Wulfar',      'class' => 'Druid',        'cssClass'  => 'druid'        ],
+                (object)[ 'name' => 'Wolirraw', 'class' => 'Hunter', 'cssClass' => 'hunter',
+                    'description' => 'Hunter',
+                ],
+                (object)[ 'name' => 'Murmundamus', 'class' => 'Warlock', 'cssClass' => 'warlock',
+                    'description' => 'Warlock',
+                ],
+                (object)[ 'name' => 'Nuuruhuine', 'class' => 'Death Knight', 'cssClass' => 'death_knight',
+                    'description' => 'Guild Tank - Death Knight',
+                ],
+                (object)[ 'name' => 'Sniperdrood', 'class' => 'Druid', 'cssClass' => 'druid',
+                    'description' => 'Healer',
+                ],
+                (object)[ 'name' => 'Labobbob', 'class' => 'Death Knight', 'cssClass' => 'death_knight',
+                    'description' => 'Death Knight',
+                ],
+                (object)[ 'name' => 'Wulfar', 'class' => 'Druid', 'cssClass'  => 'druid',
+                    'description' => 'Guild Tank - Druid',
+                ],
             ]
         ];
         return $this->page('officers', $data);
