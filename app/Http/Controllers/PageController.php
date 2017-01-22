@@ -52,22 +52,22 @@ class PageController extends Controller
         $data = [
             'officers' => [
                 (object)[ 'name' => 'Wolirraw', 'class' => 'Hunter', 'cssClass' => 'hunter',
-                    'description' => 'Hunter',
+                    'description' => '',
                 ],
                 (object)[ 'name' => 'Murmundamus', 'class' => 'Warlock', 'cssClass' => 'warlock',
-                    'description' => 'Warlock',
+                    'description' => '',
                 ],
                 (object)[ 'name' => 'Nuuruhuine', 'class' => 'Death Knight', 'cssClass' => 'death_knight',
-                    'description' => 'Guild Tank - Death Knight',
+                    'description' => 'Guild Tank',
                 ],
                 (object)[ 'name' => 'Sniperdrood', 'class' => 'Druid', 'cssClass' => 'druid',
                     'description' => 'Healer',
                 ],
                 (object)[ 'name' => 'Labobbob', 'class' => 'Death Knight', 'cssClass' => 'death_knight',
-                    'description' => 'Death Knight',
+                    'description' => '',
                 ],
                 (object)[ 'name' => 'Wulfar', 'class' => 'Druid', 'cssClass'  => 'druid',
-                    'description' => 'Guild Tank - Druid',
+                    'description' => 'Guild Tank',
                 ],
             ]
         ];
