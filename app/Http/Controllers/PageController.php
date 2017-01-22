@@ -54,7 +54,6 @@ class PageController extends Controller
                 (object)[ 'name' => 'Wolirraw',    'class' => 'Hunter',       'cssClass' => 'hunter'        ],
                 (object)[ 'name' => 'Murmundamus', 'class' => 'Warlock',      'cssClass' => 'warlock'       ],
                 (object)[ 'name' => 'Nuuruhuine',  'class' => 'Death Knight', 'cssClass' => 'death_knight'  ],
-                (object)[ 'name' => 'Azkadélia',   'class' => 'Mage',         'cssClass' => 'mage'          ],
                 (object)[ 'name' => 'Sniperdrood', 'class' => 'Druid',        'cssClass' => 'druid'         ],
                 (object)[ 'name' => 'Labobbob',    'class' => 'Death Knight', 'cssClass' => 'death_knight' ],
                 (object)[ 'name' => 'Wulfar',      'class' => 'Druid',        'cssClass'  => 'druid'        ],
