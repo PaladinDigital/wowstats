@@ -13,13 +13,22 @@ class PageController extends Controller
             'Zonraja', 'Locutor', 'Pepperstash'
         ];
         $tanks = [ 'Nuuruhuine', 'Wulfar' ];
+
         $progression_dps = [
             'Murmundamus', 'Wolirraw',
             'Zenjaquin', 'Vagrasis', 'Labobbob', 'Phanotos', 'Bananael',
             'Glasha',
         ];
+
         $raid_dps = [
-            'Azkadélia'
+            'Azkadélia',
+            'Bonny'
+            'Euphi',
+        ];
+
+        $raid_tanks = [
+            'Glasha',
+            'Snipedin',
         ];
 
         $this->characters = [
@@ -27,6 +36,7 @@ class PageController extends Controller
             'healers'         => Character::whereIn('name', $healers)->get(),
             'progression_dps' => Character::whereIn('name', $progression_dps)->get(),
             'raid_dps'        => Character::whereIn('name', $raid_dps)->get(),
+            'raid_tanks'      => Character::whereIn('name', $raid_tanks)->get(),
         ];
     }
 
@@ -51,22 +61,39 @@ class PageController extends Controller
     {
         $data = [
             'officers' => [
-                (object)[ 'name' => 'Wolirraw', 'class' => 'Hunter', 'cssClass' => 'hunter',
+                (object)[
+                    'name' => 'Wolirraw',
+                    'class' => 'Hunter', 'cssClass' => 'hunter',
+                    'rank' => 'Overlord',
                     'description' => 'Guild Master',
                 ],
-                (object)[ 'name' => 'Nuuruhuine', 'class' => 'Death Knight', 'cssClass' => 'death_knight',
+                (object)[
+                    'name' => 'Nuuruhuine',
+                    'class' => 'Death Knight', 'cssClass' => 'death_knight',
+                    'rank' => 'Officer'
                     'description' => 'Guild Tank',
                 ],
-                (object)[ 'name' => 'Murmundamus', 'class' => 'Warlock', 'cssClass' => 'warlock',
-                    'description' => '',
+                (object)[
+                    'name' => 'Murmundamus',
+                    'class' => 'Warlock', 'cssClass' => 'warlock',
+                    'rank' => 'Officer'
+                    'description' => 'Raid Leader',
                 ],
-                (object)[ 'name' => 'Sniperdrood', 'class' => 'Druid', 'cssClass' => 'druid',
+                (object)[
+                    'name' => 'Sniperdrood', 'class' => 'Druid', 'cssClass' => 'druid',
+                    'rank' => 'Officer',
                     'description' => 'Healer',
                 ],
-                (object)[ 'name' => 'Wulfar', 'class' => 'Druid', 'cssClass'  => 'druid',
+                (object)[
+                    'name' => 'Wulfar',
+                    'class' => 'Druid', 'cssClass'  => 'druid',
+                    'rank' => 'Officer',
                     'description' => 'Guild Tank',
                 ],
-                (object)[ 'name' => 'Labobbob', 'class' => 'Death Knight', 'cssClass' => 'death_knight',
+                (object)[
+                    'name' => 'Labobbob',
+                    'class' => 'Death Knight', 'cssClass' => 'death_knight',
+                    'rank' => 'Officer',
                     'description' => '',
                 ],
             ]
