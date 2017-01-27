@@ -70,13 +70,13 @@ class PageController extends Controller
                 (object)[
                     'name' => 'Nuuruhuine',
                     'class' => 'Death Knight', 'cssClass' => 'death_knight',
-                    'rank' => 'Officer'
+                    'rank' => 'Officer',
                     'description' => 'Guild Tank',
                 ],
                 (object)[
                     'name' => 'Murmundamus',
                     'class' => 'Warlock', 'cssClass' => 'warlock',
-                    'rank' => 'Officer'
+                    'rank' => 'Officer',
                     'description' => 'Raid Leader',
                 ],
                 (object)[
