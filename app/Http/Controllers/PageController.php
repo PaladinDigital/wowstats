@@ -22,7 +22,7 @@ class PageController extends Controller
 
         $raid_dps = [
             'Azkadélia',
-            'Bonny'
+            'Bonny',
             'Euphi',
         ];
 
