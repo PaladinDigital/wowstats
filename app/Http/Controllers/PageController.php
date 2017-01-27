@@ -10,7 +10,7 @@ class PageController extends Controller
     {
         $healers = [
             'Sniperdrood',
-            'Zonraja', 'Locutor', 'Pepperstash'
+            'Zonraja', 'Locutor',
         ];
         $tanks = [ 'Nuuruhuine', 'Wulfar' ];
 
