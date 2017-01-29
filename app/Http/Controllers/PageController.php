@@ -17,7 +17,7 @@ class PageController extends Controller
         $progression_dps = [
             'Murmundamus', 'Wolirraw',
             'Zenjaquin', 'Vagrasis', 'Labobbob', 'Phanotos', 'Bananael',
-            'Glasha',
+            'Glasha', 'Xquall'
         ];
 
         $raid_dps = [
