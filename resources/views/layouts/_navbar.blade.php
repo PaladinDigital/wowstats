@@ -21,6 +21,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/raiding') }}">Raiding</a></li>
                 <li><a href="{{ url('/officers') }}">Officers</a></li>
+                <li><a href="{{ url('/progression') }}">Progression</a></li>
                 <li><a href="{{ url('/raids') }}">Raids</a></li>
                 <li><a href="{{ url('/characters') }}">Characters</a></li>
                 <li><a href="{{ url('/leaderboards') }}">Leaderboards</a></li>
