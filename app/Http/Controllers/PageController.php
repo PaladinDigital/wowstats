@@ -9,26 +9,46 @@ class PageController extends Controller
     public function __construct()
     {
         $healers = [
-            'Sniperdrood',
-            'Zonraja', 'Locutor',
+            // Druids
+            'Sniperdrood', 'Zonraja',
+            // Priests
+            'Locutor',
+            // Paladins
+            'Ryull',
         ];
-        $tanks = [ 'Nuuruhuine', 'Wulfar' ];
+        $tanks = [
+            // Death Knight
+            'Nuuruhuine',
+            // Druid
+            'Wulfar'
+        ];
 
         $progression_dps = [
-            'Murmundamus', 'Wolirraw',
-            'Zenjaquin', 'Vagrasis', 'Labobbob', 'Phanotos', 'Bananael',
-            'Glasha', 'Xquall'
+            // Melee
+            'Labobbob',
+            'Phanotos',
+            'Glasha',
+            // Ranged / Melee (As Needed)
+            'Wolirraw',
+            'Xquall',
+            // Ranged
+            'Murmundamus',
+            'Zenjaquin',
+            'Vagrasis',
         ];
 
         $raid_dps = [
-            'Azkadélia',
+            // Paladins
             'Bonny',
+            // Mages
+            'Azkadélia',
             'Euphi',
         ];
 
         $raid_tanks = [
-            'Glasha',
-            'Snipedin',
+            'Glasha', // Warrior
+            'Snipedin', // Paladin
+            'Snoffler', // Monk
         ];
 
         $this->characters = [
