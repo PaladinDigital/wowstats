@@ -5,6 +5,14 @@
 
     @if (isset($progression))
         @foreach($progression as $raid => $bosses)
+            <?php
+            $raidProgress = [
+                'n' => 0,
+                'h' => 0,
+                'm' => 0
+            ];
+            $raidBossTotal = 0;
+            ?>
             <h2>{{ $raid }}</h2>
             <table class="table">
                 <thead>
@@ -18,6 +26,7 @@
                 </thead>
                 <tbody>
                     @foreach($bosses as $boss => $kills)
+                        <?php $raidBossTotal++; ?>
                         <tr>
                             <td style="width: 50%;">{{ $boss }}</td>
                             <?php
@@ -25,6 +34,7 @@
                             ?>
                             @foreach($difficulties as $diff)
                                 @if ($kills[$diff])
+                                    <?php $raidProgress[$diff]++; ?>
                                     <td class="killed">@if ($kills['n']) Killed @endif</td>
                                 @else
                                     <td>-</td>
@@ -33,6 +43,14 @@
                         </tr>
                     @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td>{{ $raidProgress['n'] }} / {{ $raidBossTotal }}</td>
+                        <td>{{ $raidProgress['h'] }} / {{ $raidBossTotal }}</td>
+                        <td>{{ $raidProgress['m'] }} / {{ $raidBossTotal }}</td>
+                    </tr>
+                </tfoot>
             </table>
         @endforeach
     @endif
