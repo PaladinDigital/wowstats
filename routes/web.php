@@ -59,5 +59,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 /* MF Pages */
-Route::get('raiding', [ 'as' => 'page.raiding', 'uses' => 'PageController@raiding' ]);
-Route::get('officers', [ 'as' => 'page.officers', 'uses' => 'PageController@officers' ]);
+Route::get('raiding',     [ 'as' => 'page.raiding',     'uses' => 'PageController@raiding'     ]);
+Route::get('officers',    [ 'as' => 'page.officers',    'uses' => 'PageController@officers'    ]);
+Route::get('progression', [ 'as' => 'page.progression', 'uses' => 'PageController@progression' ]);

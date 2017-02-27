@@ -101,6 +101,58 @@ class PageController extends Controller
         return $this->page('officers', $data);
     }
 
+    public function progression()
+    {
+        // 7.0.0
+        $emeraldNightmare = [
+            "Xavius"                         => ['n' => true, 'h' => true, 'm' => false],
+            "Cenarius"                       => ['n' => true, 'h' => true, 'm' => false],
+            "Elerethe Renferal"              => ['n' => true, 'h' => true, 'm' => false],
+            "Il'gynoth, Heart of Corruption" => ['n' => true, 'h' => true, 'm' => false],
+            "Dragons of Nightmare"           => ['n' => true, 'h' => true, 'm' => false],
+            "Ursoc"                          => ['n' => true, 'h' => true, 'm' => false],
+            "Nythendra"                      => ['n' => true, 'h' => true, 'm' => false]
+        ];
+
+        // 7.1.0
+        $trialOfValor = [
+            "Helya" => ['n' => true, 'h' => false, 'm' => false],
+            "Guarm" => ['n' => true, 'h' => true,  'm' => false],
+            "Odyn"  => ['n' => true, 'h' => true,  'm' => false]
+        ];
+
+        // 7.1.5
+        $theNighthold = [
+            "Gul'dan"               => ['n' => true, 'h' => false, 'm' => false],
+            "Elisande"              => ['n' => true, 'h' => false, 'm' => false],
+            "Tichondrius"           => ['n' => true, 'h' => false, 'm' => false],
+            "Krosus"                => ['n' => true, 'h' => false, 'm' => false],
+            "High Botanist Tel'arn" => ['n' => true, 'h' => false, 'm' => false],
+            "Star Augur Etraeus"    => ['n' => true, 'h' => false, 'm' => false],
+            "Spellblade Aluriel"    => ['n' => true, 'h' => false, 'm' => false],
+            "Trillax"               => ['n' => true, 'h' => true, 'm' => false],
+            "Chronomatic Anomaly"   => ['n' => true, 'h' => true, 'm' => false],
+            "Skorpyron"             => ['n' => true, 'h' => true, 'm' => false],
+        ];
+
+        // 7.2
+        $tombOfSargeras = [];
+
+
+        $data = [
+            'progression' => [
+                // 7.1.5
+                'The Nighthold'     => $theNighthold,
+                // 7.1.0
+                'Trial of Valor'    => $trialOfValor,
+                // 7.0.0
+                'Emerald Nightmare' => $emeraldNightmare,
+            ]
+        ];
+
+        return $this->page('progression', $data);
+    }
+
     public function page($page, $additionalData = [])
     {
         $data = $this->getData();
