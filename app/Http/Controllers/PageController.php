@@ -94,7 +94,7 @@ class PageController extends Controller
                     'name' => 'Labobbob',
                     'class' => 'Death Knight', 'cssClass' => 'death_knight',
                     'rank' => 'Officer',
-                    'description' => '',
+                    'description' => 'Frost DPS',
                 ],
             ]
         ];
