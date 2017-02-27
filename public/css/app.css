@@ -7740,6 +7740,10 @@ button.close {
   color: #C41F3B;
 }
 
+body {
+  color: #80c38f;
+}
+
 li {
   list-style: none;
 }
