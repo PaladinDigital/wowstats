@@ -8,7 +8,7 @@
         <div class="col-xs-12 col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2 class="panel-title {{ $officer->cssClass }}">{{ $officer->name }} <small>Rank: {{ $officer->rank or '' }}</small></h2>
+                    <h2 class="panel-title {{ $officer->cssClass }}">{{ $officer->name }} <span class="pull-right">Rank: {{ $officer->rank or '' }}</span></h2>
                 </div>
                 <div class="panel-body">
                     <img class="img-responsive" src="{{ asset('images/characters/' . $officer->name . '.jpg') }}">
