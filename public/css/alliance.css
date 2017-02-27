@@ -1,48 +1,64 @@
 /* Horde Colours */
 /* Theme Colours */
 a {
-  color: blue; }
+  color: blue;
+}
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: blue; }
+  color: blue;
+}
 
 .navbar-default {
-  background-color: #1f2271; }
-  .navbar-default a {
-    color: #f4d032; }
-  .navbar-default .navbar-brand {
-    color: #f4d032; }
+  background-color: #1f2271;
+}
+
+.navbar-default a {
+  color: #f4d032;
+}
+
+.navbar-default .navbar-brand {
+  color: #f4d032;
+}
 
 .navbar-default .navbar-nav > li > a {
-  color: #f4d032; }
+  color: #f4d032;
+}
 
 h1, h2, h3, h4 {
-  color: #f4d032; }
+  color: #f4d032;
+}
 
 .panel-default {
   border-color: #1f2271;
   background: #111;
-  color: #f4d032; }
+  color: #f4d032;
+}
 
 .panel-default > .panel-heading {
   background-color: #1f2271;
   border-color: #1f2271;
-  color: #f4d032; }
+  color: #f4d032;
+}
 
 .modal-header {
-  background-color: #1f2271; }
+  background-color: #1f2271;
+}
 
 .modal-body {
-  background: #111; }
+  background: #111;
+}
 
 .modal-footer {
-  background-color: #1f2271; }
+  background-color: #1f2271;
+}
 
 #addAttendeeModal select {
-  background: #111; }
+  background: #111;
+}
 
 #addAttendeeModal option:hover {
-  background: #111 !important; }
+  background: #111 !important;
+}
