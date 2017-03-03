@@ -105,12 +105,6 @@ class PageController extends Controller
                     'description' => 'Healer',
                 ],
                 (object)[
-                    'name' => 'Wulfar',
-                    'class' => 'Druid', 'cssClass'  => 'druid',
-                    'rank' => 'Officer',
-                    'description' => 'Guild Tank',
-                ],
-                (object)[
                     'name' => 'Labobbob',
                     'class' => 'Death Knight', 'cssClass' => 'death_knight',
                     'rank' => 'Officer',
