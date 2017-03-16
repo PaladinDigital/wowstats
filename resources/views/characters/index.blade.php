@@ -22,6 +22,8 @@
             @endforeach
             </tbody>
         </table>
+
+        {{ $characters->render() }}
     @else
         <p>No characters have been added yet..</p>
     @endif
