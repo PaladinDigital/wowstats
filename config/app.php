@@ -167,7 +167,7 @@ return [
          * Package Service Providers...
          */
         Taskforcedev\LaravelSupport\ServiceProvider::class,
-        Taskforcedev\CrudApi\ServiceProvider::class,
+        //Taskforcedev\CrudApi\ServiceProvider::class,
 
         /*
          * Application Service Providers...
