@@ -150,11 +150,14 @@ class PageController extends Controller
         ];
 
         // 7.2
-        $tombOfSargeras = [];
+        $tombOfSargeras = [
 
+        ];
 
         $data = [
             'progression' => [
+                // 7.2.0
+                //'Tomb of Sargeras' => $tombOfSargeras
                 // 7.1.5
                 'The Nighthold'     => $theNighthold,
                 // 7.1.0
