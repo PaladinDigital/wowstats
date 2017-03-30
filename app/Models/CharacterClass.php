@@ -29,6 +29,17 @@ class CharacterClass extends Model
         }
     }
 
+    public static function getOptions()
+    {
+        $options = [];
+        $classes = CharacterClass::all();
+        $options[0] = 'Please Select';
+        foreach ($classes as $c) {
+            $options[$c->id] = $c->class_name;
+        }
+        return $options;
+    }
+
     public function __debugInfo()
     {
         return [

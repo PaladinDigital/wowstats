@@ -1,7 +1,6 @@
 <?php namespace WoWStats\Models;
 
 use Exception;
-use WoWStats\Models\CharacterRole;
 use WoWStats\Models\WoW\Classes;
 
 class Character extends Model
@@ -22,35 +21,37 @@ class Character extends Model
 
     public function stats()
     {
-        return $this->hasMany('CharacterStats');
+        return $this->hasMany(CharacterStats::class);
+    }
+
+    public function characterClass()
+    {
+        return $this->hasOne(CharacterClass::class, 'id', 'class_id');
     }
 
     public function className()
     {
-        $classes = new Classes();
-        $class_name = $classes->getClassName((int)$this->class_id);
-        return $class_name;
+        return $this->characterClass->class_name;
     }
 
     public function classColor()
     {
-        $classes = new Classes();
-        $color = $classes->getClassColor((int)$this->class_id);
-        return $color;
+        return $this->characterClass->color_hex;
     }
 
     public function classRGBColor()
     {
-        $classes = new Classes();
-        $color = $classes->getClassRGBColor((int)$this->class_id);
-        return $color;
+        $class = $this->characterClass;
+        return [
+            'r' => $class->rgb_r,
+            'g' => $class->rgb_g,
+            'b' => $class->rgb_b
+        ];
     }
 
     public function cssClass()
     {
-        $classes = new Classes();
-        $css_class = $classes->getDisplayName($this->className());
-        return $css_class;
+        return $this->characterClass->css_name;
     }
 
     public function mainSpec()

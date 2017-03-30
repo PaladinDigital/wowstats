@@ -1,5 +1,4 @@
 <?php
-$classes = new \WoWStats\Models\WoW\Classes();
 $raidModal = [
     'item' => 'Character',
     'fields' => [
@@ -12,7 +11,7 @@ $raidModal = [
             'name' => 'class_id',
             'type' => 'select',
             'label' => 'Class',
-            'options' => $classes->getOptions(),
+            'options' => \WoWStats\Models\CharacterClass::getOptions(),
         ],
         [
             'name' => 'main_role_id',
