@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Add artisan command reset:stats to enable a quick data reset.
+
 ### Changed
 - Update vendor packages.
 
