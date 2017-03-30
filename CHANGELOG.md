@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Update vendor packages.
+- Use eloquent model instead of class for character class.
 
 ## [v1.1.0] - 2017-03-30
 ### Added
