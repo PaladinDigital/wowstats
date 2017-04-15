@@ -7,7 +7,7 @@ return [
         'theme' => 'horde',
     ],
     'guild' => [
-        'name' => 'My Guild',
+        'name' => 'Malevolent Fury',
     ],
 
     'api'   => [

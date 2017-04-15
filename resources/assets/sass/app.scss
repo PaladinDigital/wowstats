@@ -10,6 +10,10 @@
 
 @import "wow-classes/classes";
 
+body {
+  color: #80c38f;
+}
+
 li {
   list-style: none;
 }
@@ -29,4 +33,8 @@ li {
 
 th {
   color: #ececec;
+}
+
+.officer {
+  display: inline;
 }

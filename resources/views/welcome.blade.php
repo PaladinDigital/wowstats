@@ -13,8 +13,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color: #111;
+                color: #ececec;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
@@ -50,7 +50,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: white;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -62,12 +62,21 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .intro {
+                font-size: 1.2em;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 80%;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                    <a href="{{ url('/raiding') }}">Raiding</a>
+                    <a href="{{ url('/officers') }}">Officers</a>
                     <a href="{{ url('/login') }}">Login</a>
                     <a href="{{ url('/register') }}">Register</a>
                 </div>
@@ -75,7 +84,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <p>{{ $guildName }}<br/><small>{{ $appName }}</small></p>
+                    <p>{{ $guildName }}<br/><small>Magtheridon EU</small></p>
+                </div>
+                <div class="intro">
+                    <p>A guild for those who like to raid but aren’t interested in elitist dongsnoffler BS. We raid Seriously but Casually meaning we expect our members to take it seriously but we don't scream at each other or guild kick for making a mistake.</p>
+                    <p>We keep the membership at 18+ due to the generally adult nature of the humour. Do not join us if you are easily offended but if you like downing current content and dick and fart jokes, this could be the place for you.</p>
                 </div>
             </div>
         </div>

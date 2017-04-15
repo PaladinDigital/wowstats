@@ -33,6 +33,8 @@
         @endforeach
         </tbody>
         </table>
+
+        {{ $raids->render() }}
     @else
         <p>No raids have been recorded yet.</p>
     @endif

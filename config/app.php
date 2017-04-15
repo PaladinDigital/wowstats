@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Malevolent Fury',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,8 +166,8 @@ return [
         /*
          * Package Service Providers...
          */
-
-        //
+        Taskforcedev\LaravelSupport\ServiceProvider::class,
+        //Taskforcedev\CrudApi\ServiceProvider::class,
 
         /*
          * Application Service Providers...
