@@ -155,12 +155,15 @@ class Character extends Model
     public function getLinks()
     {
         $name = $this->name;
+        $region = config('wow.guild.region', '');
         $realm = config('wow.guild.realm', '');
 
-        $armory = "http://eu.battle.net/wow/en/character/{$realm}/{$name}/simple";
+        $armory = "http://{$region}.battle.net/wow/en/character/{$realm}/{$name}/simple";
+        $mrrobot = "http://www.askmrrobot.com/wow/gear/{$region}/{$realm}/{$name}";
 
         return [
             'armory' => $armory,
+            'askmrrobot' => $mrrobot,
         ];
     }
 
