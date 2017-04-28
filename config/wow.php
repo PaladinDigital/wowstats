@@ -8,7 +8,8 @@ return [
     ],
     'guild' => [
         'name' => 'My Guild',
-        'realm' => '',
+        'realm' => '', // magtheridon, kazzak, etc.
+        'region' => 'eu', // EU US CN KR TW
     ],
 
     'api'   => [
