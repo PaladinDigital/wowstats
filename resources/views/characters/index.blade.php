@@ -9,7 +9,13 @@
     @if (count($characters) > 0)
         <table class="table characters">
             <thead>
-            <tr><th>Character</th><th>Class</th><th>Main Spec</th><th>Off-Spec</th></tr>
+            <tr>
+                <th>Character</th>
+                <th>Class</th>
+                <th>Main Spec</th>
+                <th>Off-Spec</th>
+                <th>Links</th>
+            </tr>
             </thead>
             <tbody>
             @foreach($characters as $c)
@@ -18,6 +24,10 @@
                     <td>{{ $c->className() }}</td>
                     <td>{{ $c->mainSpec() }}</td>
                     <td>{{ $c->offSpec() }}</td>
+                    <td>
+                        <a href="{{ $c->getLink('armory') or '#' }}">Armory</a>
+                        <a href="{{ $c->getLink('askmrrobot') or '#' }}">Ask Mr Robot</a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
