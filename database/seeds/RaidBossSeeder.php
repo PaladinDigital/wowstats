@@ -42,7 +42,19 @@ class RaidBossSeeder extends Seeder
 
                 'Grand Magistrix Elisande',
                 "Gul'Dan",
-            ]
+            ],
+            // Tomb of Sargeras
+            8524 => [
+                'Goroth',
+                'Demonic Inquisition',
+                'Harjatan',
+                'Sisters of the Moon',
+                "Mistress Sassz'ine",
+                'The Desolate Host',
+                'Maiden of Vigilance',
+                'Fallen Avatar',
+                "Kil'jaeden",
+            ],
         ];
 
         foreach ($bosses as $raid_id => $data) {
