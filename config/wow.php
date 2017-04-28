@@ -8,6 +8,7 @@ return [
     ],
     'guild' => [
         'name' => 'My Guild',
+        'realm' => '',
     ],
 
     'api'   => [
