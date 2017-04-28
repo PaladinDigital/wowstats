@@ -152,6 +152,24 @@ class Character extends Model
         return $output;
     }
 
+    public function getLinks()
+    {
+        $name = $this->name;
+        $realm = config('wow.guild.realm', '');
+
+        $armory = "http://eu.battle.net/wow/en/character/{$realm}/{$name}/simple";
+
+        return [
+            'armory' => $armory,
+        ];
+    }
+
+    public function getLink($key)
+    {
+        $links = $this->getLinks();
+        return array_key_exists($key, $links) ? $links[$key] : false;
+    }
+
     public function has_attribute($attr)
     {
         try {
