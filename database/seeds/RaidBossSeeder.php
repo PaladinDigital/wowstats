@@ -32,7 +32,7 @@ class RaidBossSeeder extends Seeder
             8025 => [
                 'Skorpyron',
                 'Chronomatic Anomaly',
-                'Trillax',
+                'Trilliax',
                 'Spellblade Aluriel',
 
                 'Krosus',
