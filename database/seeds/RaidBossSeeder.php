@@ -55,6 +55,22 @@ class RaidBossSeeder extends Seeder
                 'Fallen Avatar',
                 "Kil'jaeden",
             ],
+            // Antorus
+            8638 => [
+                'Garothi Worldbreaker',
+                'Felhounds of Sargeras',
+                'Antoran High Command',
+                'Eonar the Life-Binder',
+                'Portal Keeper Hasabel',
+
+                'Imonar the Soulhunter',
+                "Kin'garoth",
+
+                'Varimathras',
+                'The Coven of Shivarra',
+                'Aggramar',
+                'Argus the Unmaker',
+            ]
         ];
 
         foreach ($bosses as $raid_id => $data) {

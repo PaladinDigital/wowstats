@@ -16,6 +16,7 @@ class RaidZoneSeeder extends Seeder
             1114 => 'Trial of Valor',
             8025 => 'The Nighthold',
             8524 => 'Tomb of Sargeras',
+            8638 => 'Antorus, the Burning Throne',
         ];
 
         foreach ($zones as $zid => $name) {
