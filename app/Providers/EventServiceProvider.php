@@ -13,8 +13,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'WoWStats\Events\SomeEvent' => [
-            'WoWStats\Listeners\EventListener',
+        SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            // add your listeners (aka providers) here
+            'SocialiteProviders\Battlenet\BattlenetExtendSocialite@handle',
         ],
     ];
 
