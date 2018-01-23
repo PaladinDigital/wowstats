@@ -9,7 +9,8 @@
         "laravel/framework": "5.5.*",
         "league/csv": "^8.0",
         "laravel/socialite": "^3.0",
-        "socialiteproviders/battlenet": "^2.0"
+        "socialiteproviders/battlenet": "^2.0",
+        "doctrine/dbal": "^2.6"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
