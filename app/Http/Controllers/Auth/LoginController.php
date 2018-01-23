@@ -2,6 +2,7 @@
 
 namespace WoWStats\Http\Controllers\Auth;
 
+use WoWStats\User;
 use WoWStats\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
