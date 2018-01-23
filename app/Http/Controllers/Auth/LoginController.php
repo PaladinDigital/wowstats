@@ -74,7 +74,7 @@ class LoginController extends Controller
         } catch (\Exception $e) {
             $user = User::create([
                 'battlenet_id' => $socialUser->getId(),
-                'name' => $socialUser->getName(),
+                'name' => $socialUser->nickname,
                 'email' => $email,
                 'battlenet_token' => $socialUser->token,
             ]);
