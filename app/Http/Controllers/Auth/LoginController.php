@@ -59,13 +59,25 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('battlenet')->user();
+        $socialUser = Socialite::driver('battlenet')->user();
 
-        User::create([
-            'battlenet_id' => $user->getId(),
-            'name' => $user->getName(),
-            'email' => $user->getEmail(),
-            'token' => $user->token,
-        ]);
+        $email = $socialUser->getEmail();
+
+        try {
+            $user = User::where('email', $email)->firstOrFail();
+
+            Auth::loginUsingId($user->id);
+        } catch (\Exception $e) {
+            $user = User::create([
+                'battlenet_id' => $socialUser->getId(),
+                'name' => $socialUser->getName(),
+                'email' => $email,
+                'token' => $socialUser->token,
+            ]);
+
+            Auth::loginUsingId($user->id);
+        }
+
+        return redirect()->route('home');
     }
 }

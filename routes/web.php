@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('login/oauth', 'Auth\LoginController@redirectToProvider')->name('oauth.login');
 Route::get('callback', 'Auth\LoginController@handleProviderCallback')->name('callback');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
 /* Raids */
 Route::get('raids',                  [ 'as' => 'raid.index',             'uses' => 'PublicController@raids'              ]);
