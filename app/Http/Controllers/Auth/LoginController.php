@@ -50,4 +50,21 @@ class LoginController extends Controller
             ->scopes(['wow.profile'])
             ->redirect();
     }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('battlenet')->user();
+
+        User::create([
+            'battlenet_id' => $user->getId(),
+            'name' => $user->getName(),
+            'email' => $user->getEmail(),
+            'token' => $user->token,
+        ]);
+    }
 }

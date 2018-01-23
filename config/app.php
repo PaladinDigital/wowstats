@@ -166,7 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
-        SocialiteProviders\Manager\ServiceProvider::class,
+        \SocialiteProviders\Manager\ServiceProvider::class,
 
         //
 
