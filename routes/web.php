@@ -57,3 +57,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('characters', [ 'as' => 'admin.characters', 'uses' => 'AdminController@raiders' ]);
     Route::get('users',      [ 'as' => 'admin.users',      'uses' => 'AdminController@users'   ]);
 });
+
+require(__DIR__ . '/pages.php');
