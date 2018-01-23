@@ -60,11 +60,10 @@ class LoginController extends Controller
     public function handleProviderCallback()
     {
         $socialUser = Socialite::driver('battlenet')->user();
-
-        $email = $socialUser->getEmail();
+        $nickname = $socialUser->nickname;
 
         try {
-            $user = User::where('email', $email)->firstOrFail();
+            $user = User::where('name', $nickname)->firstOrFail();
 
             $user->battlenet_token = $socialUser->token;
 
@@ -75,8 +74,8 @@ class LoginController extends Controller
             $user = User::create([
                 'battlenet_id' => $socialUser->getId(),
                 'name' => $socialUser->nickname,
-                'email' => $email,
                 'battlenet_token' => $socialUser->token,
+                'password' => str_shuffle(bin2hex(openssl_random_pseudo_bytes(8))),
             ]);
 
             Auth::loginUsingId($user->id);
