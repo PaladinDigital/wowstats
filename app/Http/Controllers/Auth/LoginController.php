@@ -66,13 +66,17 @@ class LoginController extends Controller
         try {
             $user = User::where('email', $email)->firstOrFail();
 
+            $user->battlenet_token = $socialUser->token;
+
+            $user->save();
+
             Auth::loginUsingId($user->id);
         } catch (\Exception $e) {
             $user = User::create([
                 'battlenet_id' => $socialUser->getId(),
                 'name' => $socialUser->getName(),
                 'email' => $email,
-                'token' => $socialUser->token,
+                'battlenet_token' => $socialUser->token,
             ]);
 
             Auth::loginUsingId($user->id);
