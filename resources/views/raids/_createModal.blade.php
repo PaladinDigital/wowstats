@@ -34,4 +34,4 @@
         'done' => 'reload',
     ];
 ?>
-@include('bootstrap3.components._createModal', $raidModal)
+@include('bootstrap4.components._createModal', $raidModal)
