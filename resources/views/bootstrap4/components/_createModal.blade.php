@@ -70,7 +70,7 @@ if (!isset($modal_id)) {
 
                     @else
 
-                        <div class="input-group">
+                        <div class="form-group">
                             <label class="label" for="{{ $f['name'] }}">{{ $f['label'] or ucfirst($f['name']) }}</label>
                             <?php
                                 $output = ' class="form-control" id="'. $f['name'] .'" type="'. $f['type'] . '"';
