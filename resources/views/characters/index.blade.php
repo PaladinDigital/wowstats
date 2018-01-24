@@ -25,8 +25,12 @@
                     <td>{{ $c->mainSpec() }}</td>
                     <td>{{ $c->offSpec() }}</td>
                     <td>
-                        <a href="{{ $c->getLink('armory') or '#' }}">Armory</a>
-                        <a href="{{ $c->getLink('askmrrobot') or '#' }}">Ask Mr Robot</a>
+                        @if ($c->hasLink('armory'))
+                            <a href="{{ $c->getLink('armory') }}">Armory</a>
+                        @endif
+                        @if ($c->hasLink('askmrrobot'))
+                            <a href="{{ $c->getLink('askmrrobot') }}">Armory</a>
+                        @endif
                     </td>
                 </tr>
             @endforeach
@@ -35,6 +39,6 @@
 
         {{ $characters->render() }}
     @else
-        <p>No characters have been added yet..</p>
+        <p>No characters have been added yet.</p>
     @endif
 @endsection
