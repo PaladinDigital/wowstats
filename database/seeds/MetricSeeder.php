@@ -18,6 +18,7 @@ class MetricSeeder extends Seeder
             'interrupts',
             'deaths',
             'hps_raw', // Raw HPS (including overheal).
+            'item_level',
         ];
 
         foreach ($metrics as $metric) {
