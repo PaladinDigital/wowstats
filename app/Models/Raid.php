@@ -2,6 +2,7 @@
 
 use \DB;
 use \Validator;
+use WoWStats\Services\WarcraftLogs\Importer;
 
 class Raid extends Model
 {
@@ -17,6 +18,10 @@ class Raid extends Model
 
     protected $fillable = [ 'date', 'raidzone_id', 'difficulty_id' ];
 
+    /**
+     * Raid difficulty.
+     * @return string
+     */
     public function difficulty()
     {
         switch ($this->difficulty_id) {
@@ -46,6 +51,7 @@ class Raid extends Model
     }
 
     // Eloquent Relations
+
     public function zone()
     {
         return $this->belongsTo(RaidZone::class, 'raidzone_id', 'id');
@@ -57,6 +63,11 @@ class Raid extends Model
     }
 
     // Helper Methods
+
+    /**
+     * Get raid attendees.
+     * @return static
+     */
     public function getAttendees()
     {
         $attendees = RaidAttendee::with('character')
@@ -67,24 +78,42 @@ class Raid extends Model
         });
     }
 
+    /**
+     * Get the raids fight count.
+     * @return int
+     */
     public function getFightCount()
     {
         $fights = RaidFight::where('raid_id', $this->id)->get();
         return count($fights);
     }
 
+    /**
+     * Get the killed bosses count.
+     * @return int
+     */
     public function getBossKillCount()
     {
         $kills = RaidFight::where('raid_id', $this->id)->where('killed', 1)->get();
         return count($kills);
     }
 
+    // Static Methods
+
+    /**
+     * Get the count of stored raids.
+     * @return mixed
+     */
     public static function getRaidCount()
     {
         $results = DB::select('select COUNT(*) as count from raids');
         return $results[0]->count;
     }
 
+    /**
+     * Get the last created raid.
+     * @return mixed
+     */
     public static function getLastRaid()
     {
         $raid = DB::select('SELECT `id`, `date`, `created_at`, `difficulty_id`, `raidzone_id` FROM raids ORDER BY created_at DESC LIMIT 0 , 1');
