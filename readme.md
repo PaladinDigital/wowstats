@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/PaladinDigital/wowstats.svg?branch=master)](https://travis-ci.org/PaladinDigital/wowstats)
 
+## Requirements
+ - PHP 7.0+
+ - Composer
+
 ## Features
 - Users are able to claim unclaimed characters
 - Users can unclaim characters
@@ -16,7 +20,7 @@
 
 ## Installation
 
-This is a laravel application so if you are unsure how to deploy laravel please refer to the [Laravel Documentation](https://laravel.com/docs/5.3).
+This is a laravel application so if you are unsure how to deploy laravel please refer to the [Laravel Documentation](https://laravel.com/docs/5.5).
 
 Assuming knowledge of Laravel follow the below steps.
 
