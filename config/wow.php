@@ -16,4 +16,8 @@ return [
         'key'    => '',
         'secret' => '',
     ],
+
+    'warcraft_logs' => [
+        'api_key' => env('WARCRAFT_LOGS_APIKEY', ''),
+    ],
 ];
