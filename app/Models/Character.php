@@ -173,6 +173,12 @@ class Character extends Model
         return array_key_exists($key, $links) ? $links[$key] : false;
     }
 
+    public function hasLink($key)
+    {
+        $links = $this->getLinks();
+        return array_key_exists($key, $links);
+    }
+
     public function has_attribute($attr)
     {
         try {
