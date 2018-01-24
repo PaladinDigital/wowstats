@@ -15,7 +15,7 @@ class HomeTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
+        $this->get('/')
              ->see('Stats Tracker');
     }
 }
