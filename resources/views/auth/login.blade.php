@@ -39,9 +39,9 @@
                         </div>
 
                         <div class="form-group">
-
+                            <label class="col-md-4 control-label">Battle.net</label>
                             <div class="col-md-6">
-                                <a href="{{ route('oauth.login') }}">Login with Battle.net</a>
+                                <a class="btn" href="{{ route('oauth.login') }}">Login with Battle.net</a>
                             </div>
                         </div>
 
