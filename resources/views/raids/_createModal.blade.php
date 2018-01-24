@@ -28,6 +28,11 @@
                     2 => 'Heroic',
                     3 => 'Mythic',
                 ]
+            ],
+            [
+                'name' => 'wl_url',
+                'type' => 'text',
+                'label' => 'Warcraft Logs URL'
             ]
         ],
         'url' => route('api.post.raid'),
