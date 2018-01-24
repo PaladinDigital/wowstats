@@ -1,10 +1,10 @@
-.panel-default {
+.card {
   border-color: $colorPrimary;
   background: #111;
   color: $colorSecondary;
 }
 
-.panel-default > .panel-heading {
+.card-header {
   background-color: $colorPrimary;
   border-color: $colorPrimary;
   color: $colorSecondary;
