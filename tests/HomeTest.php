@@ -15,7 +15,10 @@ class HomeTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->get('/')
-             ->see('Stats Tracker');
+        $response = $this->get('/');
+
+        $body = $response->getContent();
+
+        $this->assertContains('Stats Tracker', $body);
     }
 }
