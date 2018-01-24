@@ -4,7 +4,7 @@
 
 ## Requirements
  - PHP 7.0+
- - Composer
+ - [Composer](https://getcomposer.org/)
 
 ## Features
 - Users are able to claim unclaimed characters
