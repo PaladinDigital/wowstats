@@ -45,6 +45,7 @@ class ImportFight implements ShouldQueue
         // Parse the raids fights.
         $start = $this->fight['start'];
         $end = $this->fight['end'];
+        $bossId = $this->mapBossId($this->fight['boss_id']);
 
         $duration = $end - $start;
         $duration = number_format($duration / 1000, 2, '.', '');
@@ -58,7 +59,7 @@ class ImportFight implements ShouldQueue
         // Create the fight.
         $fight = RaidFight::create([
             'raid_id' => $this->raidId,
-            'boss_id' => $this->fight['boss_id'],
+            'boss_id' => $bossId,
             'killed' => $this->fight['kill'],
             'length' => $duration,
             'logs_url' => $this->logId,
@@ -91,8 +92,6 @@ class ImportFight implements ShouldQueue
                     }
                     $m = Metric::where('name', $metric)->first();
 
-                    var_dump($m, $metric);
-
                     // Create the Character stats for each metric.
                     CharacterStats::create([
                         'fight_id' => $fight->id,
@@ -103,5 +102,20 @@ class ImportFight implements ShouldQueue
                 }
             }
         }
+    }
+
+    public function mapBossId($bossId, $source = 'wcl')
+    {
+        if ($source === 'wcl') {
+            switch ($bossId) {
+                case 2076: $bossId = 123371; break; // Antorus: Garothi
+                case 2074: $bossId = 126916; break; // Antorus: Felhounds
+                case 2064: $bossId = 124393; break; // Antorus: Portal Keeper
+                case 2075: $bossId = 131561; break; // Antorus: Eonar
+                case 2070: $bossId = 122367; break; // Antorus: High Command
+            }
+        }
+
+        return $bossId;
     }
 }
