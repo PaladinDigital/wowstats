@@ -1,7 +1,7 @@
 <?php namespace WoWStats\Models;
 
 use Exception;
-use WoWStats\Models\WoW\Classes;
+use Illuminate\Database\Eloquent\Builder;
 
 class CharacterClass extends Model
 {
@@ -18,6 +18,13 @@ class CharacterClass extends Model
         'rgb_g',
         'rgb_b',
     ];
+
+    public function scopeName(Builder $query, $name)
+    {
+        if ($name === 'DeathKnight') { $name = 'Death Knight'; }
+        if ($name === 'DemonHunter') { $name = 'Demon Hunter'; }
+        return $query->where('class_name', $name);
+    }
 
     public static function exists($name)
     {

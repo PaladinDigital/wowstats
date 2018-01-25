@@ -13,7 +13,7 @@ class CreateCharacterStatsTable extends Migration
                 $table->integer('fight_id')->unsigned();
                 $table->integer('character_id')->unsigned();
                 $table->integer('metric_id')->unsigned();
-                $table->float('value');
+                $table->float('value', 14, 2);
                 $table->timestamps();
             });
         }

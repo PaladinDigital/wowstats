@@ -12,16 +12,47 @@ class WarcraftLogsTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->service = new WarcraftLogs();
+        $logId = 't78PdgTcRFDvrfKC';
+        $this->service = new WarcraftLogs($logId);
     }
 
     public function testGetReportFightsApiUrl()
     {
-        $logId = '1234abcd';
-        $apiUrl = $this->service->getReportFightsApiUrl($logId);
 
-        $expect = 'https://www.warcraftlogs.com/v1/report/fights/1234abcd?api_key=' . config('wow.warcraft_logs.apikey');
+        $apiUrl = $this->service->getReportFightsApiUrl();
+
+        $apiKey = config('wow.warcraft_logs.api_key');
+
+        $expect = 'https://www.warcraftlogs.com/v1/report/fights/t78PdgTcRFDvrfKC?api_key=' . $apiKey;
 
         $this->assertEquals($expect, $apiUrl);
+    }
+
+    public function testIsPossibleGuildMemberTrue()
+    {
+        $name = 'Testíe';
+        $truth = $this->service->isPossibleGuildMember($name);
+        $this->assertEquals(true, $truth);
+    }
+
+    public function testIsPossibleGuildMemberFalse()
+    {
+        $name = 'Testíe-Ragnaros';
+        $truth = $this->service->isPossibleGuildMember($name);
+        $this->assertEquals(false, $truth);
+    }
+
+    public function testOutputOfGetFights()
+    {
+        $logId = 't78PdgTcRFDvrfKC';
+        $fights = $this->service->getRaidFights($logId);
+
+        foreach ($fights as $fight) {
+            $this->assertArrayHasKey('start', $fight);
+            $this->assertArrayHasKey('end', $fight);
+            $this->assertArrayHasKey('boss_id', $fight);
+        }
+
+        // var_dump($fights);
     }
 }
