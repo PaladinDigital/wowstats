@@ -106,13 +106,31 @@ class ImportFight implements ShouldQueue
 
     public function mapBossId($bossId, $source = 'wcl')
     {
+        $bosses = [
+            // The Nighthold
+            1849 => 102263, // Skorpyron
+            1865 => 104415, // Chronomatic Anomoly
+
+            // Antorus
+            2076 => 123371, // Garothi
+            2074 => 126916, // Felhounds
+            2064 => 124393, // Portal Keeper
+            2075 => 131561, // Eonar
+            2070 => 122367, // High Command
+
+            2082 => 125055, // 'Imonar the Soulhunter'
+            2088 => 125050, // "Kin'garoth"
+
+            2073 => 122468, // Coven
+            2069 => 125075, // 'Varimathras'
+            2063 => 124691, // 'Aggramar'
+
+            2092 => 124828, // 'Argus the Unmaker'
+        ];
+
         if ($source === 'wcl') {
-            switch ($bossId) {
-                case 2076: $bossId = 123371; break; // Antorus: Garothi
-                case 2074: $bossId = 126916; break; // Antorus: Felhounds
-                case 2064: $bossId = 124393; break; // Antorus: Portal Keeper
-                case 2075: $bossId = 131561; break; // Antorus: Eonar
-                case 2070: $bossId = 122367; break; // Antorus: High Command
+            if (array_key_exists($bossId, $bosses)) {
+                return $bosses[$bossId];
             }
         }
 
