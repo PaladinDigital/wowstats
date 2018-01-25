@@ -14,7 +14,6 @@
             $killed = $fight->killed;
             $duration = $fight->length;
             $duration = gmdate('i:s', $duration);
-            die;
         ?>
         <tr<?php if ($killed === 1) { echo ' class="killed"'; } ?>>
             <td><a href="{{ route('raid.fight.view', [$raid->id, $fight->id]) }}">{{ $fight->boss->name }}</a></td>
