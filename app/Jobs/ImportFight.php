@@ -52,15 +52,17 @@ class ImportFight implements ShouldQueue
 
         if ($this->fight['kill']) {
             $bossHealth = 0;
+            $kill = true;
         } else {
             $bossHealth = $this->fight['fightPercentage'];
+            $kill = false;
         }
 
         // Create the fight.
         $fight = RaidFight::create([
             'raid_id' => $this->raidId,
             'boss_id' => $bossId,
-            'killed' => $this->fight['kill'],
+            'killed' => $kill,
             'length' => $duration,
             'logs_url' => $this->logId,
             'boss_health' => $bossHealth
