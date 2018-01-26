@@ -39,4 +39,6 @@
         'done' => 'reload',
     ];
 ?>
+@can('create', \WoWStats\Models\Raid::class)
 @include('bootstrap4.components._createModal', $raidModal)
+@endcan

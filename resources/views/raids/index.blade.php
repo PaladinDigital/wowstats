@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Raids <button class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#createRaidModal"><i class="fa fa-plus"></i> Create Raid</button></h1>
+    <h1>Raids @can('create', \WoWStats\Models\Raid::class) <button class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#createRaidModal"><i class="fa fa-plus"></i> Create Raid</button> @endcan</h1>
     @include('raids._createModal')
 
     @if (count($raids) > 0)
