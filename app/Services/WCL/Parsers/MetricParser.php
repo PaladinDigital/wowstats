@@ -67,15 +67,18 @@ class MetricParser
             $icon = $entry->icon;
             $class = $entry->type;
 
-            if ($class === 'pet' || $class === 'NPC' || $char === 'NPC') {
-                continue;
-            }
+            $skipClasses = [ 'NPC', 'pet' ];
+            if (in_array($class, $skipClasses)) { continue; }
+
+            $skipNames = [ 'NPC', 'Hati' ];
+            if (in_array($char, $skipNames)) { continue; }
 
             try {
                 $characterClass = CharacterClass::name($class)->firstOrFail();
                 $classId = $characterClass->id;
             } catch (\Exception $e) {
                 Log::debug($char . ' has no item level for metric: ' . $metric);
+                continue;
             }
 
             if (!isset($entry->itemLevel)) {
