@@ -16,7 +16,7 @@
                             @if ($i < 10)
                                 <tr class="{{ $entry['css'] }}">
                                     <td>{{ $entry['character'] }}</td>
-                                    <td>{{ $entry['dps'] }}</td>
+                                    <td>{{ number_format($entry['dps'], 0) }}</td>
                                 </tr>
                                 <?php $i++; ?>
                             @endif
@@ -40,7 +40,7 @@
                             @if ($h < 10)
                                 <tr class="{{ $entry['css'] }}">
                                     <td>{{ $entry['character'] }}</td>
-                                    <td>{{ $entry['hps'] }}</td>
+                                    <td>{{ number_format($entry['hps'], 0) }}</td>
                                 </tr>
                                 <?php $h++; ?>
                             @endif
@@ -61,7 +61,7 @@
                         @foreach ($dt_leaderboard as $entry)
                             <tr class="{{ $entry['css'] }}">
                                 <td>{{ $entry['character'] }}</td>
-                                <td>{{ $entry['damage_taken'] }}</td>
+                                <td>{{ number_format($entry['damage_taken'], 0) }}</td>
                             </tr>
                         @endforeach
                         </tbody>
