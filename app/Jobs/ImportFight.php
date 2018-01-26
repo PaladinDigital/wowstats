@@ -2,7 +2,7 @@
 
 namespace WoWStats\Jobs;
 
-use Log;
+use Illuminate\Support\Facades\Log;
 use WoWStats\Models\Character;
 use WoWStats\Models\CharacterStats;
 use WoWStats\Models\Metric;
