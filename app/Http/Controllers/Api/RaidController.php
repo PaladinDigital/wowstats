@@ -2,6 +2,7 @@
 
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use WoWStats\Http\Controllers\Controller;
 use Carbon\Carbon;
 use WoWStats\Jobs\ImportFight;
@@ -48,6 +49,10 @@ class RaidController extends Controller
             $fights = $service->getRaidFights($logId);
 
             foreach ($fights as $fight) {
+                if (config('app.debug')) {
+                    Log::debug('Dispatching ImportFight for');
+                    Log::debug($fight);
+                }
                 $job = new ImportFight($raid->id, $logId, $fight);
                 $this->dispatch($job);
             }
