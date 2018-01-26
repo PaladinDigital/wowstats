@@ -9,7 +9,7 @@ class AddBossHealthPercentToRaidFightsTable extends Migration
     public function up()
     {
         Schema::table('raid_fights', function ($table) {
-            $table->float('boss_health', 3, 2)->default(0);
+            $table->float('boss_health', 4, 2)->default(0);
         });
     }
 
