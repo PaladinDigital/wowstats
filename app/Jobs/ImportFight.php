@@ -2,7 +2,6 @@
 
 namespace WoWStats\Jobs;
 
-use Illuminate\Support\Facades\Log;
 use WoWStats\Models\Character;
 use WoWStats\Models\CharacterStats;
 use WoWStats\Models\Metric;
@@ -43,21 +42,10 @@ class ImportFight implements ShouldQueue
      */
     public function handle()
     {
-        $debug = env('APP_DEBUG', true);
-
-        if ($debug) {
-            Log::debug('Importing fight');
-        }
-
         // Parse the raids fights.
         $start = $this->fight['start'];
         $end = $this->fight['end'];
         $bossId = $this->mapBossId($this->fight['boss_id']);
-
-        if ($debug) {
-            Log::debug('WCL Boss ID: ' . $this->fight['boss_id']);
-            Log::debug('WoW Boss ID: ' . $bossId);
-        }
 
         $duration = $end - $start;
         $duration = number_format($duration / 1000, 2, '.', '');
@@ -70,11 +58,6 @@ class ImportFight implements ShouldQueue
             $kill = false;
         }
 
-        if ($debug) {
-            $status = ($kill === true) ? 'killed' : 'wipe';
-            Log::debug('Kill: ' . $status);
-        }
-
         // Create the fight.
         $raidFightData = [
             'raid_id' => $this->raidId,
@@ -84,11 +67,6 @@ class ImportFight implements ShouldQueue
             'logs_url' => $this->logId,
             'boss_health' => $bossHealth
         ];
-
-        if ($debug) {
-            Log::debug('Fight Data');
-            Log::debug($raidFightData);
-        }
 
         $fight = RaidFight::create($raidFightData);
 
