@@ -11,19 +11,19 @@ a {
   color: #970c09;
 }
 
-.navbar-default {
+.navbar {
   background-color: #390000;
 }
 
-.navbar-default a {
+.navbar a {
   color: #ececec;
 }
 
-.navbar-default .navbar-brand {
+.navbar .navbar-brand {
   color: #ececec;
 }
 
-.navbar-default .navbar-nav > li > a {
+.navbar .navbar-nav > li > a {
   color: #ececec;
 }
 
@@ -31,13 +31,13 @@ h1, h2, h3, h4 {
   color: #ececec;
 }
 
-.panel-default {
+.card {
   border-color: #390000;
   background: #111;
   color: #ececec;
 }
 
-.panel-default > .panel-heading {
+.card-header {
   background-color: #390000;
   border-color: #390000;
   color: #ececec;
