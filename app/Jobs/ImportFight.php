@@ -58,6 +58,9 @@ class ImportFight implements ShouldQueue
             $kill = false;
         }
 
+        // Create the metrics for the fight.
+        $metricData = $this->service->getFightData($start, $end);
+
         // Create the fight.
         $raidFightData = [
             'raid_id' => $this->raidId,
@@ -69,9 +72,6 @@ class ImportFight implements ShouldQueue
         ];
 
         $fight = RaidFight::create($raidFightData);
-
-        // Create the metrics for the fight.
-        $metricData = $this->service->getFightData($start, $end);
 
         foreach ($metricData as $character => $data) {
             // IF the character doesn't exist create them
