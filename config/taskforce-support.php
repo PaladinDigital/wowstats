@@ -2,7 +2,7 @@
 
 return array(
 
-    'layout' => 'layouts.master',
+    'layout' => 'layouts.app',
 
     'frontend' => [
 
