@@ -5,8 +5,9 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Taskforcedev\LaravelSupport\Http\Controllers\Controller as LaravelSupportController;
 
-class Controller extends BaseController
+class Controller extends LaravelSupportController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -21,6 +22,8 @@ class Controller extends BaseController
             'appName'   => $appName,
             'theme'     => $theme
         ];
+
+        $data = $this->buildData($data);
 
         if (Auth::check()) {
             $data['user'] = Auth::user();
