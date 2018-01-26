@@ -1,6 +1,7 @@
 <?php namespace WoWStats\Http\Controllers;
 
 use \Auth;
+use WoWStats\User;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -27,6 +28,8 @@ class Controller extends LaravelSupportController
 
         if (Auth::check()) {
             $data['user'] = Auth::user();
+        } else {
+            $data['user'] = new User();
         }
 
         return $data;
