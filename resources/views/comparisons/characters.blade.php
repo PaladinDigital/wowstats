@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends($layout)
 
 @section('content')
 @if (isset($hps_comparison))

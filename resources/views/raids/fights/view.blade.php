@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends($layout)
 
 @section('content')
     <h1>Raid: {{ $raid->zone->name }} ({{ $raid->difficulty() }}) @include('raids.fights.view._lock')</h1>

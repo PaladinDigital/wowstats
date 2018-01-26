@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends($layout)
 
 @section('content')
     <h1>Characters @include('characters._createButton')</h1>

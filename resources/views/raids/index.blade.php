@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends($layout)
 
 @section('content')
     <h1>Raids @can('create', \WoWStats\Models\Raid::class) <button class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#createRaidModal"><i class="fa fa-plus"></i> Create Raid</button> @endcan</h1>
