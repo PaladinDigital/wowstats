@@ -43,7 +43,7 @@ class ImportFight implements ShouldQueue
      */
     public function handle()
     {
-        $debug = config('app.debug');
+        $debug = env('APP_DEBUG', true);
 
         if ($debug) {
             Log::debug('Importing fight');
