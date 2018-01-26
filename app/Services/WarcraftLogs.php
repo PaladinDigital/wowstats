@@ -86,10 +86,11 @@ class WarcraftLogs
                         $data['kill'] = false;
                         // WLogs Percentages are 4 digi numbers
                         if (strlen((string)$fight->fightPercentage) > 3) {
-                            $data['percent'] = $fight->fightPercentage / 100;
+                            $percent = $fight->fightPercentage / 100;
                         } else {
-                            $data['percent'] = $fight->fightPercentage;
+                            $percent = $fight->fightPercentage;
                         }
+                        $data['percent'] = number_format($percent, 2);
                     }
 
                     $fights[] = $data;
