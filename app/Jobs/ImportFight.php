@@ -21,6 +21,7 @@ class ImportFight implements ShouldQueue
     protected $logId;
     protected $fight;
     public $service;
+    public $timeout = 240;
 
     /**
      * Create a new job instance.
