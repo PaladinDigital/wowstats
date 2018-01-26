@@ -2,6 +2,7 @@
 
 namespace WoWStats\Jobs;
 
+use Log;
 use WoWStats\Models\Character;
 use WoWStats\Models\CharacterStats;
 use WoWStats\Models\Metric;
@@ -42,10 +43,21 @@ class ImportFight implements ShouldQueue
      */
     public function handle()
     {
+        $debug = config('app.debug');
+
+        if ($debug) {
+            Log::debug('Importing fight');
+        }
+
         // Parse the raids fights.
         $start = $this->fight['start'];
         $end = $this->fight['end'];
         $bossId = $this->mapBossId($this->fight['boss_id']);
+
+        if ($debug) {
+            Log::debug('WCL Boss ID: ' . $this->fight['boss_id']);
+            Log::debug('WoW Boss ID: ' . $bossId);
+        }
 
         $duration = $end - $start;
         $duration = number_format($duration / 1000, 2, '.', '');
@@ -54,19 +66,31 @@ class ImportFight implements ShouldQueue
             $bossHealth = 0;
             $kill = true;
         } else {
-            $bossHealth = $this->fight['fightPercentage'];
+            $bossHealth = $this->fight['percent'];
             $kill = false;
         }
 
+        if ($debug) {
+            $status = ($kill === true) ? 'killed' : 'wipe';
+            Log::debug('Kill: ' . $status);
+        }
+
         // Create the fight.
-        $fight = RaidFight::create([
+        $raidFightData = [
             'raid_id' => $this->raidId,
             'boss_id' => $bossId,
             'killed' => $kill,
             'length' => $duration,
             'logs_url' => $this->logId,
             'boss_health' => $bossHealth
-        ]);
+        ];
+
+        if ($debug) {
+            Log::debug('Fight Data');
+            Log::debug($raidFightData);
+        }
+
+        $fight = RaidFight::create($raidFightData);
 
         // Create the metrics for the fight.
         $metricData = $this->service->getFightData($start, $end);
@@ -106,6 +130,14 @@ class ImportFight implements ShouldQueue
         }
     }
 
+    /**
+     * Convert Warcraft Logs Boss Id into WoW / WoWHead Boss Ids.
+     *
+     * @param integer $bossId WarcraftLogs Boss ID.
+     * @param string $source Mapping Source.
+     *
+     * @return mixed
+     */
     public function mapBossId($bossId, $source = 'wcl')
     {
         $bosses = [
