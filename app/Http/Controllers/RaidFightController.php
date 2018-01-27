@@ -33,7 +33,7 @@ class RaidFightController extends Controller
         $data['fight'] = $fight;
         $data['raid'] = Raid::with('zone')->where('id', $raid_id)->first();
 
-        $stats = CharacterStats::fight($fight->id)->get();
+        $stats = CharacterStats::fight($fight->id)->orderByValue()->get();
         $data['stats'] = CharacterStats::buildFightStats($stats);
         $data['deaths'] = CharacterStats::buildFightStatsTable($stats, 'deaths');
         $data['interrupts'] = CharacterStats::buildFightStatsTable($stats, 'interrupts');
