@@ -85,6 +85,11 @@ class CharacterStats extends Model
         return $query->where('fight_id', $fight_id);
     }
 
+    public function scopeOrderByValue($query)
+    {
+        return $query->orderBy('value', 'DESC');
+    }
+
     // Scope by Character
     public function scopeForCharacter($query, $character)
     {
