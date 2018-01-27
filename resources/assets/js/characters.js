@@ -42,3 +42,24 @@ function deleteCharacter(id) {
             })
     }
 }
+
+function updateSpec(select, charId) {
+
+  var data = {
+    "_token": window.Laravel.csrfToken,
+    "_method": "post",
+    "id": charId,
+  }
+
+  data[select.name] = select.value;
+  console.log(data);
+
+  var url = window.Laravel.base_url + '/character/spec';
+
+  console.log(url);
+
+  $.post(url, data)
+  .done(function() {
+    window.location.reload();
+  })
+}

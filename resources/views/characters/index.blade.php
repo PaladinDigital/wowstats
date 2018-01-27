@@ -26,10 +26,13 @@
                     <td>{{ $c->offSpec() }}</td>
                     <td>
                         @if ($c->hasLink('armory'))
-                            <a href="{{ $c->getLink('armory') }}">Armory</a>
+                            <a href="{{ $c->getLink('armory') }}"><img class="profile-icon" src="{{ asset('images/icons/wow-favicon.png') }}" alt="{{ $c->name }}'s Armory Profile" /></a>
                         @endif
                         @if ($c->hasLink('askmrrobot'))
-                            <a href="{{ $c->getLink('askmrrobot') }}">Armory</a>
+                            <a href="{{ $c->getLink('askmrrobot') }}"><img class="profile-icon" src="{{ asset('images/icons/amr-favicon.png') }}" alt="{{ $c->name }}'s AskMrRobot Profile" /></a>
+                        @endif
+                        @if ($c->hasLink('raider.io'))
+                            <a href="{{ $c->getLink('raider.io') }}"><img class="profile-icon" src="{{ asset('images/icons/raiderio-favicon.ico') }}" alt="{{ $c->name }}'s Raider.io Profile" /></a>
                         @endif
                     </td>
                 </tr>

@@ -1,5 +1,7 @@
 /* Horde Colours */
+
 /* Theme Colours */
+
 a {
   color: blue;
 }
@@ -27,7 +29,10 @@ a {
   color: #f4d032;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   color: #f4d032;
 }
 
@@ -62,3 +67,4 @@ h1, h2, h3, h4 {
 #addAttendeeModal option:hover {
   background: #111 !important;
 }
+

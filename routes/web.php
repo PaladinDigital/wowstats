@@ -46,8 +46,9 @@ Route::post('/character/stats',    [ 'as' => 'api.post.character.stats', 'uses' 
 Route::delete('/admin/stats/{id}', [ 'as' => 'admin.stat.delete',        'uses' => 'Api\CharacterStatsController@delete' ]);
 Route::get('characters/{id}',      [ 'as' => 'character.view',           'uses' => 'CharactersController@view'           ]);
 
-Route::post('/character/claim',   ['as' => 'character.claim',   'uses' => 'CharactersController@claim'   ]);
-Route::post('/character/unclaim', ['as' => 'character.unclaim', 'uses' => 'CharactersController@unclaim' ]);
+Route::post('/character/claim',   ['as' => 'character.claim',   'uses' => 'CharactersController@claim'        ]);
+Route::post('/character/unclaim', ['as' => 'character.unclaim', 'uses' => 'CharactersController@unclaim'      ]);
+Route::post('/character/spec',    ['as' => 'character.spec',    'uses' => 'Api\CharacterController@storeSpec' ]);
 
 /* Comparisons */
 Route::get('leaderboards',            ['uses' => 'ComparisonController@leaderboards'      ]);

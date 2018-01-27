@@ -2,10 +2,13 @@
 @import "variables";
 
 // Bootstrap
-@import "../../../node_modules/bootstrap/scss/bootstrap";
-//@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap/dist/css/bootstrap.css";
 
 @import "wow-classes/classes";
+
+body {
+  background: $body-bg;
+}
 
 li {
   list-style: none;
@@ -26,4 +29,13 @@ li {
 
 th {
   color: #ececec;
+}
+
+select.form-control {
+  background-color: $body-bg;
+}
+
+.profile-icon {
+  width: 24px;
+  height: 24px;
 }

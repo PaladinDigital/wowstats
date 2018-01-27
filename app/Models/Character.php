@@ -159,11 +159,13 @@ class Character extends Model
         $realm = config('wow.guild.realm', '');
 
         $armory = "http://{$region}.battle.net/wow/en/character/{$realm}/{$name}/simple";
-        $mrrobot = "http://www.askmrrobot.com/wow/gear/{$region}/{$realm}/{$name}";
+        $mrRobot = "http://www.askmrrobot.com/wow/gear/{$region}/{$realm}/{$name}";
+        $raiderIo = "https://raider.io/characters/{$region}/{$realm}/{$name}";
 
         return [
             'armory' => $armory,
-            'askmrrobot' => $mrrobot,
+            'askmrrobot' => $mrRobot,
+            'raider.io' => $raiderIo
         ];
     }
 
