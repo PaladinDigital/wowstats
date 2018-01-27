@@ -21,7 +21,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="{{ url('/home') }}">My Account</a>
 
                             <a class="dropdown-item" href="{{ url('/logout') }}"
                                onclick="event.preventDefault();
