@@ -2,6 +2,7 @@
 
 namespace WoWStats\Widgets;
 
+use Cache;
 use DB;
 use WoWStats\Models\RaidZone;
 
@@ -9,13 +10,22 @@ class Progression
 {
     public function getData()
     {
-        return DB::table('raid_fights')
+        $cacheKey = 'guild.progression';
+
+        if (Cache::has($cacheKey)) {
+            return Cache::get($cacheKey);
+        }
+
+        $progress = DB::table('raid_fights')
             ->join('raids', 'raids.id', '=', 'raid_fights.raid_id')
             ->join('raid_zones', 'raid_zones.id', '=', 'raids.raidzone_id')
             ->select('raids.difficulty_id', 'raid_fights.boss_id', 'raid_zones.name', 'raid_zones.id as zone_id')
             ->where('raid_fights.killed', 1)
             ->groupBy('raids.difficulty_id', 'raid_fights.boss_id', 'raid_zones.name', 'raid_zones.id')
             ->get();
+
+        Cache::put($cacheKey);
+        return $progress;
     }
 
     public function buildProgressionData()
