@@ -1,16 +1,68 @@
 @extends($layout)
 
 @section('content')
-    <h1 class="{{ $character->cssClass() }}">{{ $character->name }}
-        @include('characters.claim._button')</h1>
-    <p>Main Spec: {{ $character->mainSpec() }}, Off-Spec: {{ $character->offSpec() }}</p>
+<?php
+$cssClass = $character->cssClass();
+$dpsOnlyChars = ['mage','warlock', 'rogue', 'hunter'];
+$isDpsOnly = in_array($cssClass, $dpsOnlyChars);
+$mainSpec = $character->mainSpec();
+$offSpec = $character->offSpec();
+if ($isDpsOnly && $mainSpec === 'Unknown') {
+    $mainSpec = 'DPS';
+}
+?>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h1 class="{{ $cssClass }}">{{ $character->name }}</h1>
+            <ul class="list-group">
+                <li class="list-group-item">Main Spec: {{ $mainSpec }}</li>
+                @if (!$isDpsOnly)
+                <li class="list-group-item">Off-Spec: {{ $offSpec }}</li>
+                @endif
+            </ul>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @component('bootstrap4.components._panel')
+                @slot('header')
+                    Claim Character
+                @endslot
+                @slot('body')
+                    @include('characters.claim._button')
+                @endslot
+            @endcomponent
+
+                @component('bootstrap4.components._panel')
+                    @slot('header')
+                        Stats: Recent Fights (Last 10 Fights)
+                    @endslot
+                    <ul class="list-group list-group-flush">
+                        @if ($recentStats['deaths'] > 0)
+                            <li class="list-group-item">Deaths: {{ $recentStats['deaths'] }}</li>
+                        @endif
+                        @if (array_key_exists('average_hps', $recentStats))
+                            <li class="list-group-item">Average HPS: {{ $recentStats['average_hps'] }}</li>
+                        @endif
+                        @if (array_key_exists('max_hps', $recentStats))
+                            <li class="list-group-item">Max HPS: {{ $recentStats['max_hps'] }}</li>
+                        @endif
+                        @if (array_key_exists('average_dps', $recentStats))
+                            <li class="list-group-item">Average DPS: {{ $recentStats['average_dps'] }}</li>
+                        @endif
+                        @if (array_key_exists('max_dps', $recentStats))
+                            <li class="list-group-item">Max DPS: {{ $recentStats['max_dps'] }}</li>
+                        @endif
+                    </ul>
+                @endcomponent
+        </div>
+    </div>
 
     <?php
         // Set variables as default if not set.
         $heal_chart_heights = 0;
         $dps_chart_heights = 0;
         $tank_chart_heights = 0;
-        switch($character->mainSpec()) {
+        switch($mainSpec) {
             case 'Healer':
                 $primary_chart_1 = 'hps_chart';
                 $primary_chart_2 = 'healing_chart';
@@ -31,7 +83,8 @@
                 $primary_chart_2 = '';
                 break;
         }
-        switch($character->offSpec()) {
+
+        switch($offSpec) {
             case 'Healer':
                 $secondary_chart_1 = 'hps_chart';
                 $secondary_chart_2 = 'healing_chart';
@@ -53,33 +106,6 @@
                 break;
         }
     ?>
-
-    <?php /* Recent Fight Stats */ ?>
-    <div class="row">
-        <div class="col-xs-12 col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">Stats: Recent Fights (Last 10 Fights)</div>
-                <div class="panel-body">
-                    @if ($recentStats['deaths'] > 0)
-                        <p>Deaths: {{ $recentStats['deaths'] }}</p>
-                    @endif
-                    @if (array_key_exists('average_hps', $recentStats))
-                        <p>Average HPS: {{ $recentStats['average_hps'] }}</p>
-                    @endif
-                    @if (array_key_exists('max_hps', $recentStats))
-                        <p>Max HPS: {{ $recentStats['max_hps'] }}</p>
-                    @endif
-                    @if (array_key_exists('average_dps', $recentStats))
-                        <p>Average DPS: {{ $recentStats['average_dps'] }}</p>
-                    @endif
-                    @if (array_key_exists('max_dps', $recentStats))
-                        <p>Max DPS: {{ $recentStats['max_dps'] }}</p>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 
     <?php /* Primary Charts */ ?>

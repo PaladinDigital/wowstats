@@ -1,16 +1,11 @@
-<?php
-if (!isset($panelHeader) && !isset($panelBody)) {
-    return;
-}
-?><div class="card">
-    @if(isset($panelHeader))
+<div class="card">
     <div class="card-header">
-        {{ $panelHeader }}
+        {!! $header !!}
     </div>
-    @endif
-    @if(isset($panelBody))
+    {!! $slot !!}
+    @if(isset($body))
     <div class="card-body">
-        {{ $panelBody }}
+        {!! $body !!}
     </div>
     @endif
 </div>
