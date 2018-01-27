@@ -6,9 +6,8 @@
     <div class="row">
         <?php /* DPS */ ?>
         <div class="col-xs-12 col-md-6 col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">DPS (Top 10)</div>
-                <div class="panel-body">
+            @component('bootstrap4.components._panel')
+                @slot('header')DPS (Top 10)@endslot
                     <table class="table">
                         <tbody>
                         <?php $i = 0; ?>
@@ -23,16 +22,13 @@
                         @endforeach
                         </tbody>
                     </table>
-                </div>
-            </div>
-
+            @endcomponent
         </div>
 
         <?php /* HPS */ ?>
         <div class="col-xs-12 col-md-6 col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">HPS (Top 10)</div>
-                <div class="panel-body">
+            @component('bootstrap4.components._panel')
+                @slot('header')HPS (Top 10)@endslot
                     <table class="table">
                         <tbody>
                         <?php $h = 0; ?>
@@ -47,28 +43,24 @@
                         @endforeach
                         </tbody>
                     </table>
-                </div>
-            </div>
+            @endcomponent
         </div>
 
         <?php /* Damage Taken */ ?>
         <div class="col-xs-12 col-md-6 col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">Damage Taken</div>
-                <div class="panel-body">
-                    <table class="table">
-                        <tbody>
-                        @foreach ($dt_leaderboard as $entry)
-                            <tr class="{{ $entry['css'] }}">
-                                <td>{{ $entry['character'] }}</td>
-                                <td>{{ number_format($entry['damage_taken'], 0) }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            @component('bootstrap4.components._panel')
+                @slot('header')Damage Taken (Tanks)@endslot
+                <table class="table">
+                    <tbody>
+                    @foreach ($dt_leaderboard as $entry)
+                        <tr class="{{ $entry['css'] }}">
+                            <td>{{ $entry['character'] }}</td>
+                            <td>{{ number_format($entry['damage_taken'], 0) }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @endcomponent
         </div>
     </div>
-
 @endsection
