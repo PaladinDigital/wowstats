@@ -23,6 +23,7 @@ if ($isDpsOnly && $mainSpec === 'Unknown') {
             </ul>
         </div>
         <div class="col-xs-12 col-md-6">
+            @if (!$character->isOwned() || $character->isUsers())
             @component('bootstrap4.components._panel')
                 @slot('header')
                     Claim Character
@@ -31,6 +32,7 @@ if ($isDpsOnly && $mainSpec === 'Unknown') {
                     @include('characters.claim._button')
                 @endslot
             @endcomponent
+            @endif
 
             @include('characters.widgets._recent-stats')
         </div>
