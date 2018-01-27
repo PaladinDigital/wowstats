@@ -8,9 +8,24 @@ class RaidZone extends Model
 
     protected $hidden = [];
 
+    public function getBossCount($zoneId)
+    {
+        return count(RaidBoss::where('raidzone_id', $zoneId)->get());
+    }
+
+    public function scopeById($query, $zoneId)
+    {
+        return $query->where('id', $zoneId);
+    }
+
+    public static function bossCount($zoneId)
+    {
+        return (new self)->getBossCount($zoneId);
+    }
+
     public static function exists($zone_id)
     {
-        $zone = RaidZone::where('id', $zone_id)->first();
+        $zone = self::byId($zone_id)->first();
         if (count($zone) > 0) {
             return true;
         } else {
