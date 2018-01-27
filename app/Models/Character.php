@@ -1,7 +1,7 @@
 <?php namespace WoWStats\Models;
 
+use Auth;
 use Exception;
-use WoWStats\Models\WoW\Classes;
 
 class Character extends Model
 {
@@ -18,6 +18,20 @@ class Character extends Model
         'os_role_id',
         'user_id'
     ];
+
+    public function isOwned()
+    {
+        return $this->user_id !== NULL;
+    }
+
+    public function isUsers()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            return $this->user_id === $user->id;
+        }
+        return false;
+    }
 
     public function stats()
     {
