@@ -24,7 +24,7 @@ class Progression
             ->groupBy('raids.difficulty_id', 'raid_fights.boss_id', 'raid_zones.name', 'raid_zones.id')
             ->get();
 
-        Cache::put($cacheKey);
+        Cache::put($cacheKey, $progress);
         return $progress;
     }
 
