@@ -1,3 +1,8 @@
+<?php
+if (!isset($layout)) {
+    $layout = 'layouts.app';
+}
+?>
 @extends($layout)
 
 @section('content')
