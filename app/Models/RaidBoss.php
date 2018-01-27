@@ -12,10 +12,10 @@ class RaidBoss extends Model
         return (count($boss) > 0);
     }
 
-    public static function getRaidBosses($raid_id)
+    public static function getRaidBosses($zoneId)
     {
         try {
-            return RaidBoss::where('raidzone_id', $raid_id)->get();
+            return RaidBoss::where('raidzone_id', $zoneId)->get();
         } catch (Exception $e) {
             return false;
         }
