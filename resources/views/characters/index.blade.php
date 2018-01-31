@@ -7,7 +7,7 @@
     @endif
 
     @if (count($characters) > 0)
-        <table class="table characters">
+        <table class="table table-striped characters">
             <thead>
             <tr>
                 <th>Character</th>
