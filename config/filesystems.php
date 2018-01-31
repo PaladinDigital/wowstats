@@ -54,6 +54,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'blog' => [
+            'driver' => 'local',
+            'root' => public_path('images/blog'),
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => 'your-key',
