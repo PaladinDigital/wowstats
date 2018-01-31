@@ -1,6 +1,6 @@
-<?php namespace WoWStats\Http\Controllers;
+<?php
 
-use Illuminate\Http\Request;
+namespace WoWStats\Http\Controllers;
 
 class HomeController extends Controller
 {
@@ -11,6 +11,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('auth');
     }
 
@@ -21,7 +22,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = $this->getData();
-        return view('home', $data);
+        return view('home');
     }
 }

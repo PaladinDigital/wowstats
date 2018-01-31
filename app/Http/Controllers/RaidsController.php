@@ -4,10 +4,6 @@ use Illuminate\Http\Request;
 
 class RaidsController extends Controller
 {
-    public function __construct()
-    {
-    }
-
     public function index(Request $request)
     {
         $data = $this->getData();
