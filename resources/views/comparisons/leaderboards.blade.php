@@ -8,7 +8,7 @@
         <div class="col-xs-12 col-md-6 col-lg-4">
             @component('bootstrap4.components._panel')
                 @slot('header')DPS (Top 10)@endslot
-                    <table class="table">
+                    <table class="table table-striped">
                         <tbody>
                         <?php $i = 0; ?>
                         @foreach ($dps_leaderboard as $entry)
@@ -29,7 +29,7 @@
         <div class="col-xs-12 col-md-6 col-lg-4">
             @component('bootstrap4.components._panel')
                 @slot('header')HPS (Top 10)@endslot
-                    <table class="table">
+                    <table class="table table-striped">
                         <tbody>
                         <?php $h = 0; ?>
                         @foreach ($hps_leaderboard as $entry)
@@ -50,7 +50,7 @@
         <div class="col-xs-12 col-md-6 col-lg-4">
             @component('bootstrap4.components._panel')
                 @slot('header')Damage Taken (Tanks)@endslot
-                <table class="table">
+                <table class="table table-striped">
                     <tbody>
                     @foreach ($dt_leaderboard as $entry)
                         <tr class="{{ $entry['css'] }}">
