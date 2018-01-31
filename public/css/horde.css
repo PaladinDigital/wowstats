@@ -2,31 +2,78 @@
 
 /* Theme Colours */
 
-a {
-  color: #970c09;
+.list-group-item {
+  color: #111;
 }
 
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus,
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-  color: #970c09;
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #222;
 }
 
-.navbar {
-  background-color: #390000;
+.table thead th {
+  color: #ececec;
+  border-top: 1px solid #af0e0a;
+  border-bottom: 2px solid #af0e0a;
 }
 
-.navbar a {
+.admin-widgets {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.admin-stat-widget {
+  padding: 10px 20px;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 5px;
+}
+
+.admin-stat-widget .stat-title,
+.admin-stat-widget .stat-value {
   color: #ececec;
 }
 
-.navbar .navbar-brand {
-  color: #ececec;
+.admin-stat-widget .stat-title {
+  font-size: 0.8em;
 }
 
-.navbar .navbar-nav > li > a {
-  color: #ececec;
+.admin-stat-widget .stat-value {
+  font-size: 1.6em;
+  text-align: center;
+  padding-bottom: 12px;
+}
+
+.admin-stat-widget:nth-of-type(5n+5) {
+  background-color: #c0392b;
+}
+
+.admin-stat-widget:nth-of-type(5n+4) {
+  background-color: #27ae60;
+}
+
+.admin-stat-widget:nth-of-type(5n+3) {
+  background-color: #d35400;
+}
+
+.admin-stat-widget:nth-of-type(5n+2) {
+  background-color: #9b59b6;
+}
+
+.admin-stat-widget:nth-of-type(5n+1) {
+  background-color: #3498db;
 }
 
 h1,
@@ -36,16 +83,15 @@ h4 {
   color: #ececec;
 }
 
-.card {
-  border-color: #390000;
-  background: #111;
-  color: #ececec;
+a {
+  color: #970c09;
 }
 
-.card-header {
-  background-color: #390000;
-  border-color: #390000;
-  color: #ececec;
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #970c09;
 }
 
 .modal-header {
@@ -66,5 +112,37 @@ h4 {
 
 #addAttendeeModal option:hover {
   background: #111 !important;
+}
+
+.navbar {
+  background-color: #390000;
+}
+
+.navbar a {
+  color: #ececec;
+}
+
+.navbar .navbar-brand {
+  color: #ececec;
+}
+
+.navbar .navbar-nav > li > a {
+  color: #ececec;
+}
+
+.card {
+  border-color: #390000;
+  background: #111;
+  color: #ececec;
+}
+
+.card-header {
+  background-color: #390000;
+  border-color: #390000;
+  color: #ececec;
+}
+
+body {
+  color: #ececec;
 }
 

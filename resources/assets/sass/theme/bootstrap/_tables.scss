@@ -1,0 +1,14 @@
+.table-striped > tbody > tr:nth-of-type(odd)
+{
+  background-color: #222;
+}
+
+.table {
+  thead {
+    th {
+      color: #ececec;
+      border-top: 1px solid lighten($colorPrimaryLight, 5%);
+      border-bottom: 2px solid lighten($colorPrimaryLight, 5%);
+    }
+  }
+}

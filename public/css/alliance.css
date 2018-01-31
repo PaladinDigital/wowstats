@@ -2,6 +2,87 @@
 
 /* Theme Colours */
 
+.list-group-item {
+  color: #111;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #222;
+}
+
+.table thead th {
+  color: #ececec;
+  border-top: 1px solid #4455ba;
+  border-bottom: 2px solid #4455ba;
+}
+
+.admin-widgets {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.admin-stat-widget {
+  padding: 10px 20px;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 5px;
+}
+
+.admin-stat-widget .stat-title,
+.admin-stat-widget .stat-value {
+  color: #ececec;
+}
+
+.admin-stat-widget .stat-title {
+  font-size: 0.8em;
+}
+
+.admin-stat-widget .stat-value {
+  font-size: 1.6em;
+  text-align: center;
+  padding-bottom: 12px;
+}
+
+.admin-stat-widget:nth-of-type(5n+5) {
+  background-color: #c0392b;
+}
+
+.admin-stat-widget:nth-of-type(5n+4) {
+  background-color: #27ae60;
+}
+
+.admin-stat-widget:nth-of-type(5n+3) {
+  background-color: #d35400;
+}
+
+.admin-stat-widget:nth-of-type(5n+2) {
+  background-color: #9b59b6;
+}
+
+.admin-stat-widget:nth-of-type(5n+1) {
+  background-color: #3498db;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #ececec;
+}
+
 a {
   color: blue;
 }
@@ -11,41 +92,6 @@ a {
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
   color: blue;
-}
-
-.navbar {
-  background-color: #1f2271;
-}
-
-.navbar a {
-  color: #f4d032;
-}
-
-.navbar .navbar-brand {
-  color: #f4d032;
-}
-
-.navbar .navbar-nav > li > a {
-  color: #f4d032;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  color: #f4d032;
-}
-
-.card {
-  border-color: #1f2271;
-  background: #111;
-  color: #f4d032;
-}
-
-.card-header {
-  background-color: #1f2271;
-  border-color: #1f2271;
-  color: #f4d032;
 }
 
 .modal-header {
@@ -66,5 +112,37 @@ h4 {
 
 #addAttendeeModal option:hover {
   background: #111 !important;
+}
+
+.navbar {
+  background-color: #1f2271;
+}
+
+.navbar a {
+  color: #f4d032;
+}
+
+.navbar .navbar-brand {
+  color: #f4d032;
+}
+
+.navbar .navbar-nav > li > a {
+  color: #f4d032;
+}
+
+.card {
+  border-color: #1f2271;
+  background: #111;
+  color: #f4d032;
+}
+
+.card-header {
+  background-color: #1f2271;
+  border-color: #1f2271;
+  color: #f4d032;
+}
+
+body {
+  color: #ececec;
 }
 

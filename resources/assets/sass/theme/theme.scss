@@ -1,5 +1,11 @@
-@import "links";
-@import "navbar";
+@import "bootstrap/lists";
+@import "bootstrap/tables";
+@import "admin";
 @import "headings";
-@import "panels";
+@import "links";
 @import "modal";
+@import "navbar";
+@import "panels";
+body {
+  color: $body-color;
+}

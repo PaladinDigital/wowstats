@@ -8,6 +8,7 @@
 
 body {
   background: $body-bg;
+  color: $body-color;
 }
 
 li {
@@ -20,15 +21,6 @@ li {
     color: $brand-success;
     font-weight: bold;
   }
-}
-
-.table-striped > tbody > tr:nth-of-type(odd)
-{
-  background-color: #222;
-}
-
-th {
-  color: #ececec;
 }
 
 select.form-control {

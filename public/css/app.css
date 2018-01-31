@@ -9041,6 +9041,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 body {
   background: #111;
+  color: #ececec;
 }
 
 li {
@@ -9054,14 +9055,6 @@ li {
 .killed a {
   color: #2ab27b;
   font-weight: bold;
-}
-
-.table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: #222;
-}
-
-th {
-  color: #ececec;
 }
 
 select.form-control {

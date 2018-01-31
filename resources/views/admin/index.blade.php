@@ -4,8 +4,10 @@
 
     <section>
         <h1>Dashboard</h1>
-        @include('admin/widgets/_statsWidget', ['class' => '', 'stat' => 'Users', 'value' => $stats['users']])
-        @include('admin/widgets/_statsWidget', ['class' => '', 'stat' => 'Raids', 'value' => $stats['raids']])
+        <div class="admin-widgets">
+            @include('admin/widgets/_statsWidget', ['class' => '', 'stat' => 'Users', 'value' => $stats['users']])
+            @include('admin/widgets/_statsWidget', ['class' => '', 'stat' => 'Raids', 'value' => $stats['raids']])
+        </div>
     </section>
 
     <section>
