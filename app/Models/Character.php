@@ -2,6 +2,7 @@
 
 use Auth;
 use Exception;
+use WoWStats\Models\Metric;
 
 class Character extends Model
 {
@@ -255,19 +256,18 @@ class Character extends Model
         }
     }
 
-    public function current_item_level()
+    public function highestItemLevel()
     {
         try {
-            $ilvl = CharacterItemLevel::where('character_id', $this->id)->orderBy('item_level', 'DESC')->firstOrFail();
-            return $ilvl->item_level;
+            $ilvlMetric = Metric::getMetricId('item_level');
+            $ilvl = CharacterStats::metricId($ilvlMetric)
+                ->forCharacter($this->id)
+                ->orderBy('value', 'DESC')
+                ->firstOrFail();
+            return $ilvl->value;
         } catch (Exception $e) {
             return 0;
         }
-    }
-
-    public function item_level_history()
-    {
-        return CharacterItemLevel::where('character_id', $this->id)->orderBy('item_level', 'ASC')->get();
     }
 
     public function hasStats()

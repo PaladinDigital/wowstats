@@ -12,6 +12,7 @@
             <tr>
                 <th>Character</th>
                 <th>Class</th>
+                <th>iLvl</th>
                 <th>Main Spec</th>
                 <th>Off-Spec</th>
                 <th>Links</th>
@@ -22,6 +23,7 @@
                 <tr class="{{ $c->cssClass() }}">
                     <td><a href="{{ route('character.view', $c->name) }}">{{ $c->name }}</a></td>
                     <td>{{ $c->className() }}</td>
+                    <td>{{ $c->highestItemLevel() }}</td>
                     <td><i class="{{ $c->mainSpecIcon() }}"></i></td>
                     <td><i class="{{ $c->offSpecIcon() }}"></i></td>
                     <td>

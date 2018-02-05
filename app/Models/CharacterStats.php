@@ -75,7 +75,7 @@ class CharacterStats extends Model
     /* Query Scopes */
 
     // Scope by Metric ID
-    public function scopeMetric($query, $metric_id)
+    public function scopeMetricId($query, $metric_id)
     {
         return $query->where('metric_id', $metric_id);
     }
