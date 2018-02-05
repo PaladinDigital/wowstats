@@ -11,7 +11,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $data = $this->getData();
-        return view('welcome', $data);
+        $user = $this->getUser();
+        return view('welcome', $user);
     }
 }
