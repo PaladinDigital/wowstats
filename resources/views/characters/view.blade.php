@@ -112,6 +112,13 @@ if ($isDpsOnly && $mainSpec === 'Unknown') {
             <div id="{{ $secondary_chart_2 }}"></div>
         </div>
     </div>
+
+    <?php /* Other */ ?>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div id="ilvl_chart"></div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -127,4 +134,6 @@ if ($isDpsOnly && $mainSpec === 'Unknown') {
 
     @include('characters.charts._dtps',         ['height' => $tank_chart_heights])
     @include('characters.charts._damage_taken', ['height' => $tank_chart_heights])
+
+    @include('characters.charts._ilvl', ['height' => 200])
 @endsection
