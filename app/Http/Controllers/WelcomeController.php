@@ -1,20 +1,9 @@
-<?php namespace WoWStats\Http\Controllers;
+<?php
 
-use Illuminate\Http\Request;
+namespace WoWStats\Http\Controllers;
 
 class WelcomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->middleware('guest');
-    }
-
     /**
      * Show the application dashboard.
      *
