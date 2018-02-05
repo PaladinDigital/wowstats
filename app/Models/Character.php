@@ -219,11 +219,13 @@ class Character extends Model
         $armory = "http://{$region}.battle.net/wow/en/character/{$realm}/{$name}/simple";
         $mrRobot = "http://www.askmrrobot.com/wow/gear/{$region}/{$realm}/{$name}";
         $raiderIo = "https://raider.io/characters/{$region}/{$realm}/{$name}";
+        $warcraftLogs = "https://www.warcraftlogs.com/character/{$region}/{$realm}/{$name}";
 
         return [
             'armory' => $armory,
             'askmrrobot' => $mrRobot,
-            'raider.io' => $raiderIo
+            'raider.io' => $raiderIo,
+            'warcraftlogs' => $warcraftLogs
         ];
     }
 

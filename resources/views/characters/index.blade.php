@@ -34,6 +34,9 @@
                         @if ($c->hasLink('raider.io'))
                             <a href="{{ $c->getLink('raider.io') }}"><img class="profile-icon" src="{{ asset('images/icons/raiderio-favicon.ico') }}" alt="{{ $c->name }}'s Raider.io Profile" /></a>
                         @endif
+                            @if ($c->hasLink('warcraftlogs'))
+                                <a href="{{ $c->getLink('warcraftlogs') }}">WL</a>
+                            @endif
                     </td>
                 </tr>
             @endforeach
