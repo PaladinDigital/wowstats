@@ -88,14 +88,22 @@ class Character extends Model
 
     public function mainSpecIcon()
     {
+        if ($this->isDpsOnly()) {
+            return $this->specIcon('DPS');
+        }
+
         $spec = $this->mainSpec();
         return $this->specIcon($spec);
     }
 
     public function offSpecIcon()
     {
-        $spec = $this->offSpec();
-        return $this->specIcon($spec);
+        if (!$this->isDpsOnly()) {
+            $spec = $this->offSpec();
+            return $this->specIcon($spec);
+        } else {
+            return 'fa fa-minus';
+        }
     }
 
     public function specIcon($spec)
@@ -283,6 +291,12 @@ class Character extends Model
     public function scopeByName($query, $order = 'ASC')
     {
         return $query->orderBy('name', $order);
+    }
+
+    public function isDpsOnly()
+    {
+        $dpsOnlyChars = ['mage','warlock', 'rogue', 'hunter'];
+        return in_array($this->cssClass(), $dpsOnlyChars);
     }
 
     public function scopeNotId($query, $ids = [])

@@ -3,8 +3,7 @@
 @section('content')
 <?php
 $cssClass = $character->cssClass();
-$dpsOnlyChars = ['mage','warlock', 'rogue', 'hunter'];
-$isDpsOnly = in_array($cssClass, $dpsOnlyChars);
+$isDpsOnly = $character->isDpsOnly();
 $mainSpec = $character->mainSpec();
 $offSpec = $character->offSpec();
 if ($isDpsOnly && $mainSpec === 'Unknown') {
