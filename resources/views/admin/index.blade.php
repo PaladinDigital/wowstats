@@ -13,6 +13,7 @@
     <section>
         <h1>Administration</h1>
         <ul class="list-group">
+            <li class="list-group-item"><a href="{{ route('blog.index') }}">Blog</a></li>
             <li class="list-group-item"><a href="{{ route('admin.users') }}">Users</a></li>
             <li class="list-group-item"><a href="{{ route('admin.characters') }}">Characters</a></li>
             <li class="list-group-item"><a href="{{ route('admin.stats') }}">Character Stats</a></li>
