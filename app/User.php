@@ -2,9 +2,9 @@
 
 namespace WoWStats;
 
+use DB;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\DB;
 use WoWStats\Models\Character;
 
 class User extends Authenticatable
@@ -41,7 +41,16 @@ class User extends Authenticatable
 
     public static function getCount()
     {
-        $results = \DB::select('select COUNT(*) as count from users');
+        $results = DB::select('select COUNT(*) as count from users');
         return $results[0]->count;
+    }
+
+    public function __debugInfo()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'characters' => $this->characters,
+        ];
     }
 }
