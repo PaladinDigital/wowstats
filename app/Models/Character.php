@@ -86,6 +86,36 @@ class Character extends Model
         return $role->name;
     }
 
+    public function mainSpecIcon()
+    {
+        $spec = $this->mainSpec();
+        return $this->specIcon($spec);
+    }
+
+    public function offSpecIcon()
+    {
+        $spec = $this->offSpec();
+        return $this->specIcon($spec);
+    }
+
+    public function specIcon($spec)
+    {
+        switch ($spec) {
+            case 'Healer':
+                return 'fa fa-plus';
+                break;
+            case 'Tank':
+                return 'fa fa-shield';
+                break;
+            case 'DPS':
+                return 'fa fa-bomb';
+                break;
+            default:
+                return 'fa fa-question';
+                break;
+        }
+    }
+
     public function get_attributes()
     {
         $attributes = CharacterAttributes::where('character_id', $this->id)->get();

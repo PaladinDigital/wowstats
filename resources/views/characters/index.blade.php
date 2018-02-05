@@ -22,8 +22,8 @@
                 <tr class="{{ $c->cssClass() }}">
                     <td><a href="{{ route('character.view', $c->name) }}">{{ $c->name }}</a></td>
                     <td>{{ $c->className() }}</td>
-                    <td>{{ $c->mainSpec() }}</td>
-                    <td>{{ $c->offSpec() }}</td>
+                    <td><i class="{{ $c->mainSpecIcon() }}"></i></td>
+                    <td><i class="{{ $c->offSpecIcon() }}"></i></td>
                     <td>
                         @if ($c->hasLink('armory'))
                             <a href="{{ $c->getLink('armory') }}"><img class="profile-icon" src="{{ asset('images/icons/wow-favicon.png') }}" alt="{{ $c->name }}'s Armory Profile" /></a>
