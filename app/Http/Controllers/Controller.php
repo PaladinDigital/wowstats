@@ -29,12 +29,15 @@ class Controller extends LaravelSupportController
 
         $data = $this->buildData($data);
 
-        if (Auth::check()) {
-            $data['user'] = Auth::user();
-        } else {
-            $data['user'] = new User();
-        }
-
         return $data;
+    }
+
+    public function getUser()
+    {
+        if (\Auth::check()) {
+            return \Auth::user();
+        } else {
+            return new User();
+        }
     }
 }
