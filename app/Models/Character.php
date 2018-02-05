@@ -131,6 +131,9 @@ class Character extends Model
                 case 'dps':
                     $dps[] = $s->value;
                     break;
+                case 'dtps':
+                    $dtps[] = $s->value;
+                    break;
                 default:
                     break;
             }
@@ -143,24 +146,27 @@ class Character extends Model
             // Average HPS
             $count = count($hps);
             if ($count > 0) {
-                $average_hps = array_sum($hps) / count($hps);
-                $output['average_hps'] = $average_hps;
-                $output['max_hps'] = max($hps);
+                $output['average_hps'] = number_format(array_sum($hps) / count($hps));
+                $output['max_hps'] = number_format(max($hps));
             }
         }
 
-        if ($mainSpec == 'DPS') {
+        if ($mainSpec == 'DPS' || $offSpec == 'DPS') {
             $count = count($dps);
             if ($count > 0) {
                 // Average DPS
-                $average_dps = array_sum($dps) / count($dps);
-                $output['average_dps'] = $average_dps;
-                $output['max_dps'] = max($dps);
+                $output['average_dps'] = number_format(array_sum($dps) / count($dps));
+                $output['max_dps'] = number_format(max($dps));
             }
         }
 
         if ($mainSpec == 'Tank' || $offSpec == 'Tank') {
+            $count = count($dtps);
             // Average DTPS
+            if ($count > 0) {
+                $output['average_dtps'] = number_format(array_sum($dtps) / count($dtps));
+                $output['max_dtps'] = number_format(max($dtps));
+            }
         }
 
         return $output;
