@@ -22,7 +22,7 @@
             <li class="list-group-item">Max DPS: {{ $recentStats['max_dps'] }}</li>
         @endif
 
-        @if (array_key_exists('average_dtps', $recentStats))
+        @if (array_key_exists('average_dtps', $recentStats) && $recentStats['average_dtps'] > 0)
             <li class="list-group-item">Average DTPS: {{ $recentStats['average_dtps'] }}</li>
         @endif
     </ul>
