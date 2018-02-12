@@ -6,3 +6,11 @@
  */
 
 require('./bootstrap');
+
+window.Vue = require('vue');
+
+Vue.component('ws-countdown', require('./components/Countdown'));
+
+const app = new Vue({
+  el: '#app'
+});
