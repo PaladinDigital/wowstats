@@ -1,12 +1,36 @@
 <template>
     <div class="countdown">
+        <div class="countdown--value months" v-if="showMonths">
+            <span class="value">{{months}}</span>
+            <label>m</label>
+        </div>
+
+        <div class="countdown--value days" v-if="showDays">
+            <span class="value">{{days}}</span>
+            <label>d</label>
+        </div>
+
+        <div class="countdown--value hours" v-if="showHours">
+            <span class="value">{{hours}}</span>
+            <label>h</label>
+        </div>
+
+        <div class="countdown--value minutes" v-if="showMinutes">
+            <span class="value">{{minutes}}</span>
+            <label>m</label>
+        </div>
+
+        <div class="countdown--value seconds" v-if="showSeconds">
+            <span class="value">{{seconds}}</span>
+            <label>s</label>
+        </div>
     </div>
 </template>
 
 <script>
   const moment = require('moment');
   export default {
-    props: ['date'],
+    props: ['date', 'options'],
     data() {
       return {
         now: new moment(),
@@ -78,6 +102,28 @@
         fromDate.add(this.minutes, 'minutes');
 
         return this.timer.diff(fromDate, 'seconds');
+      },
+      showMonths() {
+        return (this.months > 0);
+      },
+      showDays() {
+        if (this.showMonths) { return true; }
+        return (this.days > 0);
+      },
+      showHours() {
+        if (!this.showMonths) {
+          return true;
+        }
+        return false;
+      },
+      showMinutes() {
+        return this.showHours;
+      },
+      showSeconds() {
+        if (this.showDays || this.showMonths) {
+          return false;
+        }
+        return true;
       }
     },
     mounted() {
@@ -91,9 +137,10 @@
 <style scoped>
     .countdown {
         display: flex;
-        flex-direction: row;
+        justify-content: space-between;
     }
-    .timer {
+
+    .countdown--value {
         display: flex;
         flex-direction: column;
     }
