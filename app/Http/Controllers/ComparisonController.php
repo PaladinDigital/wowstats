@@ -51,6 +51,7 @@ class ComparisonController extends Controller
                     break;
             }
         } else {
+            $data['dps_comparison'] = $this->buildMetricComparisonChartData('dps', $charOne, $charTwo);
             // Build all metrics
         }
         return view('comparisons.characters', $data);
