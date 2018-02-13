@@ -23,6 +23,12 @@ if (!isset($height)) { $height = 400; }
           text: '{{ $y_title or '' }}'
         },
       },
+      plotOptions: {
+        column: {
+          pointPadding: 0,
+          borderWidth: 0
+        }
+      },
       series: {!! $series !!}
     });
   });
