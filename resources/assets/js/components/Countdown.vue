@@ -138,6 +138,9 @@
 
         return this.timer.diff(fromDate, 'seconds');
       },
+      showYears() {
+        return (this.years > 0);
+      },
       showMonths() {
         return (this.months > 0);
       },
