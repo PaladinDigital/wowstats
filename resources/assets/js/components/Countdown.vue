@@ -1,28 +1,33 @@
 <template>
     <div class="countdown">
+        <div class="countdown--value years" v-if="showYears">
+            <span class="value">{{years}}</span>
+            <label>{{yLabel}}</label>
+        </div>
+
         <div class="countdown--value months" v-if="showMonths">
             <span class="value">{{months}}</span>
-            <label>m</label>
+            <label>{{moLabel}}</label>
         </div>
 
         <div class="countdown--value days" v-if="showDays">
             <span class="value">{{days}}</span>
-            <label>d</label>
+            <label>{{dLabel}}</label>
         </div>
 
         <div class="countdown--value hours" v-if="showHours">
             <span class="value">{{hours}}</span>
-            <label>h</label>
+            <label>{{hLabel}}</label>
         </div>
 
         <div class="countdown--value minutes" v-if="showMinutes">
             <span class="value">{{minutes}}</span>
-            <label>m</label>
+            <label>{{minLabel}}</label>
         </div>
 
         <div class="countdown--value seconds" v-if="showSeconds">
             <span class="value">{{seconds}}</span>
-            <label>s</label>
+            <label>{{secLabel}}</label>
         </div>
     </div>
 </template>
@@ -52,6 +57,36 @@
       },
       years() {
         return this.timer.diff(this.now, 'years');
+      },
+      labelStyle() {
+        if (this.options.labelStyle.length > 0) {
+          return this.options.labelStyle;
+        }
+        return 'short';
+      },
+      yLabel() {
+        if (this.labelStyle === 'full') { return 'Years'; }
+        return 'y';
+      },
+      moLabel() {
+        if (this.labelStyle === 'full') { return 'Months'; }
+        return 'm';
+      },
+      dLabel() {
+        if (this.labelStyle === 'full') { return 'Days'; }
+        return 'd';
+      },
+      hLabel() {
+        if (this.labelStyle === 'full') { return 'Hours'; }
+        return 'h';
+      },
+      minLabel() {
+        if (this.labelStyle === 'full') { return 'Minutes'; }
+        return 'm';
+      },
+      secLabel() {
+        if (this.labelStyle === 'full') { return 'Seconds'; }
+        return 's';
       },
       months() {
         const y = this.years;
@@ -137,7 +172,7 @@
 <style scoped>
     .countdown {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
     }
 
     .countdown--value {
