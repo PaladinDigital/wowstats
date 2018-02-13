@@ -34,6 +34,6 @@ $data = [];
 
 @section('scripts')
     @if (isset($data['container']))
-        @include('highcharts.chart.metric_compare.characters.column-stacked', $data)
+        @include('highcharts.chart.metric_compare.characters.column', $data)
     @endif
 @endsection

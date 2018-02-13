@@ -23,11 +23,6 @@ if (!isset($height)) { $height = 400; }
           text: '{{ $y_title or '' }}'
         },
       },
-      plotOptions: {
-        column: {
-          stacking: 'normal',
-        }
-      },
       series: {!! $series !!}
     });
   });

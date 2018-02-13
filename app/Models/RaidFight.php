@@ -1,5 +1,7 @@
 <?php namespace WoWStats\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+
 /**
  * Class RaidFight
  * @package WoWStats\Models
@@ -27,5 +29,10 @@ class RaidFight extends Model
     public function boss()
     {
         return $this->belongsTo(RaidBoss::class);
+    }
+
+    public function scopeRecent(Builder $query, $n = 20)
+    {
+        return $query->orderBy('id', 'DESC')->limit($n);
     }
 }

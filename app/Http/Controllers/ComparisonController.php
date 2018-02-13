@@ -149,7 +149,9 @@ class ComparisonController extends Controller
 
     public function buildMetricComparisonChartData($metric, $char1, $char2)
     {
-        $fights = RaidFight::all();
+        $fights = RaidFight::recent(100)->get()->reverse();
+
+
         $stats = $this->getStatsByMetric($metric);
         $stats = $this->characterCompareStats($stats, $char1, $char2);
 
