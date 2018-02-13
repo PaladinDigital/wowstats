@@ -68,7 +68,7 @@
         <?php /* Deaths */ ?>
         <div class="col-xs-12 col-md-6 col-lg-4">
             @component('bootstrap4.components._panel')
-                @slot('header')Deaths (Top 10)@endslot
+                @slot('header')Deaths (Top 10) [Includes Wipes]@endslot
                 <table class="table table-striped">
                     <tbody>
                     <?php $h = 0; ?>
