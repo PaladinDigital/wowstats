@@ -188,8 +188,8 @@ class ComparisonController extends Controller
         ];
 
         if ($char1series['color'] == $char2series['color']) {
-            $char1series['color'] = 'red';
-            $char2series['color'] = 'blue';
+            $char1series['color'] = '#ececec';
+            $char2series['color'] = '#47d147';
         }
 
         $series = [
