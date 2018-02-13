@@ -12,12 +12,18 @@
                         <tbody>
                         <?php $i = 0; ?>
                         @foreach ($dps_leaderboard as $entry)
-                            @if ($i < 10)
-                                <tr class="{{ $entry['css'] }}">
-                                    <td>{{$i}} - {{ $entry['character'] }}</td>
-                                    <td>{{ number_format($entry['dps'], 0) }}</td>
-                                </tr>
-                                <?php $i++; ?>
+                            @if($i < 10)
+                            <?php
+                            $data = [
+                                'rowClass' => $entry['css'],
+                                'counter' => $i+1,
+                                'character' => $entry['character'],
+                                'characterUrl' => route('character.view', $entry['character']),
+                                'value' => number_format($entry['dps'], 0)
+                            ];
+                            $i++;
+                            ?>
+                            @include('comparisons.leaderboards._metricEntry', $data)
                             @endif
                         @endforeach
                         </tbody>
@@ -31,15 +37,22 @@
                 @slot('header')HPS (Top 10)@endslot
                     <table class="table table-striped">
                         <tbody>
-                        <?php $h = 0; ?>
+                        <?php $i = 0; ?>
+
                         @foreach ($hps_leaderboard as $entry)
-                            @if ($h < 10)
-                                <tr class="{{ $entry['css'] }}">
-                                    <td>{{$h}} - {{ $entry['character'] }}</td>
-                                    <td>{{ number_format($entry['hps'], 0) }}</td>
-                                </tr>
-                                <?php $h++; ?>
-                            @endif
+                        @if($i < 10)
+                            <?php
+                            $data = [
+                            'rowClass' => $entry['css'],
+                            'counter' => $i+1,
+                            'character' => $entry['character'],
+                            'characterUrl' => route('character.view', $entry['character']),
+                            'value' => number_format($entry['hps'], 0)
+                            ];
+                            $i++;
+                            ?>
+                            @include('comparisons.leaderboards._metricEntry', $data)
+                        @endif
                         @endforeach
                         </tbody>
                     </table>
@@ -52,13 +65,21 @@
                 @slot('header')Damage Taken (Tanks)@endslot
                 <table class="table table-striped">
                     <tbody>
-                    <?php $h = 1; ?>
+                    <?php $i = 0; ?>
                     @foreach ($dt_leaderboard as $entry)
-                        <tr class="{{ $entry['css'] }}">
-                            <td>{{$h}} - {{ $entry['character'] }}</td>
-                            <td>{{ number_format($entry['damage_taken'], 0) }}</td>
-                        </tr>
-                        <?php $h++; ?>
+                        @if($i < 10)
+                            <?php
+                            $data = [
+                            'rowClass' => $entry['css'],
+                            'counter' => $i+1,
+                            'character' => $entry['character'],
+                            'characterUrl' => route('character.view', $entry['character']),
+                            'value' => number_format($entry['damage_taken'], 0)
+                            ];
+                            $i++;
+                            ?>
+                            @include('comparisons.leaderboards._metricEntry', $data)
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
@@ -73,14 +94,20 @@
                 @slot('header')Deaths (Top 10) [Includes Wipes]@endslot
                 <table class="table table-striped">
                     <tbody>
-                    <?php $h = 0; ?>
+                    <?php $i = 0; ?>
                     @foreach ($death_leaderboard as $entry)
-                        @if ($h < 10)
-                            <tr class="{{ $entry['css'] }}">
-                                <td>{{$h+1}} - {{ $entry['character'] }}</td>
-                                <td>{{ number_format($entry['deaths'], 0) }}</td>
-                            </tr>
-                            <?php $h++; ?>
+                        @if($i < 10)
+                            <?php
+                            $data = [
+                            'rowClass' => $entry['css'],
+                            'counter' => $i+1,
+                            'character' => $entry['character'],
+                            'characterUrl' => route('character.view', $entry['character']),
+                            'value' => number_format($entry['deaths'], 0)
+                            ];
+                            $i++;
+                            ?>
+                            @include('comparisons.leaderboards._metricEntry', $data)
                         @endif
                     @endforeach
                     </tbody>
