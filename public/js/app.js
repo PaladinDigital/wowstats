@@ -27574,7 +27574,6 @@ module.exports = __webpack_require__(171);
 /* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
@@ -63142,7 +63141,7 @@ exports = module.exports = __webpack_require__(162)(false);
 
 
 // module
-exports.push([module.i, "\n.countdown[data-v-63ea958a] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n}\n.timer[data-v-63ea958a] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n", ""]);
+exports.push([module.i, "\n.countdown[data-v-63ea958a] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n}\n.countdown--value[data-v-63ea958a] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n", ""]);
 
 // exports
 
@@ -63610,10 +63609,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var moment = __webpack_require__(0);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['date'],
+  props: ['date', 'options'],
   data: function data() {
     return {
       now: new moment()
@@ -63686,6 +63709,30 @@ var moment = __webpack_require__(0);
       fromDate.add(this.minutes, 'minutes');
 
       return this.timer.diff(fromDate, 'seconds');
+    },
+    showMonths: function showMonths() {
+      return this.months > 0;
+    },
+    showDays: function showDays() {
+      if (this.showMonths) {
+        return true;
+      }
+      return this.days > 0;
+    },
+    showHours: function showHours() {
+      if (!this.showMonths) {
+        return true;
+      }
+      return false;
+    },
+    showMinutes: function showMinutes() {
+      return this.showHours;
+    },
+    showSeconds: function showSeconds() {
+      if (this.showDays || this.showMonths) {
+        return false;
+      }
+      return true;
     }
   },
   mounted: function mounted() {
@@ -63965,7 +64012,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "countdown" })
+  return _c("div", { staticClass: "countdown" }, [
+    _vm.showMonths
+      ? _c("div", { staticClass: "countdown--value months" }, [
+          _c("span", { staticClass: "value" }, [_vm._v(_vm._s(_vm.months))]),
+          _vm._v(" "),
+          _c("label", [_vm._v("m")])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showDays
+      ? _c("div", { staticClass: "countdown--value days" }, [
+          _c("span", { staticClass: "value" }, [_vm._v(_vm._s(_vm.days))]),
+          _vm._v(" "),
+          _c("label", [_vm._v("d")])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showHours
+      ? _c("div", { staticClass: "countdown--value hours" }, [
+          _c("span", { staticClass: "value" }, [_vm._v(_vm._s(_vm.hours))]),
+          _vm._v(" "),
+          _c("label", [_vm._v("h")])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showMinutes
+      ? _c("div", { staticClass: "countdown--value minutes" }, [
+          _c("span", { staticClass: "value" }, [_vm._v(_vm._s(_vm.minutes))]),
+          _vm._v(" "),
+          _c("label", [_vm._v("m")])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showSeconds
+      ? _c("div", { staticClass: "countdown--value seconds" }, [
+          _c("span", { staticClass: "value" }, [_vm._v(_vm._s(_vm.seconds))]),
+          _vm._v(" "),
+          _c("label", [_vm._v("s")])
+        ])
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
