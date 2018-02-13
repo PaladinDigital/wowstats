@@ -14,7 +14,7 @@
                         @foreach ($dps_leaderboard as $entry)
                             @if ($i < 10)
                                 <tr class="{{ $entry['css'] }}">
-                                    <td>{{ $entry['character'] }}</td>
+                                    <td>{{$i}} - {{ $entry['character'] }}</td>
                                     <td>{{ number_format($entry['dps'], 0) }}</td>
                                 </tr>
                                 <?php $i++; ?>
@@ -35,7 +35,7 @@
                         @foreach ($hps_leaderboard as $entry)
                             @if ($h < 10)
                                 <tr class="{{ $entry['css'] }}">
-                                    <td>{{ $entry['character'] }}</td>
+                                    <td>{{$h}} - {{ $entry['character'] }}</td>
                                     <td>{{ number_format($entry['hps'], 0) }}</td>
                                 </tr>
                                 <?php $h++; ?>
@@ -52,11 +52,13 @@
                 @slot('header')Damage Taken (Tanks)@endslot
                 <table class="table table-striped">
                     <tbody>
+                    <?php $h = 1; ?>
                     @foreach ($dt_leaderboard as $entry)
                         <tr class="{{ $entry['css'] }}">
-                            <td>{{ $entry['character'] }}</td>
+                            <td>{{$h}} - {{ $entry['character'] }}</td>
                             <td>{{ number_format($entry['damage_taken'], 0) }}</td>
                         </tr>
+                        <?php $h++; ?>
                     @endforeach
                     </tbody>
                 </table>
@@ -75,7 +77,7 @@
                     @foreach ($death_leaderboard as $entry)
                         @if ($h < 10)
                             <tr class="{{ $entry['css'] }}">
-                                <td>{{ $entry['character'] }}</td>
+                                <td>{{$h+1}} - {{ $entry['character'] }}</td>
                                 <td>{{ number_format($entry['deaths'], 0) }}</td>
                             </tr>
                             <?php $h++; ?>
