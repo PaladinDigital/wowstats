@@ -63666,6 +63666,12 @@ var moment = __webpack_require__(0);
       return this.timer.diff(this.now, 'years');
     },
     labelStyle: function labelStyle() {
+      if (typeof this.options === 'undefined') {
+        return 'short';
+      }
+      if (typeof this.options.labelStyle === 'undefined') {
+        return 'short';
+      }
       if (this.options.labelStyle.length > 0) {
         return this.options.labelStyle;
       }
