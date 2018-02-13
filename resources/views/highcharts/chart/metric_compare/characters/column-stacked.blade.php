@@ -1,0 +1,34 @@
+<?php
+// Required Fields: container, title, series, values
+// Optional Fields: height, y_title, series_title
+
+// Set defaults
+if (!isset($height)) { $height = 400; }
+?><script>
+  $(function () {
+    $('#{{ $container }}').highcharts({
+      chart: {
+        height: {{ $height }},
+        type: 'column'
+      },
+      title: {
+        text: '{{ $title }}'
+      },
+      xAxis: {
+        categories: {!! $categories !!}
+      },
+      yAxis: {
+        allowDecimals: false,
+        title: {
+          text: '{{ $y_title or '' }}'
+        },
+      },
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+        }
+      },
+      series: {!! $series !!}
+    });
+  });
+</script>
