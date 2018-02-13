@@ -63644,7 +63644,10 @@ var moment = __webpack_require__(0);
   props: ['date', 'options'],
   data: function data() {
     return {
-      now: new moment()
+      now: new moment(),
+      settings: {
+        labelStyle: 'short'
+      }
     };
   },
 
@@ -63666,14 +63669,11 @@ var moment = __webpack_require__(0);
       return this.timer.diff(this.now, 'years');
     },
     labelStyle: function labelStyle() {
-      if (typeof this.options === 'undefined') {
+      if (typeof this.settings.labelStyle === 'undefined') {
         return 'short';
       }
-      if (typeof this.options.labelStyle === 'undefined') {
-        return 'short';
-      }
-      if (this.options.labelStyle.length > 0) {
-        return this.options.labelStyle;
+      if (this.settings.labelStyle.length > 0) {
+        return this.settings.labelStyle;
       }
       return 'short';
     },
@@ -63797,6 +63797,9 @@ var moment = __webpack_require__(0);
     window.setInterval(function () {
       _this.updateNow();
     }, 1000);
+    if (typeof this.options !== 'undefined') {
+      this.settings = JSON.parse(this.options);
+    }
   }
 });
 

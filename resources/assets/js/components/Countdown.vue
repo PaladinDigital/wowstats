@@ -39,6 +39,9 @@
     data() {
       return {
         now: new moment(),
+        settings: {
+          labelStyle: 'short'
+        },
       }
     },
     methods: {
@@ -59,14 +62,11 @@
         return this.timer.diff(this.now, 'years');
       },
       labelStyle() {
-        if (typeof this.options === 'undefined') {
+        if (typeof this.settings.labelStyle === 'undefined') {
           return 'short';
         }
-        if (typeof this.options.labelStyle === 'undefined') {
-          return 'short';
-        }
-        if (this.options.labelStyle.length > 0) {
-          return this.options.labelStyle;
+        if (this.settings.labelStyle.length > 0) {
+          return this.settings.labelStyle;
         }
         return 'short';
       },
@@ -174,6 +174,9 @@
       window.setInterval(() => {
         this.updateNow();
       },1000);
+      if (typeof this.options !== 'undefined') {
+        this.settings = JSON.parse(this.options);
+      }
     },
   }
 </script>
