@@ -16,6 +16,7 @@ class ComparisonController extends Controller
         $data['dps_leaderboard'] = $this->metricLeaderboard($stats, 'dps');
         $data['hps_leaderboard'] = $this->metricLeaderboard($stats, 'hps');
         $data['dt_leaderboard'] = $this->metricTotalLeaderboard($stats, 'damage_taken');
+        $data['death_leaderboard'] = $this->metricTotalLeaderboard($stats, 'deaths');
 
         return view('comparisons.leaderboards', $data);
     }

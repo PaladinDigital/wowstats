@@ -63,4 +63,27 @@
             @endcomponent
         </div>
     </div>
+
+    <div class="row">
+        <?php /* Deaths */ ?>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            @component('bootstrap4.components._panel')
+                @slot('header')Deaths (Top 10)@endslot
+                <table class="table table-striped">
+                    <tbody>
+                    <?php $h = 0; ?>
+                    @foreach ($death_leaderboard as $entry)
+                        @if ($h < 10)
+                            <tr class="{{ $entry['css'] }}">
+                                <td>{{ $entry['character'] }}</td>
+                                <td>{{ number_format($entry['deaths'], 0) }}</td>
+                            </tr>
+                            <?php $h++; ?>
+                        @endif
+                    @endforeach
+                    </tbody>
+                </table>
+            @endcomponent
+        </div>
+    </div>
 @endsection
