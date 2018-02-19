@@ -50,6 +50,15 @@ class Raid extends Model
         return false;
     }
 
+    public function getLogsUrl()
+    {
+        $url = $this->fights->first()->logs_url;
+        if (isset($url) && !empty($url)) {
+            return $url;
+        }
+        return false;
+    }
+
     // Eloquent Relations
 
     public function zone()
@@ -60,6 +69,11 @@ class Raid extends Model
     public function attendees()
     {
         return $this->hasMany(RaidAttendee::class);
+    }
+
+    public function fights()
+    {
+        return $this->hasMany(RaidFight::class);
     }
 
     // Helper Methods
