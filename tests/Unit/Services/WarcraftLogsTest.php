@@ -18,7 +18,6 @@ class WarcraftLogsTest extends TestCase
 
     public function testGetReportFightsApiUrl()
     {
-
         $apiUrl = $this->service->getReportFightsApiUrl();
 
         $apiKey = config('wow.warcraft_logs.api_key');
@@ -40,19 +39,5 @@ class WarcraftLogsTest extends TestCase
         $name = 'Testíe-Ragnaros';
         $truth = $this->service->isPossibleGuildMember($name);
         $this->assertEquals(false, $truth);
-    }
-
-    public function testOutputOfGetFights()
-    {
-        $logId = 't78PdgTcRFDvrfKC';
-        $fights = $this->service->getRaidFights($logId);
-
-        foreach ($fights as $fight) {
-            $this->assertArrayHasKey('start', $fight);
-            $this->assertArrayHasKey('end', $fight);
-            $this->assertArrayHasKey('boss_id', $fight);
-        }
-
-        // var_dump($fights);
     }
 }
