@@ -12,8 +12,7 @@
         "socialiteproviders/battlenet": "^2.0",
         "doctrine/dbal": "^2.5",
         "predis/predis": "^1.1",
-        "taskforcedev/laravel-support": "1.1.*",
-        "paladin-digital/blog": "^0.1"
+        "taskforcedev/laravel-support": "1.1.*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
